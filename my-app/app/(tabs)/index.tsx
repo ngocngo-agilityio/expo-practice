@@ -7,78 +7,6 @@
 // import { ThemedView } from '@/components/themed-view';
 // import { Link } from 'expo-router';
 
-import { useState } from "react";
-import { View, StyleSheet, Text, Button, TouchableOpacity } from "react-native";
-import { CameraView, CameraType, useCameraPermissions } from "expo-camera";
-
-export default function HomeScreen() {
-  const [facing, setFacing] = useState<CameraType>("back");
-  const [permission, requestPermission] = useCameraPermissions();
-
-  if (!permission) {
-    // Camera permissions are still loading.
-    return <View />;
-  }
-
-  if (!permission.granted) {
-    // Camera permissions are not granted yet.
-    return (
-      <View style={styles.container}>
-        <Text style={styles.message}>
-          We need your permission to show the camera
-        </Text>
-        <Button onPress={requestPermission} title="grant permission" />
-      </View>
-    );
-  }
-
-  function toggleCameraFacing() {
-    setFacing((current) => (current === "back" ? "front" : "back"));
-  }
-
-  return (
-    <View style={styles.container}>
-      <CameraView style={styles.camera} facing={facing} />
-      <View style={styles.buttonContainer}>
-        <TouchableOpacity style={styles.button} onPress={toggleCameraFacing}>
-          <Text style={styles.text}>Flip Camera</Text>
-        </TouchableOpacity>
-      </View>
-    </View>
-  );
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: "center",
-  },
-  message: {
-    textAlign: "center",
-    paddingBottom: 10,
-  },
-  camera: {
-    flex: 1,
-  },
-  buttonContainer: {
-    position: "absolute",
-    bottom: 64,
-    flexDirection: "row",
-    backgroundColor: "transparent",
-    width: "100%",
-    paddingHorizontal: 64,
-  },
-  button: {
-    flex: 1,
-    alignItems: "center",
-  },
-  text: {
-    fontSize: 24,
-    fontWeight: "bold",
-    color: "white",
-  },
-});
-
 // export default function HomeScreen() {
 //   return (
 //     <ParallaxScrollView
@@ -168,3 +96,111 @@ const styles = StyleSheet.create({
 //     position: 'absolute',
 //   },
 // });
+
+/*------------------ Example of using the expo-camera package to display a CAMERA view.----------------- */
+// import { useState } from "react";
+// import { View, StyleSheet, Text, Button, TouchableOpacity } from "react-native";
+// import { CameraView, CameraType, useCameraPermissions } from "expo-camera";
+
+// export default function HomeScreen() {
+//   const [facing, setFacing] = useState<CameraType>("back");
+//   const [permission, requestPermission] = useCameraPermissions();
+
+//   if (!permission) {
+//     // Camera permissions are still loading.
+//     return <View />;
+//   }
+
+//   if (!permission.granted) {
+//     // Camera permissions are not granted yet.
+//     return (
+//       <View style={styles.container}>
+//         <Text style={styles.message}>
+//           We need your permission to show the camera
+//         </Text>
+//         <Button onPress={requestPermission} title="grant permission" />
+//       </View>
+//     );
+//   }
+
+//   function toggleCameraFacing() {
+//     setFacing((current) => (current === "back" ? "front" : "back"));
+//   }
+
+//   return (
+//     <View style={styles.container}>
+//       <CameraView style={styles.camera} facing={facing} />
+//       <View style={styles.buttonContainer}>
+//         <TouchableOpacity style={styles.button} onPress={toggleCameraFacing}>
+//           <Text style={styles.text}>Flip Camera</Text>
+//         </TouchableOpacity>
+//       </View>
+//     </View>
+//   );
+// }
+
+// const styles = StyleSheet.create({
+//   container: {
+//     flex: 1,
+//     justifyContent: "center",
+//   },
+//   message: {
+//     textAlign: "center",
+//     paddingBottom: 10,
+//   },
+//   camera: {
+//     flex: 1,
+//   },
+//   buttonContainer: {
+//     position: "absolute",
+//     bottom: 64,
+//     flexDirection: "row",
+//     backgroundColor: "transparent",
+//     width: "100%",
+//     paddingHorizontal: 64,
+//   },
+//   button: {
+//     flex: 1,
+//     alignItems: "center",
+//   },
+//   text: {
+//     fontSize: 24,
+//     fontWeight: "bold",
+//     color: "white",
+//   },
+// });
+
+/*------------------ Example of using the expo-image package to render images----------------- */
+import { Image } from "expo-image";
+import { StyleSheet, View } from "react-native";
+
+const blurhash =
+  "|rF?hV%2WCj[ayj[a|j[az_NaeWBj@ayfRayfQfQM{M|azj[azf6fQfQfQIpWXofj[ayj[j[fQayWCoeoeaya}j[ayfQa{oLj?j[WVj[ayayj[fQoff7azayj[ayj[j[ayofayayayj[fQj[ayayj[ayfjj[j[ayjuayj[";
+
+export default function HomeScreen() {
+  return (
+    <View style={styles.container}>
+      <Image
+        style={styles.image}
+        source="https://picsum.photos/seed/696/3000/2000"
+        placeholder={{ blurhash }}
+        contentFit="cover"
+        transition={1000}
+      />
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "#fff",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  image: {
+    flex: 1,
+    width: "100%",
+    backgroundColor: "#0553",
+  },
+});
