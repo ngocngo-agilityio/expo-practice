@@ -171,22 +171,68 @@
 // });
 
 /*------------------ Example of using the expo-image package to render images----------------- */
-import { Image } from "expo-image";
-import { StyleSheet, View } from "react-native";
+// import { Image } from "expo-image";
+// import { StyleSheet, View } from "react-native";
 
-const blurhash =
-  "|rF?hV%2WCj[ayj[a|j[az_NaeWBj@ayfRayfQfQM{M|azj[azf6fQfQfQIpWXofj[ayj[j[fQayWCoeoeaya}j[ayfQa{oLj?j[WVj[ayayj[fQoff7azayj[ayj[j[ayofayayayj[fQj[ayayj[ayfjj[j[ayjuayj[";
+// const blurhash =
+//   "|rF?hV%2WCj[ayj[a|j[az_NaeWBj@ayfRayfQfQM{M|azj[azf6fQfQfQIpWXofj[ayj[j[fQayWCoeoeaya}j[ayfQa{oLj?j[WVj[ayayj[fQoff7azayj[ayj[j[ayofayayayj[fQj[ayayj[ayfjj[j[ayjuayj[";
+
+// export default function HomeScreen() {
+//   return (
+//     <View style={styles.container}>
+//       <Image
+//         style={styles.image}
+//         source="https://picsum.photos/seed/696/3000/2000"
+//         placeholder={{ blurhash }}
+//         contentFit="cover"
+//         transition={1000}
+//       />
+//     </View>
+//   );
+// }
+
+// const styles = StyleSheet.create({
+//   container: {
+//     flex: 1,
+//     backgroundColor: "#fff",
+//     alignItems: "center",
+//     justifyContent: "center",
+//   },
+//   image: {
+//     flex: 1,
+//     width: "100%",
+//     backgroundColor: "#0553",
+//   },
+// });
+
+/*------------------ Example of using the EXPO-IMAGE-PICKER package to render images----------------- */
+import { useState } from "react";
+import { Button, Image, View, StyleSheet } from "react-native";
+import * as ImagePicker from "expo-image-picker";
 
 export default function HomeScreen() {
+  const [image, setImage] = useState<string | null>(null);
+
+  const pickImage = async () => {
+    // No permissions request is necessary for launching the image library
+    let result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ["images", "videos"],
+      allowsEditing: true,
+      aspect: [4, 3],
+      quality: 1,
+    });
+
+    console.log(result);
+
+    if (!result.canceled) {
+      setImage(result.assets[0].uri);
+    }
+  };
+
   return (
     <View style={styles.container}>
-      <Image
-        style={styles.image}
-        source="https://picsum.photos/seed/696/3000/2000"
-        placeholder={{ blurhash }}
-        contentFit="cover"
-        transition={1000}
-      />
+      <Button title="Pick an image from camera roll" onPress={pickImage} />
+      {image && <Image source={{ uri: image }} style={styles.image} />}
     </View>
   );
 }
@@ -194,13 +240,11 @@ export default function HomeScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "center",
   },
   image: {
-    flex: 1,
-    width: "100%",
-    backgroundColor: "#0553",
+    width: 200,
+    height: 200,
   },
 });
