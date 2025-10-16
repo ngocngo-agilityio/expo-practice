@@ -250,38 +250,52 @@
 // });
 
 /*------------------ Example of using the DATE TIME PICKER package to render images----------------- */
-import React, { useState } from "react";
-import { View, Button, Platform } from "react-native";
-import DateTimePicker, {
-  DateTimePickerEvent,
-} from "@react-native-community/datetimepicker";
+// import React, { useState } from "react";
+// import { View, Button, Platform } from "react-native";
+// import DateTimePicker, {
+//   DateTimePickerEvent,
+// } from "@react-native-community/datetimepicker";
+
+// export default function HomeScreen() {
+//   const [date, setDate] = useState(new Date());
+//   const [show, setShow] = useState(false);
+
+//   const onChange = (
+//     _event: DateTimePickerEvent,
+//     selectedDate: Date | undefined
+//   ) => {
+//     const currentDate = selectedDate || date;
+//     setShow(Platform.OS === "ios"); // Android auto hides picker
+//     setDate(currentDate);
+//   };
+
+//   return (
+//     <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+//       <Button title="Show date picker" onPress={() => setShow(true)} />
+//       {show && (
+//         <DateTimePicker
+//           value={date}
+//           mode="date" // "date" | "time" | "datetime"
+//           display="default" // "default" | "spinner" | "calendar" | "clock"
+//           onChange={onChange}
+//           minimumDate={new Date(2020, 0, 1)}
+//           maximumDate={new Date(2030, 11, 31)}
+//         />
+//       )}
+//     </View>
+//   );
+// }
+
+/*------------------ Example of using the EXPO DEVICE package to render images----------------- */
+import { Text, View } from "react-native";
+import * as Device from "expo-device";
 
 export default function HomeScreen() {
-  const [date, setDate] = useState(new Date());
-  const [show, setShow] = useState(false);
-
-  const onChange = (
-    _event: DateTimePickerEvent,
-    selectedDate: Date | undefined
-  ) => {
-    const currentDate = selectedDate || date;
-    setShow(Platform.OS === "ios"); // Android auto hides picker
-    setDate(currentDate);
-  };
-
   return (
     <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-      <Button title="Show date picker" onPress={() => setShow(true)} />
-      {show && (
-        <DateTimePicker
-          value={date}
-          mode="date" // "date" | "time" | "datetime"
-          display="default" // "default" | "spinner" | "calendar" | "clock"
-          onChange={onChange}
-          minimumDate={new Date(2020, 0, 1)}
-          maximumDate={new Date(2030, 11, 31)}
-        />
-      )}
+      <Text>
+        {Device.manufacturer}: {Device.modelName} : {Device.deviceName}
+      </Text>
     </View>
   );
 }
