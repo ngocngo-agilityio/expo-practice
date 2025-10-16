@@ -206,45 +206,82 @@
 // });
 
 /*------------------ Example of using the EXPO-IMAGE-PICKER package to render images----------------- */
-import { useState } from "react";
-import { Button, Image, View, StyleSheet } from "react-native";
-import * as ImagePicker from "expo-image-picker";
+// import { useState } from "react";
+// import { Button, Image, View, StyleSheet } from "react-native";
+// import * as ImagePicker from "expo-image-picker";
+
+// export default function HomeScreen() {
+//   const [image, setImage] = useState<string | null>(null);
+
+//   const pickImage = async () => {
+//     // No permissions request is necessary for launching the image library
+//     let result = await ImagePicker.launchImageLibraryAsync({
+//       mediaTypes: ["images", "videos"],
+//       allowsEditing: true,
+//       aspect: [4, 3],
+//       quality: 1,
+//     });
+
+//     console.log(result);
+
+//     if (!result.canceled) {
+//       setImage(result.assets[0].uri);
+//     }
+//   };
+
+//   return (
+//     <View style={styles.container}>
+//       <Button title="Pick an image from camera roll" onPress={pickImage} />
+//       {image && <Image source={{ uri: image }} style={styles.image} />}
+//     </View>
+//   );
+// }
+
+// const styles = StyleSheet.create({
+//   container: {
+//     flex: 1,
+//     alignItems: "center",
+//     justifyContent: "center",
+//   },
+//   image: {
+//     width: 200,
+//     height: 200,
+//   },
+// });
+
+/*------------------ Example of using the DATE TIME PICKER package to render images----------------- */
+import React, { useState } from "react";
+import { View, Button, Platform } from "react-native";
+import DateTimePicker, {
+  DateTimePickerEvent,
+} from "@react-native-community/datetimepicker";
 
 export default function HomeScreen() {
-  const [image, setImage] = useState<string | null>(null);
+  const [date, setDate] = useState(new Date());
+  const [show, setShow] = useState(false);
 
-  const pickImage = async () => {
-    // No permissions request is necessary for launching the image library
-    let result = await ImagePicker.launchImageLibraryAsync({
-      mediaTypes: ["images", "videos"],
-      allowsEditing: true,
-      aspect: [4, 3],
-      quality: 1,
-    });
-
-    console.log(result);
-
-    if (!result.canceled) {
-      setImage(result.assets[0].uri);
-    }
+  const onChange = (
+    _event: DateTimePickerEvent,
+    selectedDate: Date | undefined
+  ) => {
+    const currentDate = selectedDate || date;
+    setShow(Platform.OS === "ios"); // Android auto hides picker
+    setDate(currentDate);
   };
 
   return (
-    <View style={styles.container}>
-      <Button title="Pick an image from camera roll" onPress={pickImage} />
-      {image && <Image source={{ uri: image }} style={styles.image} />}
+    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+      <Button title="Show date picker" onPress={() => setShow(true)} />
+      {show && (
+        <DateTimePicker
+          value={date}
+          mode="date" // "date" | "time" | "datetime"
+          display="default" // "default" | "spinner" | "calendar" | "clock"
+          onChange={onChange}
+          minimumDate={new Date(2020, 0, 1)}
+          maximumDate={new Date(2030, 11, 31)}
+        />
+      )}
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  image: {
-    width: 200,
-    height: 200,
-  },
-});
