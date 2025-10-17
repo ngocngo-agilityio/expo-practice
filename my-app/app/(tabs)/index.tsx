@@ -287,15 +287,16 @@
 // }
 
 /*------------------ Example of using the EXPO DEVICE package to render images----------------- */
-import { Text, View } from "react-native";
+import { Text } from "react-native";
 import * as Device from "expo-device";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function HomeScreen() {
   return (
-    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+    <SafeAreaView style={{ flex: 1 }}>
       <Text style={{ fontSize: 20, fontFamily: "Inter-ThinItalic" }}>
         {Device.manufacturer}: {Device.modelName} : {Device.deviceName}
       </Text>
-    </View>
+    </SafeAreaView>
   );
 }
