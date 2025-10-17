@@ -293,7 +293,7 @@ import * as Device from "expo-device";
 export default function HomeScreen() {
   return (
     <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-      <Text>
+      <Text style={{ fontSize: 20, fontFamily: "Inter-ThinItalic" }}>
         {Device.manufacturer}: {Device.modelName} : {Device.deviceName}
       </Text>
     </View>
