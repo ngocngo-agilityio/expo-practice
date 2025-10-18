@@ -287,16 +287,88 @@
 // }
 
 /*------------------ Example of using the EXPO DEVICE package to render images----------------- */
-import { Text } from "react-native";
-import * as Device from "expo-device";
-import { SafeAreaView } from "react-native-safe-area-context";
+// import { Text } from "react-native";
+// import * as Device from "expo-device";
+// import { SafeAreaView } from "react-native-safe-area-context";
+
+// export default function HomeScreen() {
+//   return (
+//     <SafeAreaView style={{ flex: 1 }}>
+//       <Text style={{ fontSize: 20, fontFamily: "Inter-ThinItalic" }}>
+//         {Device.manufacturer}: {Device.modelName} : {Device.deviceName}
+//       </Text>
+//     </SafeAreaView>
+//   );
+// }
+
+/*------------------ Example of using the SECURE STORE package to render images----------------- */
+import { useState } from "react";
+import { Text, View, StyleSheet, TextInput, Button } from "react-native";
+import * as SecureStore from "expo-secure-store";
+
+async function save(key: string, value: string) {
+  console.log("key___", key);
+  console.log("value___", value);
+
+  await SecureStore.setItemAsync(key, value);
+}
+
+async function getValueFor(key: string) {
+  let result = await SecureStore.getItemAsync(key);
+  if (result) {
+    alert("🔐 Here's your value 🔐 \n" + result);
+  } else {
+    alert("No values stored under that key.");
+  }
+}
 
 export default function HomeScreen() {
+  const [key, onChangeKey] = useState("key_a");
+  const [value, onChangeValue] = useState("value_a");
+
   return (
-    <SafeAreaView style={{ flex: 1 }}>
-      <Text style={{ fontSize: 20, fontFamily: "Inter-ThinItalic" }}>
-        {Device.manufacturer}: {Device.modelName} : {Device.deviceName}
-      </Text>
-    </SafeAreaView>
+    <View style={styles.container}>
+      <Text style={styles.paragraph}>Save an item, and grab it later!</Text>
+      {/* {Add some TextInput components... } */}
+      <Button
+        title="Save this key/value pair"
+        onPress={() => {
+          save(key, value);
+          onChangeKey("Your key here");
+          onChangeValue("Your value here");
+        }}
+      />
+      <Text style={styles.paragraph}>🔐 Enter your key 🔐</Text>
+      <TextInput
+        style={styles.textInput}
+        onSubmitEditing={(event) => {
+          getValueFor(event.nativeEvent.text);
+        }}
+        placeholder="Enter the key for the value you want to get"
+      />
+    </View>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: "center",
+    paddingTop: 10,
+    backgroundColor: "#ecf0f1",
+    padding: 8,
+  },
+  paragraph: {
+    marginTop: 34,
+    margin: 24,
+    fontSize: 18,
+    fontWeight: "bold",
+    textAlign: "center",
+  },
+  textInput: {
+    height: 35,
+    borderColor: "gray",
+    borderWidth: 0.5,
+    padding: 4,
+  },
+});
