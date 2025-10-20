@@ -302,73 +302,236 @@
 // }
 
 /*------------------ Example of using the SECURE STORE package to render images----------------- */
-import { useState } from "react";
-import { Text, View, StyleSheet, TextInput, Button } from "react-native";
-import * as SecureStore from "expo-secure-store";
+// import { useState } from "react";
+// import { Text, View, StyleSheet, TextInput, Button } from "react-native";
+// import * as SecureStore from "expo-secure-store";
 
-async function save(key: string, value: string) {
-  console.log("key___", key);
-  console.log("value___", value);
+// async function save(key: string, value: string) {
+//   console.log("key___", key);
+//   console.log("value___", value);
 
-  await SecureStore.setItemAsync(key, value);
+//   await SecureStore.setItemAsync(key, value);
+// }
+
+// async function getValueFor(key: string) {
+//   let result = await SecureStore.getItemAsync(key);
+//   if (result) {
+//     alert("🔐 Here's your value 🔐 \n" + result);
+//   } else {
+//     alert("No values stored under that key.");
+//   }
+// }
+
+// export default function HomeScreen() {
+//   const [key, onChangeKey] = useState("key_a");
+//   const [value, onChangeValue] = useState("value_a");
+
+//   return (
+//     <View style={styles.container}>
+//       <Text style={styles.paragraph}>Save an item, and grab it later!</Text>
+//       {/* {Add some TextInput components... } */}
+//       <Button
+//         title="Save this key/value pair"
+//         onPress={() => {
+//           save(key, value);
+//           onChangeKey("Your key here");
+//           onChangeValue("Your value here");
+//         }}
+//       />
+//       <Text style={styles.paragraph}>🔐 Enter your key 🔐</Text>
+//       <TextInput
+//         style={styles.textInput}
+//         onSubmitEditing={(event) => {
+//           getValueFor(event.nativeEvent.text);
+//         }}
+//         placeholder="Enter the key for the value you want to get"
+//       />
+//     </View>
+//   );
+// }
+
+// const styles = StyleSheet.create({
+//   container: {
+//     flex: 1,
+//     justifyContent: "center",
+//     paddingTop: 10,
+//     backgroundColor: "#ecf0f1",
+//     padding: 8,
+//   },
+//   paragraph: {
+//     marginTop: 34,
+//     margin: 24,
+//     fontSize: 18,
+//     fontWeight: "bold",
+//     textAlign: "center",
+//   },
+//   textInput: {
+//     height: 35,
+//     borderColor: "gray",
+//     borderWidth: 0.5,
+//     padding: 4,
+//   },
+// });
+
+/*------------------ Example of using the EXPO NOTIFICATION package to render images----------------- */
+import { useState, useEffect } from "react";
+import { Text, View, Button, Platform } from "react-native";
+import * as Device from "expo-device";
+import * as Notifications from "expo-notifications";
+import Constants from "expo-constants";
+
+Notifications.setNotificationHandler({
+  handleNotification: async () => ({
+    shouldPlaySound: false,
+    shouldSetBadge: false,
+    shouldShowBanner: true,
+    shouldShowList: true,
+  }),
+});
+
+async function schedulePushNotification() {
+  await Notifications.scheduleNotificationAsync({
+    content: {
+      title: "You've got mail! 📬",
+      body: "Here is the notification body",
+      data: { data: "goes here", test: { test1: "more data" } },
+    },
+    trigger: {
+      type: Notifications.SchedulableTriggerInputTypes.TIME_INTERVAL,
+      seconds: 2,
+    },
+  });
 }
 
-async function getValueFor(key: string) {
-  let result = await SecureStore.getItemAsync(key);
-  if (result) {
-    alert("🔐 Here's your value 🔐 \n" + result);
-  } else {
-    alert("No values stored under that key.");
+async function registerForPushNotificationsAsync() {
+  let token;
+
+  if (Platform.OS === "android") {
+    await Notifications.setNotificationChannelAsync("myNotificationChannel", {
+      name: "A channel is needed for the permissions prompt to appear",
+      importance: Notifications.AndroidImportance.MAX,
+      vibrationPattern: [0, 250, 250, 250],
+      lightColor: "#FF231F7C",
+    });
   }
+
+  // Check if the app is running on a real physical device
+  if (Device.isDevice) {
+    const { status: existingStatus } =
+      await Notifications.getPermissionsAsync();
+
+    console.log("status______", existingStatus);
+
+    let finalStatus = existingStatus;
+
+    if (existingStatus !== "granted") {
+      const { status } = await Notifications.requestPermissionsAsync();
+      finalStatus = status;
+    }
+
+    if (finalStatus !== "granted") {
+      alert("Failed to get push token for push notification!");
+      return;
+    }
+
+    // Learn more about projectId:
+    // https://docs.expo.dev/push-notifications/push-notifications-setup/#configure-projectid
+    // EAS projectId is used here.
+    try {
+      const projectId =
+        Constants?.expoConfig?.extra?.eas?.projectId ??
+        Constants?.easConfig?.projectId;
+
+      if (!projectId) {
+        throw new Error("Project ID not found");
+      }
+
+      token = (
+        await Notifications.getExpoPushTokenAsync({
+          projectId,
+        })
+      ).data;
+
+      console.log(token);
+    } catch (e) {
+      token = `${e}`;
+    }
+  } else {
+    console.log("NO__________________");
+
+    alert("Must use physical device for Push Notifications");
+  }
+
+  return token;
 }
 
 export default function HomeScreen() {
-  const [key, onChangeKey] = useState("key_a");
-  const [value, onChangeValue] = useState("value_a");
+  const [expoPushToken, setExpoPushToken] = useState("");
+  const [channels, setChannels] = useState<Notifications.NotificationChannel[]>(
+    []
+  );
+  const [notification, setNotification] = useState<
+    Notifications.Notification | undefined
+  >(undefined);
+
+  useEffect(() => {
+    registerForPushNotificationsAsync().then(
+      (token) => token && setExpoPushToken(token)
+    );
+
+    if (Platform.OS === "android") {
+      Notifications.getNotificationChannelsAsync().then((value) =>
+        setChannels(value ?? [])
+      );
+    }
+    const notificationListener = Notifications.addNotificationReceivedListener(
+      (notification) => {
+        setNotification(notification);
+      }
+    );
+
+    const responseListener =
+      Notifications.addNotificationResponseReceivedListener((response) => {
+        console.log(response);
+      });
+
+    return () => {
+      notificationListener.remove();
+      responseListener.remove();
+    };
+  }, []);
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.paragraph}>Save an item, and grab it later!</Text>
-      {/* {Add some TextInput components... } */}
+    <View
+      style={{
+        flex: 1,
+        alignItems: "center",
+        justifyContent: "space-around",
+        backgroundColor: "#fff",
+      }}
+    >
+      <Text>Your expo push token: {expoPushToken}</Text>
+      <Text>{`Channels: ${JSON.stringify(
+        channels.map((c) => c.id),
+        null,
+        2
+      )}`}</Text>
+      <View style={{ alignItems: "center", justifyContent: "center" }}>
+        <Text>
+          Title: {notification && notification.request.content.title}{" "}
+        </Text>
+        <Text>Body: {notification && notification.request.content.body}</Text>
+        <Text>
+          Data:{" "}
+          {notification && JSON.stringify(notification.request.content.data)}
+        </Text>
+      </View>
       <Button
-        title="Save this key/value pair"
-        onPress={() => {
-          save(key, value);
-          onChangeKey("Your key here");
-          onChangeValue("Your value here");
+        title="Press to schedule a notification"
+        onPress={async () => {
+          await schedulePushNotification();
         }}
-      />
-      <Text style={styles.paragraph}>🔐 Enter your key 🔐</Text>
-      <TextInput
-        style={styles.textInput}
-        onSubmitEditing={(event) => {
-          getValueFor(event.nativeEvent.text);
-        }}
-        placeholder="Enter the key for the value you want to get"
       />
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: "center",
-    paddingTop: 10,
-    backgroundColor: "#ecf0f1",
-    padding: 8,
-  },
-  paragraph: {
-    marginTop: 34,
-    margin: 24,
-    fontSize: 18,
-    fontWeight: "bold",
-    textAlign: "center",
-  },
-  textInput: {
-    height: 35,
-    borderColor: "gray",
-    borderWidth: 0.5,
-    padding: 4,
-  },
-});
