@@ -1,50 +1,132 @@
-# Welcome to your Expo app 👋
+# BankPick App
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+## Overview
 
-## Get started
+- This document will overview about estimation for [React Native Expo Practice](https://docs.google.com/document/d/1e2Ursbi10z3GtW0IfbPkFE7E4yj5Z2db/edit?usp=sharing&ouid=103083083655563138202&rtpof=true&sd=true). This practice will build a bank app.
 
-1. Install dependencies
+### Design
+
+- [BankPick App](https://www.figma.com/design/fFBytUv4cqoWR8ZeEQAJ4a/Free-Banking-Mobile-App-Ui-Kit-With-light---Dark-Mode-High-Quality-Ui-43--Screen-template--Community-?node-id=1-2940&m=dev&t=s9yvt9LmHaflsfCc-1)
+
+### Editor
+
+- Visual Studio Code
+
+### Technical stack
+
+- React Native
+- Typescript
+- React Query
+- Storybook
+- Jest
+- Testing-library/react-native
+
+## Target
+
+- Handle platform differences between Android, iOS
+- Unit test coverage should be greater than 80%
+- Configure the app icon and splash screen that match the Expo app.
+- Must have a form with multiple inputs
+- Must have a Home screen with a list greater than 1000 items
+- Must have a screen using Camera and Image Picker (We can use a free API to upload Photos or use a local URI)
+- Apply Linking and Deep Linking
+- Push Notifications: Alert users when tasks are near.
+
+## App Features
+
+Build a Mobile application of banking app with features below:
+
+- Splash screen
+  - Displays a branded splash screen while the app is loading.
+- Authentication
+  - Sign In: Log in to your account with email and password.
+  - Sign Up: Create a new account with required information.
+- Home screen
+  - Overview Section: Displays a summary of the user's balance and account overview.
+  - Quick Action Buttons: Perform frequent actions like "Send Money", "View History", etc.
+  - Recent Transactions: Displays the 10 most recent transactions for quick access.
+  - Transaction History: Navigate to a full transaction history screen.
+  - Search Transactions: Search for transactions by recipient's name.
+- Send money
+  - Send to Existing Recipient: Select from a list of saved recipients.
+  - Send to New Recipient: Add a new recipient and transfer funds.
+- Settings
+  - Settings Screen: View and configure app preferences.
+  - Profile Screen: View user profile details.
+  - Edit Profile: Update profile information such as name, email, and avatar.
+- Notifications
+  - Show a success notification after each successful fund transfer.
+  - When the user taps a notification, they are navigated to the Transaction History screen.
+
+## Getting Started
+
+To get started with this boilerplate, follow the instructions below.
+
+### Prerequisites
+
+Ensure sure you have completed the [Expo - Environment Setup](https://docs.expo.dev/tutorial/create-your-first-app/) instructions till "Creating a new application" step, before proceeding.
+
+- Node: v20.19.4
+- npm: v10.8.2
+
+### Installation
+
+1. **Clone the repository:**
+
+   ```bash
+   git clone git@gitlab.asoft-python.com:ngoc.ngo/react-native-training.git
+   ```
+
+2. **Checkout branch**
+
+   ```bash
+   git checkout feat/bankpick
+   ```
+
+3. **Install dependencies:**
 
    ```bash
    npm install
    ```
 
-2. Start the app
+4. **Run the application:**
 
    ```bash
    npx expo start
    ```
 
-In the output, you'll find options to open the app in a
+- Then:
+  - Press “a” to open on Android emulator
+  - Press “i” to open on iOS simulator
+  - Press “w” to open on web browser
+  - Or scan the QR code with the Expo Go app on your mobile device.
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+## Technical Features
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+- **Linting & Formatting:** ESLint and Prettier for code quality.
+- **Testing:** Setup with Jest and React Native Testing Library.
+- **Storybook:** Storybook configured.
 
-## Get a fresh project
+### Unit Tests
 
-When you're ready, run:
+- Run tests:
 
 ```bash
-npm run reset-project
+npm run test
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+- Run tests coverage:
 
-## Learn more
+```bash
+npm run test:coverage
+```
 
-To learn more about developing your project with Expo, look at the following resources:
+### Open Storybook
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+```bash
+npm run storybook
+```
 
-## Join the community
+### Environment
 
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+- Create an `.env` file in the root directory with environment values.
