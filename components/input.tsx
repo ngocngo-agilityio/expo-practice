@@ -28,8 +28,8 @@ export const Input = ({ disabled, label, error, ...props }: InputProps) => {
       </Text>
 
       <TextInput
-        aria-labelledby="input-label"
-        aria-disabled={disabled}
+        accessibilityLabel={label}
+        accessibilityState={{ disabled }}
         style={{
           borderWidth: 1,
           padding: 12,

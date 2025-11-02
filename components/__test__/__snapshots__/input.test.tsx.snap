@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Input /> matches snapshot 1`] = `
+<View
+  style={
+    {
+      "gap": 4,
+    }
+  }
+>
+  <Text
+    id="input-label"
+    style={
+      {
+        "color": "#3C3C43",
+        "fontSize": 14,
+      }
+    }
+  >
+    Email
+  </Text>
+  <TextInput
+    accessibilityLabel="Email"
+    accessibilityState={
+      {
+        "disabled": undefined,
+      }
+    }
+    editable={true}
+    onBlur={[Function]}
+    onChangeText={[MockFunction]}
+    onFocus={[Function]}
+    style={
+      {
+        "backgroundColor": "transparent",
+        "borderColor": "#D1D1D6",
+        "borderRadius": 8,
+        "borderWidth": 1,
+        "padding": 12,
+      }
+    }
+    value="john@example.com"
+  />
+</View>
+`;
