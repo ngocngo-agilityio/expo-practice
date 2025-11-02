@@ -1,6 +1,6 @@
 // components/input.tsx
-import { useState } from "react";
-import { Text, TextInput, View, type TextInputProps } from "react-native";
+import { useState } from 'react';
+import { Text, TextInput, View, type TextInputProps } from 'react-native';
 
 type InputProps = TextInputProps & {
   label?: string;
@@ -10,10 +10,10 @@ type InputProps = TextInputProps & {
 
 const getBorderColor = (isFocused: boolean, error?: string) => {
   if (error) {
-    return "#FF3B30";
+    return '#FF3B30';
   }
 
-  return isFocused ? "#007AFF" : "#D1D1D6";
+  return isFocused ? '#007AFF' : '#D1D1D6';
 };
 
 export const Input = ({ disabled, label, error, ...props }: InputProps) => {
@@ -23,19 +23,19 @@ export const Input = ({ disabled, label, error, ...props }: InputProps) => {
 
   return (
     <View style={{ gap: 4 }}>
-      <Text id="input-label" style={{ fontSize: 14, color: "#3C3C43" }}>
+      <Text id="input-label" style={{ fontSize: 14, color: '#3C3C43' }}>
         {label}
       </Text>
 
       <TextInput
-        aria-labelledby="input-label"
-        aria-disabled={disabled}
+        accessibilityLabel={label}
+        accessibilityState={{ disabled }}
         style={{
           borderWidth: 1,
           padding: 12,
           borderRadius: 8,
           borderColor,
-          backgroundColor: disabled ? "#F5F5F5" : "transparent",
+          backgroundColor: disabled ? '#F5F5F5' : 'transparent',
         }}
         editable={!disabled}
         onFocus={() => {
@@ -47,7 +47,7 @@ export const Input = ({ disabled, label, error, ...props }: InputProps) => {
         {...props}
       />
 
-      {error && <Text style={{ fontSize: 12, color: "#FF3B30" }}>{error}</Text>}
+      {error && <Text style={{ fontSize: 12, color: '#FF3B30' }}>{error}</Text>}
     </View>
   );
 };
