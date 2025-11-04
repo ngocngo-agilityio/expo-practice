@@ -17,7 +17,4 @@ module.exports = defineConfig([
       '@typescript-eslint/no-unused-vars': 'error',
     },
   },
-  {
-    files: ['babel.config.js'],
-  },
 ]);
