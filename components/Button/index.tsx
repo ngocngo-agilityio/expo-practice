@@ -27,7 +27,7 @@ type ButtonProps = PropsWithChildren<TouchableOpacityProps> & {
   accessibilityHint?: string;
 };
 
-export const Button = ({
+const Button = ({
   title,
   variant = 'solid',
   size = 'md',
@@ -67,7 +67,13 @@ export const Button = ({
         ]}>
         {title}
       </Text>
-      {isLoading && <ActivityIndicator size="small" color="white" />}
+      {isLoading && (
+        <ActivityIndicator
+          size="small"
+          color="white"
+          testID="loading-indicator"
+        />
+      )}
     </TouchableOpacity>
   );
 };
