@@ -1,8 +1,8 @@
 export const fontWeights = {
-  normal: '400',
-  medium: '500',
-  semibold: '600',
-};
+  normal: 400,
+  medium: 500,
+  semibold: 600,
+} as const;
 
 export const fontSizes = {
   '2xs': 9,
@@ -24,4 +24,15 @@ export const lineHeights = {
   lg: 24,
   xl: 32,
   '2xl': 35,
+};
+
+export const fontFamilies = {
+  primary: {
+    regular: 'Poppins-Regular',
+    medium: 'Poppins-Medium',
+    semiBold: 'Poppins-SemiBold',
+  },
+  secondary: {
+    regular: 'Inter-Regular',
+  },
 };
