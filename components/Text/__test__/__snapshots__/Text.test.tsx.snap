@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Text component should render properly 1`] = `
+<Text
+  style={
+    [
+      {
+        "fontSize": 14,
+        "lineHeight": 16,
+      },
+      {
+        "color": "#A2A2A7",
+        "fontFamily": "Poppins-Regular",
+      },
+      undefined,
+    ]
+  }
+>
+   Hello World!
+</Text>
+`;

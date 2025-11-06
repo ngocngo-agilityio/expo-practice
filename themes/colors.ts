@@ -8,6 +8,7 @@ export const BASE_COLORS = {
   success: '#34C759',
   outlawedOrange: '#A2A2A7',
   lighthouse: '#F4F4F4',
+  dugong: '#707070',
 };
 
 export const colors = {
@@ -18,10 +19,12 @@ export const colors = {
     solidBtnTitle: BASE_COLORS.white,
     solidBtnBg: BASE_COLORS.blueRibbon,
     inputText: BASE_COLORS.blackHowl,
+    descriptionText: BASE_COLORS.outlawedOrange,
   },
   dark: {
     solidBtnTitle: BASE_COLORS.white,
     solidBtnBg: BASE_COLORS.blueRibbon,
     inputText: BASE_COLORS.white,
+    descriptionText: BASE_COLORS.dugong,
   },
 };
