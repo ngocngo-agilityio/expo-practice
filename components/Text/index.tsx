@@ -5,10 +5,14 @@ import {
   TextProps as BaseTextProps,
   ColorValue,
   StyleProp,
+  useColorScheme,
 } from 'react-native';
 
 // Themes
 import { colors, fontFamilies } from '@/themes';
+
+// Constants
+import { ThemeScheme } from '@/constants';
 
 // Styles
 import { textSizes } from './styles';
@@ -21,16 +25,20 @@ type TextProps = PropsWithChildren<BaseTextProps> & {
 };
 
 const Text = ({
-  size = 'md',
-  color = colors.descriptionText,
+  size = 'sm',
+  color,
   fontFamily = fontFamilies.primary.regular,
   style,
   children,
   ...props
 }: TextProps) => {
+  const scheme = useColorScheme() ?? ThemeScheme.Light;
+  const themeColors = colors[scheme];
+  const resolvedColor = color ?? themeColors.descriptionText;
+
   return (
     <BaseText
-      style={[textSizes[size], { color, fontFamily }, style]}
+      style={[textSizes[size], { color: resolvedColor, fontFamily }, style]}
       {...props}>
       {children}
     </BaseText>
