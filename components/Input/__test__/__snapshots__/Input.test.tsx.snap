@@ -1,0 +1,64 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Input Component to match snapshot 1`] = `
+<View
+  style={
+    [
+      {
+        "marginBottom": 20,
+        "minHeight": 95,
+      },
+      undefined,
+    ]
+  }
+>
+  <Text
+    id="form-label"
+    style={
+      [
+        {
+          "color": "#A2A2A7",
+          "fontFamily": "Poppins-Regular",
+          "fontSize": 14,
+          "fontWeight": 400,
+          "marginBottom": 5,
+        },
+        undefined,
+      ]
+    }
+  >
+    Email
+  </Text>
+  <View
+    style={
+      [
+        {
+          "alignItems": "center",
+          "borderBottomWidth": 1.5,
+          "borderColor": "#F4F4F4",
+          "flexDirection": "row",
+        },
+        undefined,
+        null,
+      ]
+    }
+  >
+    <TextInput
+      accessibilityLabel="Enter your Email"
+      style={
+        [
+          {
+            "color": "#1C1C1E",
+            "flex": 1,
+            "fontFamily": "Poppins-Regular",
+            "fontSize": 14,
+            "fontWeight": 400,
+            "paddingVertical": 10,
+          },
+          undefined,
+        ]
+      }
+    />
+  </View>
+</View>
+`;

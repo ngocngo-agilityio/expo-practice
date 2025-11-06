@@ -4,21 +4,21 @@ import Svg, { Path } from 'react-native-svg';
 // Types
 import { TIconProps } from '@/types';
 
-const Show = ({ width = 20, height = 20, color = '#242424' }: TIconProps) => (
-  <Svg width={width} height={height} viewBox="0 0 20 20" fill="none">
+const Show = ({ width = 22, height = 22, color = '#A2A2A7' }: TIconProps) => (
+  <Svg width={width} height={height} viewBox="0 0 22 22" fill="none">
     <Path
-      d="M2 9.5C2 9.5 4.90909 4 10 4C15.0909 4 18 9.5 18 9.5C18 9.5 15.0909 15 10 15C4.90909 15 2 9.5 2 9.5Z"
+      d="M9.33507 12.6685C8.41435 11.7478 8.41435 10.254 9.33507 9.33141C10.2558 8.41069 11.7497 8.41069 12.6722 9.33141C13.5929 10.2521 13.5929 11.746 12.6722 12.6685C11.7497 13.5911 10.2567 13.5911 9.33507 12.6685Z"
       stroke={color}
-      stroke-width="1.5"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.3"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <Path
-      d="M10 12C11.1046 12 12 10.8807 12 9.5C12 8.11929 11.1046 7 10 7C8.89543 7 8 8.11929 8 9.5C8 10.8807 8.89543 12 10 12Z"
+      d="M18.3398 11.0023C18.3398 11.5204 18.216 12.0331 17.9766 12.5053C16.7414 14.9392 14.0122 16.5046 11.0034 16.5046C7.99454 16.5046 5.26541 14.9392 4.03014 12.5053C3.79079 12.0331 3.66699 11.5204 3.66699 11.0023C3.66699 10.4842 3.79079 9.97153 4.03014 9.49925C5.26541 7.0654 7.99454 5.5 11.0034 5.5C14.0122 5.5 16.7414 7.0654 17.9766 9.49925C18.216 9.97153 18.3398 10.4842 18.3398 11.0023Z"
       stroke={color}
-      stroke-width="1.5"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.3"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
   </Svg>
 );
