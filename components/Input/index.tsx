@@ -14,6 +14,8 @@ import {
 
 // Styles
 import { ThemeScheme } from '@/constants';
+
+// Styles
 import { createInputStyles } from './styles';
 
 type InputProps = TextInputProps & {

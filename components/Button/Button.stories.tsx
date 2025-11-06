@@ -1,5 +1,4 @@
 import { Meta, StoryObj } from '@storybook/react-native';
-import { View } from 'react-native';
 
 // Components
 import Button from '.';
@@ -7,14 +6,6 @@ import Button from '.';
 const meta = {
   title: 'Components/Button',
   component: Button,
-  decorators: [
-    // You can wrap your stories here with anything you like
-    Story => (
-      <View style={{ padding: 16 }}>
-        <Story />
-      </View>
-    ),
-  ],
 } satisfies Meta<typeof Button>;
 
 export default meta;
