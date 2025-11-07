@@ -67,15 +67,16 @@ const SearchInput = ({
   return (
     <View style={[styles.searchContainer, containerStyle]}>
       <SearchIcon />
+
       <TextInput
         style={[styles.searchInput, inputStyle]}
-        placeholder="Search"
+        placeholder={placeholder}
         placeholderTextColor={colors.placeholderText}
         onChangeText={setSearchQuery}
         value={searchQuery}
         autoFocus
         accessibilityRole="search"
-        accessibilityLabel={accessibilityLabel ?? 'Search'}
+        accessibilityLabel={accessibilityLabel}
         accessibilityHint={accessibilityHint}
         {...rest}
       />
