@@ -1,0 +1,131 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SearchInput Component to match snapshot 1`] = `
+<View
+  style={
+    [
+      {
+        "alignItems": "center",
+        "backgroundColor": "#F4F4F4",
+        "borderRadius": 10,
+        "flexDirection": "row",
+        "justifyContent": "space-between",
+        "paddingHorizontal": 18,
+      },
+      undefined,
+    ]
+  }
+>
+  <RNSVGSvgView
+    align="xMidYMid"
+    bbHeight={20}
+    bbWidth={20}
+    fill="none"
+    focusable={false}
+    height={20}
+    meetOrSlice={0}
+    minX={0}
+    minY={0}
+    style={
+      [
+        {
+          "backgroundColor": "transparent",
+          "borderWidth": 0,
+        },
+        {
+          "flex": 0,
+          "height": 20,
+          "width": 20,
+        },
+      ]
+    }
+    vbHeight={20}
+    vbWidth={20}
+    width={20}
+  >
+    <RNSVGGroup
+      fill={null}
+      propList={
+        [
+          "fill",
+        ]
+      }
+    >
+      <RNSVGPath
+        d="M13.0947 5.6985C15.1371 7.74094 15.1371 11.0524 13.0947 13.0948C11.0522 15.1373 7.74078 15.1373 5.69834 13.0948C3.65589 11.0524 3.65589 7.74094 5.69834 5.6985C7.74078 3.65606 11.0522 3.65606 13.0947 5.6985Z"
+        fill={
+          {
+            "payload": 4278190080,
+            "type": 0,
+          }
+        }
+        propList={
+          [
+            "stroke",
+            "strokeWidth",
+            "strokeLinecap",
+            "strokeLinejoin",
+          ]
+        }
+        stroke={
+          {
+            "payload": 4288848551,
+            "type": 0,
+          }
+        }
+        strokeLinecap={1}
+        strokeLinejoin={1}
+        strokeWidth="1.3"
+      />
+      <RNSVGPath
+        d="M15.8335 15.8333L13.0918 13.0917"
+        fill={
+          {
+            "payload": 4278190080,
+            "type": 0,
+          }
+        }
+        propList={
+          [
+            "stroke",
+            "strokeWidth",
+            "strokeLinecap",
+            "strokeLinejoin",
+          ]
+        }
+        stroke={
+          {
+            "payload": 4288848551,
+            "type": 0,
+          }
+        }
+        strokeLinecap={1}
+        strokeLinejoin={1}
+        strokeWidth="1.3"
+      />
+    </RNSVGGroup>
+  </RNSVGSvgView>
+  <TextInput
+    accessibilityRole="search"
+    autoFocus={true}
+    onChangeText={[Function]}
+    placeholder="Search"
+    placeholderTextColor="#A2A2A7"
+    style={
+      [
+        {
+          "color": "#1E1E2D",
+          "flex": 1,
+          "fontFamily": "Poppins-Regular",
+          "fontSize": 14,
+          "lineHeight": 18,
+          "paddingHorizontal": 8,
+          "paddingVertical": 13,
+        },
+        undefined,
+      ]
+    }
+    value=""
+  />
+</View>
+`;

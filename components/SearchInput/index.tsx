@@ -59,9 +59,7 @@ const SearchInput = ({
 
   // Call the debounced search callback
   useEffect(() => {
-    if (onSearchChange) {
-      onSearchChange(debouncedSearchValue);
-    }
+    onSearchChange(debouncedSearchValue);
   }, [debouncedSearchValue, onSearchChange]);
 
   return (
