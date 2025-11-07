@@ -1,2 +1,4 @@
+export { default as CloseIcon } from './Close';
 export { default as LockIcon } from './Lock';
+export { default as SearchIcon } from './Search';
 export { default as ShowIcon } from './Show';
