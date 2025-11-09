@@ -11,6 +11,7 @@ export const BASE_COLORS = {
   outlawedOrange: '#A2A2A7',
   lighthouse: '#F4F4F4',
   dugong: '#707070',
+  cornflowerBlue: '#34343433',
 };
 
 export const colors = {
@@ -18,6 +19,8 @@ export const colors = {
   label: BASE_COLORS.outlawedOrange,
   inputBorder: BASE_COLORS.lighthouse,
   placeholderText: BASE_COLORS.outlawedOrange,
+  activityIndicator: BASE_COLORS.blueRibbon,
+  loadingIndicatorBg: BASE_COLORS.cornflowerBlue,
   light: {
     solidBtnTitle: BASE_COLORS.white,
     solidBtnBg: BASE_COLORS.blueRibbon,
