@@ -4,7 +4,7 @@ import { ComponentProps, memo, useCallback, useState } from 'react';
 import { Input } from '@/components';
 import { PhoneIcon } from '@/components/icons';
 
-const COUNTRY_CODE = '+84';
+export const COUNTRY_CODE = '+84';
 
 type TPhoneNumberInputProps = {
   value?: string;
@@ -16,7 +16,7 @@ const PhoneNumberInput = ({
   onChangeText,
   ...rest
 }: TPhoneNumberInputProps) => {
-  const [internalValue, setInternalValue] = useState(COUNTRY_CODE);
+  const [internalValue, setInternalValue] = useState(value ?? COUNTRY_CODE);
 
   const handleChange = useCallback(
     (text: string) => {
