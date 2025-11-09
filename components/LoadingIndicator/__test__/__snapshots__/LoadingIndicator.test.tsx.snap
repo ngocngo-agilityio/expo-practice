@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Input Component to match snapshot 1`] = `
+<View
+  style={
+    {
+      "backgroundColor": undefined,
+      "bottom": 0,
+      "justifyContent": "center",
+      "left": 0,
+      "position": "absolute",
+      "right": 0,
+      "top": 0,
+      "zIndex": 9999,
+    }
+  }
+  testID="loading-indicator"
+>
+  <ActivityIndicator
+    color="#0066FF"
+    size="large"
+  />
+</View>
+`;
