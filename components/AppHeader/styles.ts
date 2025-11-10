@@ -18,6 +18,7 @@ export const createAppHeaderStyles = (scheme: TThemeScheme) => {
       justifyContent: 'space-between',
       paddingHorizontal: 20,
       backgroundColor: theme.appBg,
+      minHeight: 42,
     },
     iconWrapper: {
       width: 42,
