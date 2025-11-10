@@ -4,7 +4,8 @@ import { ComponentProps, memo, useCallback, useState } from 'react';
 import { Input } from '@/components';
 import { PhoneIcon } from '@/components/icons';
 
-export const COUNTRY_CODE = '+84';
+// Constants
+import { COUNTRY_CODE } from '@/constants';
 
 type TPhoneNumberInputProps = {
   value?: string;
