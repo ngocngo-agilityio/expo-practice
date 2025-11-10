@@ -6,6 +6,9 @@ import { TSignUpFormData } from '@/types';
 // Constants
 import { ERROR_MESSAGES, REGEX } from '@/constants';
 
+// Utils
+import { validatePhoneNumber } from '@/utils/phone-number';
+
 export const COUNTRY_CODE = '+84';
 
 export const SIGN_UP_VALIDATION_RULES = (
@@ -16,6 +19,7 @@ export const SIGN_UP_VALIDATION_RULES = (
   },
   phoneNumber: {
     required: ERROR_MESSAGES.FIELD_REQUIRED('Phone Number'),
+    validate: (value: string) => validatePhoneNumber(value),
   },
   email: {
     required: ERROR_MESSAGES.FIELD_REQUIRED('Email'),

@@ -7,4 +7,5 @@ export const ERROR_MESSAGES = {
   REQUEST:
     'Request failed with error. Please help contact team to identify issue.',
   JWT_EXPIRED: 'jwt expired',
+  PHONE_NUMBER_PARSE_ERROR: 'Unable to parse phone number.',
 };
