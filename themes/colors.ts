@@ -28,6 +28,9 @@ export const colors = {
     descriptionText: BASE_COLORS.outlawedOrange,
     searchInputBg: BASE_COLORS.lighthouse,
     searchInputText: BASE_COLORS.darkGunmetal,
+    appBg: BASE_COLORS.white,
+    appHeaderIconBg: BASE_COLORS.lighthouse,
+    appHeaderTitle: BASE_COLORS.darkGunmetal,
   },
   dark: {
     solidBtnTitle: BASE_COLORS.white,
@@ -36,5 +39,8 @@ export const colors = {
     descriptionText: BASE_COLORS.dugong,
     searchInputBg: BASE_COLORS.blackVelvet,
     searchInputText: BASE_COLORS.white,
+    appBg: BASE_COLORS.riverStyx,
+    appHeaderIconBg: BASE_COLORS.darkGunmetal,
+    appHeaderTitle: BASE_COLORS.white,
   },
 };
