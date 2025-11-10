@@ -3,7 +3,10 @@ import { fireEvent, render } from '@/test-utils';
 import React from 'react';
 
 // Components
-import PhoneNumberInput, { COUNTRY_CODE } from '..';
+import PhoneNumberInput from '..';
+
+// Constants
+import { COUNTRY_CODE } from '@/constants';
 
 const mockHandleChange = jest.fn();
 

@@ -21,6 +21,8 @@ export const colors = {
   placeholderText: BASE_COLORS.outlawedOrange,
   activityIndicator: BASE_COLORS.blueRibbon,
   loadingIndicatorBg: BASE_COLORS.cornflowerBlue,
+  signUpFooterText: BASE_COLORS.dugong,
+  signUpNavigationText: BASE_COLORS.blueRibbon,
   light: {
     solidBtnTitle: BASE_COLORS.white,
     solidBtnBg: BASE_COLORS.blueRibbon,
