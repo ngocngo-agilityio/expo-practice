@@ -17,7 +17,6 @@ export const BASE_COLORS = {
 export const colors = {
   error: BASE_COLORS.error,
   label: BASE_COLORS.outlawedOrange,
-  inputBorder: BASE_COLORS.lighthouse,
   placeholderText: BASE_COLORS.outlawedOrange,
   activityIndicator: BASE_COLORS.blueRibbon,
   loadingIndicatorBg: BASE_COLORS.cornflowerBlue,
@@ -33,6 +32,7 @@ export const colors = {
     appBg: BASE_COLORS.white,
     appHeaderIconBg: BASE_COLORS.lighthouse,
     appHeaderTitle: BASE_COLORS.darkGunmetal,
+    inputBorder: BASE_COLORS.lighthouse,
   },
   dark: {
     solidBtnTitle: BASE_COLORS.white,
@@ -44,5 +44,6 @@ export const colors = {
     appBg: BASE_COLORS.riverStyx,
     appHeaderIconBg: BASE_COLORS.darkGunmetal,
     appHeaderTitle: BASE_COLORS.white,
+    inputBorder: BASE_COLORS.blackVelvet,
   },
 };

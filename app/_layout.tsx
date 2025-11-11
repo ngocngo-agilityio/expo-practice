@@ -1,12 +1,18 @@
 // Libs
 import { useFonts } from 'expo-font';
-import { Stack } from 'expo-router';
+import { Slot, useRouter } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+
+// Constants
+import { ROUTES } from '@/constants';
 
 const isStorybook = process.env.EXPO_PUBLIC_ENVIRONMENT === 'storybook';
 
 export default function RootLayout() {
+  const [isAuthenticated] = useState(false);
+  const router = useRouter();
+
   const [loaded, error] = useFonts({
     'Inter-Regular': require('../assets/fonts/Inter-Regular.ttf'),
     'Poppins-Regular': require('../assets/fonts/Poppins-Regular.ttf'),
@@ -17,8 +23,14 @@ export default function RootLayout() {
   useEffect(() => {
     if (loaded || error) {
       SplashScreen.hideAsync();
+
+      if (!isAuthenticated) {
+        router.replace(ROUTES.SIGNUP);
+      } else {
+        router.replace(ROUTES.HOME);
+      }
     }
-  }, [loaded, error]);
+  }, [loaded, error, isAuthenticated, router]);
 
   if (!loaded && !error) {
     return null;
@@ -29,5 +41,5 @@ export default function RootLayout() {
     return <StorybookUI />;
   }
 
-  return <Stack></Stack>;
+  return <Slot />;
 }
