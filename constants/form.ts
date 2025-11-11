@@ -1,7 +1,7 @@
 import { UseFormWatch } from 'react-hook-form';
 
 // Types
-import { TSignUpFormData } from '@/types';
+import { TSignInFormData, TSignUpFormData } from '@/types';
 
 // Constants
 import { ERROR_MESSAGES, REGEX } from '@/constants';
@@ -39,5 +39,21 @@ export const SIGN_UP_VALIDATION_RULES = (
         return ERROR_MESSAGES.PASSWORD_NOT_MATCH;
       }
     },
+  },
+});
+
+export const LOGIN_VALIDATION_RULES = (
+  watch: UseFormWatch<TSignInFormData>,
+) => ({
+  email: {
+    required: ERROR_MESSAGES.FIELD_REQUIRED('Email'),
+    pattern: {
+      value: REGEX.EMAIL,
+      message: ERROR_MESSAGES.FIELD_INVALID('Email'),
+    },
+  },
+  password: {
+    required: ERROR_MESSAGES.FIELD_REQUIRED('Password'),
+    minLength: { value: 8, message: ERROR_MESSAGES.PASSWORD_NOT_LONG },
   },
 });
