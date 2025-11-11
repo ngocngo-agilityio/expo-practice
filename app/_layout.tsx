@@ -24,10 +24,12 @@ export default function RootLayout() {
     if (loaded || error) {
       SplashScreen.hideAsync();
 
-      if (!isAuthenticated) {
-        router.replace(ROUTES.LOGIN);
-      } else {
-        router.replace(ROUTES.HOME);
+      if (!isStorybook) {
+        if (!isAuthenticated) {
+          router.replace(ROUTES.LOGIN);
+        } else {
+          router.replace(ROUTES.HOME);
+        }
       }
     }
   }, [loaded, error, isAuthenticated, router]);
