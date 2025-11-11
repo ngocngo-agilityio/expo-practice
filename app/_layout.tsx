@@ -25,7 +25,7 @@ export default function RootLayout() {
       SplashScreen.hideAsync();
 
       if (!isAuthenticated) {
-        router.replace(ROUTES.SIGNUP);
+        router.replace(ROUTES.LOGIN);
       } else {
         router.replace(ROUTES.HOME);
       }

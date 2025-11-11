@@ -11,7 +11,7 @@ import {
 } from '@/components';
 
 // Types
-import { TSignInFormData, TThemeScheme } from '@/types';
+import { TSignUpFormData, TThemeScheme } from '@/types';
 
 // Constants
 import { ROUTES, ThemeScheme } from '@/constants';
@@ -24,11 +24,11 @@ export default function SignUpPage() {
   const styles = createStyles(scheme);
   const router = useRouter();
 
-  const handleNavigateSignUp = () => {
+  const handleNavigateLogin = () => {
     router.push(ROUTES.LOGIN);
   };
 
-  const handleSubmit = (data: TSignInFormData) => {
+  const handleSubmit = (data: TSignUpFormData) => {
     console.log('handleSubmit', data);
   };
 
@@ -43,7 +43,7 @@ export default function SignUpPage() {
             </Text>
             <SignUpForm
               onSubmit={handleSubmit}
-              onNavigateSignIn={handleNavigateSignUp}
+              onNavigateSignIn={handleNavigateLogin}
             />
           </View>
         </KeyboardAwareScrollView>

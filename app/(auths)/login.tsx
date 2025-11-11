@@ -1,5 +1,77 @@
-import { Text } from 'react-native';
+import { useRouter } from 'expo-router';
+import { StyleSheet, useColorScheme, View } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
+
+// Components
+import {
+  AppHeader,
+  KeyboardAwareScrollView,
+  LoginForm,
+  Text,
+} from '@/components';
+
+// Types
+import { TSignInFormData, TThemeScheme } from '@/types';
+
+// Constants
+import { ROUTES, ThemeScheme } from '@/constants';
+
+// Themes
+import { colors, fontFamilies } from '@/themes';
 
 export default function LoginPage() {
-  return <Text>Login Page</Text>;
+  const scheme = useColorScheme() ?? ThemeScheme.Light;
+  const styles = createStyles(scheme);
+  const router = useRouter();
+
+  const handleNavigateSignUp = () => {
+    router.push(ROUTES.SIGNUP);
+  };
+
+  const handleSubmit = (data: TSignInFormData) => {
+    console.log('handleSubmit', data);
+  };
+
+  return (
+    <View style={styles.container}>
+      <SafeAreaView>
+        <KeyboardAwareScrollView contentContainerStyle={styles.scrollContainer}>
+          <AppHeader hasBackButton={false} />
+          <View style={styles.content}>
+            <Text size="xl" style={styles.title}>
+              Sign In
+            </Text>
+            <LoginForm
+              onSubmit={handleSubmit}
+              onNavigateSignUp={handleNavigateSignUp}
+            />
+          </View>
+        </KeyboardAwareScrollView>
+      </SafeAreaView>
+    </View>
+  );
 }
+
+const createStyles = (scheme: TThemeScheme) => {
+  const theme = colors[scheme];
+
+  return StyleSheet.create({
+    container: {
+      flex: 1,
+      backgroundColor: theme.appBg,
+    },
+    scrollContainer: {
+      paddingTop: 16,
+      paddingBottom: 40,
+    },
+    content: {
+      paddingHorizontal: 20,
+      marginTop: 53,
+    },
+    title: {
+      fontFamily: fontFamilies.primary.medium,
+      color: theme.appHeaderTitle,
+      marginBottom: 38,
+    },
+  });
+};
