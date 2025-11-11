@@ -24,7 +24,7 @@ export const createInputStyles = (scheme: TThemeScheme) => {
       flexDirection: 'row',
       alignItems: 'center',
       borderBottomWidth: 1.5,
-      borderColor: colors.inputBorder,
+      borderColor: colors[scheme].inputBorder,
     },
     inputWrapperError: {
       borderColor: colors.error,
