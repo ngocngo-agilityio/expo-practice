@@ -109,7 +109,7 @@ const LoginForm = ({
               onChange(value);
             }}
             secureTextEntry={!isShowPassword}
-            textContentType="newPassword"
+            textContentType="password"
             leftIcon={<LockIcon />}
             rightIcon={isShowPassword ? <HiddenIcon /> : <ShowIcon />}
             onIconPress={handleTogglePassword}

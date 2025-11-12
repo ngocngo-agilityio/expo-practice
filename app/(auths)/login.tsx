@@ -1,6 +1,7 @@
 import { useRouter } from 'expo-router';
-import { StyleSheet, useColorScheme, View } from 'react-native';
+import { Keyboard, StyleSheet, useColorScheme, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import Toast from 'react-native-toast-message';
 
 // Components
 import {
@@ -19,17 +20,41 @@ import { ROUTES, ThemeScheme } from '@/constants';
 // Themes
 import { colors, fontFamilies } from '@/themes';
 
+// Hooks
+import { useErrorAPI } from '@/hooks';
+
+// APIs
+import { useAuthLogin } from '@/apis';
+
 export default function LoginPage() {
   const scheme = useColorScheme() ?? ThemeScheme.Light;
   const styles = createStyles(scheme);
   const router = useRouter();
 
+  // Apis
+  const { error: errorLogin, mutate: login, isPending } = useAuthLogin();
+
+  const { errorAPI, clearErrorAPI } = useErrorAPI(errorLogin || '');
+
   const handleNavigateSignUp = () => {
     router.push(ROUTES.SIGNUP);
   };
 
+  const handleLoginFailed = (error: string): void => {
+    Toast.show({ type: 'error', text1: error });
+  };
+
   const handleSubmit = (data: TSignInFormData) => {
+    Keyboard.dismiss();
+
     console.log('handleSubmit', data);
+
+    login(
+      { ...data },
+      {
+        onError: handleLoginFailed,
+      },
+    );
   };
 
   return (
@@ -42,6 +67,9 @@ export default function LoginPage() {
               Sign In
             </Text>
             <LoginForm
+              errorAPI={errorAPI}
+              clearErrorAPI={clearErrorAPI}
+              isSubmitting={isPending}
               onSubmit={handleSubmit}
               onNavigateSignUp={handleNavigateSignUp}
             />
