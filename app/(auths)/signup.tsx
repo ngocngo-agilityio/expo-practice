@@ -46,8 +46,6 @@ export default function SignUpPage() {
 
   // TODO: Update later - Call api create card
   const handleSignUpSuccess = (data: TAuthResponse) => {
-    console.log('handleSignUpSuccess', data);
-
     Toast.show({
       type: 'success',
       text1: SUCCESS_MESSAGES.SIGN_UP,
@@ -55,7 +53,6 @@ export default function SignUpPage() {
   };
 
   const handleSubmit = (data: TSignUpFormData) => {
-    console.log('handleSubmit', data);
     signup(
       { ...data },
       {

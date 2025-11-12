@@ -1,6 +1,6 @@
 // Libs
 import { useCallback, useRef, useState } from 'react';
-import { Controller, useForm } from 'react-hook-form';
+import { Controller, useForm, useWatch } from 'react-hook-form';
 import { TextInput, TouchableOpacity, View } from 'react-native';
 
 // Components
@@ -37,6 +37,14 @@ const REQUIRE_FIELDS = [
   'confirmPassword',
 ];
 
+const DEFAULT_VALUES = {
+  fullName: '',
+  phoneNumber: COUNTRY_CODE,
+  email: '',
+  password: '',
+  confirmPassword: '',
+};
+
 const SignUpForm = ({
   onSubmit,
   onNavigateSignIn,
@@ -52,22 +60,18 @@ const SignUpForm = ({
     handleSubmit,
     clearErrors,
     watch,
-    formState: { dirtyFields, errors },
+    formState: { errors },
   } = useForm<TSignUpFormData>({
     mode: 'onBlur',
     reValidateMode: 'onBlur',
-    defaultValues: {
-      fullName: '',
-      phoneNumber: COUNTRY_CODE,
-      email: '',
-      password: '',
-      confirmPassword: '',
-    },
+    defaultValues: DEFAULT_VALUES,
   });
 
-  const dirtyItems = Object.keys(dirtyFields).filter(
-    key => dirtyFields[key as keyof TSignUpFormData],
+  const values = useWatch({ control });
+  const dirtyItems = (Object.keys(values) as (keyof TSignUpFormData)[]).filter(
+    key => values[key] !== DEFAULT_VALUES[key],
   );
+
   const shouldEnable = isEnableSubmitButton(REQUIRE_FIELDS, dirtyItems, errors);
   const isDisableSubmit = !shouldEnable || !!errorAPI || isSubmitting;
 

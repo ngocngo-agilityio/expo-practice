@@ -1,6 +1,6 @@
 // Libs
-import { useCallback, useMemo, useRef, useState } from 'react';
-import { Controller, useForm } from 'react-hook-form';
+import { useCallback, useRef, useState } from 'react';
+import { Controller, useForm, useWatch } from 'react-hook-form';
 import { TextInput, TouchableOpacity, View } from 'react-native';
 
 // Components
@@ -16,9 +16,9 @@ import { LOGIN_VALIDATION_RULES } from '@/constants';
 import { TSignInFormData } from '@/types';
 
 // Utils
-import { isEnableSubmitButton } from '@/utils';
 
 // Styles
+import { isEnableSubmitButton } from '@/utils';
 import { styles } from './styles';
 
 export type TLoginFormProps = {
@@ -30,6 +30,7 @@ export type TLoginFormProps = {
 };
 
 const REQUIRE_FIELDS = ['email', 'password'];
+const DEFAULT_VALUES = { email: '', password: '' };
 
 const LoginForm = ({
   onSubmit,
@@ -45,32 +46,20 @@ const LoginForm = ({
     handleSubmit,
     clearErrors,
     watch,
-    formState: { dirtyFields, errors },
+    formState: { errors },
   } = useForm<TSignInFormData>({
     mode: 'onBlur',
     reValidateMode: 'onBlur',
-    defaultValues: {
-      email: '',
-      password: '',
-    },
+    defaultValues: DEFAULT_VALUES,
   });
 
-  console.log('dirtyFields', dirtyFields);
+  const values = useWatch({ control });
+  const dirtyItems = (Object.keys(values) as (keyof TSignInFormData)[]).filter(
+    key => values[key] !== DEFAULT_VALUES[key],
+  );
 
-  const shouldEnable = useMemo(() => {
-    const dirtyItems = Object.keys(dirtyFields).filter(
-      key => dirtyFields[key as keyof TSignInFormData],
-    );
-    return isEnableSubmitButton(REQUIRE_FIELDS, dirtyItems, errors);
-  }, [dirtyFields, errors]);
-
+  const shouldEnable = isEnableSubmitButton(REQUIRE_FIELDS, dirtyItems, errors);
   const isDisableSubmit = !shouldEnable || !!errorAPI || isSubmitting;
-
-  console.log('_______________');
-  console.log('shouldEnable', shouldEnable);
-  console.log('errorAPI', errorAPI);
-  console.log('isSubmitting', isSubmitting);
-  console.log('isDisableSubmit', isDisableSubmit);
 
   const passwordInputRef = useRef<TextInput>(null);
 
