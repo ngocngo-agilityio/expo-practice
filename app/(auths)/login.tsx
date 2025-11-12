@@ -47,8 +47,6 @@ export default function LoginPage() {
   const handleSubmit = (data: TSignInFormData) => {
     Keyboard.dismiss();
 
-    console.log('handleSubmit', data);
-
     login(
       { ...data },
       {

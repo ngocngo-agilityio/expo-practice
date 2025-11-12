@@ -1,6 +1,6 @@
 // Libs
 import { useCallback, useRef, useState } from 'react';
-import { Controller, useForm } from 'react-hook-form';
+import { Controller, useForm, useWatch } from 'react-hook-form';
 import { TextInput, TouchableOpacity, View } from 'react-native';
 
 // Components
@@ -16,9 +16,9 @@ import { LOGIN_VALIDATION_RULES } from '@/constants';
 import { TSignInFormData } from '@/types';
 
 // Utils
-import { isEnableSubmitButton } from '@/utils';
 
 // Styles
+import { isEnableSubmitButton } from '@/utils';
 import { styles } from './styles';
 
 export type TLoginFormProps = {
@@ -30,6 +30,7 @@ export type TLoginFormProps = {
 };
 
 const REQUIRE_FIELDS = ['email', 'password'];
+const DEFAULT_VALUES = { email: '', password: '' };
 
 const LoginForm = ({
   onSubmit,
@@ -45,19 +46,18 @@ const LoginForm = ({
     handleSubmit,
     clearErrors,
     watch,
-    formState: { dirtyFields, errors },
+    formState: { errors },
   } = useForm<TSignInFormData>({
     mode: 'onBlur',
     reValidateMode: 'onBlur',
-    defaultValues: {
-      email: '',
-      password: '',
-    },
+    defaultValues: DEFAULT_VALUES,
   });
 
-  const dirtyItems = Object.keys(dirtyFields).filter(
-    key => dirtyFields[key as keyof TSignInFormData],
+  const values = useWatch({ control });
+  const dirtyItems = (Object.keys(values) as (keyof TSignInFormData)[]).filter(
+    key => values[key] !== DEFAULT_VALUES[key],
   );
+
   const shouldEnable = isEnableSubmitButton(REQUIRE_FIELDS, dirtyItems, errors);
   const isDisableSubmit = !shouldEnable || !!errorAPI || isSubmitting;
 

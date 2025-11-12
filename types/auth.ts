@@ -1,7 +1,7 @@
 // Types
 import { TUser } from './user';
 
-export type TSignUpPayload = Omit<TUser, 'id'>;
+export type TSignUpPayload = Omit<TUser, 'id' | 'avatar'>;
 
 export type TLoginPayload = Pick<TUser, 'email' | 'password'>;
 
