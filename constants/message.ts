@@ -9,3 +9,7 @@ export const ERROR_MESSAGES = {
   JWT_EXPIRED: 'jwt expired',
   PHONE_NUMBER_PARSE_ERROR: 'Unable to parse phone number.',
 };
+
+export const SUCCESS_MESSAGES = {
+  SIGN_UP: 'Your account has been successfully registered.',
+};

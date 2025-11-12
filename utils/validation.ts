@@ -10,9 +10,11 @@ export const isEnableSubmitButton = (
   dirtyFields: string[] = [],
   errors: Record<string, unknown>,
 ): boolean => {
+  console.log('isEnableSubmitButton_____dirtyFields', dirtyFields);
+
   const isMatchAllRequiredFields: boolean = requiredFields.every(field =>
     dirtyFields.includes(field),
   );
 
-  return isMatchAllRequiredFields && errors && !Object.keys(errors).length;
+  return isMatchAllRequiredFields && !Object.keys(errors).length;
 };

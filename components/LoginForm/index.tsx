@@ -1,5 +1,5 @@
 // Libs
-import { useCallback, useRef, useState } from 'react';
+import { useCallback, useMemo, useRef, useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import { TextInput, TouchableOpacity, View } from 'react-native';
 
@@ -55,11 +55,22 @@ const LoginForm = ({
     },
   });
 
-  const dirtyItems = Object.keys(dirtyFields).filter(
-    key => dirtyFields[key as keyof TSignInFormData],
-  );
-  const shouldEnable = isEnableSubmitButton(REQUIRE_FIELDS, dirtyItems, errors);
+  console.log('dirtyFields', dirtyFields);
+
+  const shouldEnable = useMemo(() => {
+    const dirtyItems = Object.keys(dirtyFields).filter(
+      key => dirtyFields[key as keyof TSignInFormData],
+    );
+    return isEnableSubmitButton(REQUIRE_FIELDS, dirtyItems, errors);
+  }, [dirtyFields, errors]);
+
   const isDisableSubmit = !shouldEnable || !!errorAPI || isSubmitting;
+
+  console.log('_______________');
+  console.log('shouldEnable', shouldEnable);
+  console.log('errorAPI', errorAPI);
+  console.log('isSubmitting', isSubmitting);
+  console.log('isDisableSubmit', isDisableSubmit);
 
   const passwordInputRef = useRef<TextInput>(null);
 
