@@ -10,3 +10,4 @@ export { default as QuickActionItem } from './QuickActionItem';
 export { default as SearchInput } from './SearchInput';
 export { default as SignUpForm } from './SignUpForm';
 export { default as Text } from './Text';
+export { default as TransactionItem } from './TransactionItem';

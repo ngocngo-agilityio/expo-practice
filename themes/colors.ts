@@ -22,6 +22,7 @@ export const colors = {
   loadingIndicatorBg: BASE_COLORS.cornflowerBlue,
   signUpFooterText: BASE_COLORS.dugong,
   signUpNavigationText: BASE_COLORS.blueRibbon,
+  transactionItemSubTitle: BASE_COLORS.outlawedOrange,
   light: {
     solidBtnTitle: BASE_COLORS.white,
     solidBtnBg: BASE_COLORS.blueRibbon,
@@ -35,6 +36,9 @@ export const colors = {
     inputBorder: BASE_COLORS.lighthouse,
     actionItemText: BASE_COLORS.darkGunmetal,
     actionItemBg: BASE_COLORS.lighthouse,
+    transactionItemTitle: BASE_COLORS.darkGunmetal,
+    transactionItemAvatarBg: BASE_COLORS.lighthouse,
+    transactionItemAmount: BASE_COLORS.darkGunmetal,
   },
   dark: {
     solidBtnTitle: BASE_COLORS.white,
@@ -49,5 +53,8 @@ export const colors = {
     inputBorder: BASE_COLORS.blackVelvet,
     actionItemText: BASE_COLORS.outlawedOrange,
     actionItemBg: BASE_COLORS.darkGunmetal,
+    transactionItemTitle: BASE_COLORS.white,
+    transactionItemAvatarBg: BASE_COLORS.darkGunmetal,
+    transactionItemAmount: BASE_COLORS.white,
   },
 };
