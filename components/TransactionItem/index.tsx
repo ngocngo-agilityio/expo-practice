@@ -8,8 +8,10 @@ import { Text } from '@/components';
 // Utils
 import { formatCurrency } from '@/utils';
 
-// Styles
+// Constants
 import { ThemeScheme } from '@/constants';
+
+// Styles
 import { createTransactionItemStyle } from './styles';
 
 export type TTransactionItemProps = {
