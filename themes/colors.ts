@@ -33,6 +33,8 @@ export const colors = {
     appHeaderIconBg: BASE_COLORS.lighthouse,
     appHeaderTitle: BASE_COLORS.darkGunmetal,
     inputBorder: BASE_COLORS.lighthouse,
+    actionItemText: BASE_COLORS.darkGunmetal,
+    actionItemBg: BASE_COLORS.lighthouse,
   },
   dark: {
     solidBtnTitle: BASE_COLORS.white,
@@ -45,5 +47,7 @@ export const colors = {
     appHeaderIconBg: BASE_COLORS.darkGunmetal,
     appHeaderTitle: BASE_COLORS.white,
     inputBorder: BASE_COLORS.blackVelvet,
+    actionItemText: BASE_COLORS.outlawedOrange,
+    actionItemBg: BASE_COLORS.darkGunmetal,
   },
 };
