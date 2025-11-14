@@ -15,6 +15,7 @@ export const BASE_COLORS = {
   cornflowerBlue: '#34343433',
   spinelStoneBlack: '#27273A',
   sleet: '#8B8B94',
+  seriousCloud: '#7E848D',
 };
 
 export const colors = {
@@ -28,6 +29,8 @@ export const colors = {
   transactionItemSubTitle: BASE_COLORS.outlawedOrange,
   virtualCardBg: BASE_COLORS.blackRock,
   virtualCardLabel: BASE_COLORS.outlawedOrange,
+  homeSeeAll: BASE_COLORS.blueRibbon,
+  homeWelcome: BASE_COLORS.seriousCloud,
   light: {
     solidBtnTitle: BASE_COLORS.white,
     solidBtnBg: BASE_COLORS.blueRibbon,
@@ -44,6 +47,9 @@ export const colors = {
     transactionItemTitle: BASE_COLORS.darkGunmetal,
     transactionItemAvatarBg: BASE_COLORS.lighthouse,
     transactionItemAmount: BASE_COLORS.darkGunmetal,
+    homeUsername: BASE_COLORS.darkGunmetal,
+    homeTransactionHeader: BASE_COLORS.darkGunmetal,
+    homeSearchBg: BASE_COLORS.lighthouse,
   },
   dark: {
     solidBtnTitle: BASE_COLORS.white,
@@ -61,5 +67,8 @@ export const colors = {
     transactionItemTitle: BASE_COLORS.white,
     transactionItemAvatarBg: BASE_COLORS.darkGunmetal,
     transactionItemAmount: BASE_COLORS.white,
+    homeUsername: BASE_COLORS.white,
+    homeTransactionHeader: BASE_COLORS.white,
+    homeSearchBg: BASE_COLORS.darkGunmetal,
   },
 };
