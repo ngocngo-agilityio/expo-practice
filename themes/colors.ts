@@ -5,6 +5,7 @@ export const BASE_COLORS = {
   blueRibbon: '#0066FF',
   blackHowl: '#1C1C1E',
   blackVelvet: '#232533',
+  blackRock: '#2A2C3C',
   darkGunmetal: '#1E1E2D',
   error: '#FF3B30',
   success: '#34C759',
@@ -23,6 +24,8 @@ export const colors = {
   signUpFooterText: BASE_COLORS.dugong,
   signUpNavigationText: BASE_COLORS.blueRibbon,
   transactionItemSubTitle: BASE_COLORS.outlawedOrange,
+  virtualCardBg: BASE_COLORS.blackRock,
+  virtualCardLabel: BASE_COLORS.outlawedOrange,
   light: {
     solidBtnTitle: BASE_COLORS.white,
     solidBtnBg: BASE_COLORS.blueRibbon,
