@@ -8,6 +8,8 @@ import Toast from 'react-native-toast-message';
 
 // Constants
 import { ROUTES } from '@/constants';
+
+// Stores
 import { useAuthStore } from '@/stores';
 
 const isStorybook = process.env.EXPO_PUBLIC_ENVIRONMENT === 'storybook';

@@ -13,6 +13,8 @@ export const BASE_COLORS = {
   lighthouse: '#F4F4F4',
   dugong: '#707070',
   cornflowerBlue: '#34343433',
+  spinelStoneBlack: '#27273A',
+  sleet: '#8B8B94',
 };
 
 export const colors = {
