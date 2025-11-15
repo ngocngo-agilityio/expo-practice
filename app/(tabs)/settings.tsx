@@ -1,5 +1,14 @@
-import { Text } from '@/components';
+import { Button, Text } from '@/components';
+import { useAuthStore } from '@/stores';
+import { View } from 'react-native';
 
 export default function Settings() {
-  return <Text>Settings screen</Text>;
+  const clearAuth = useAuthStore(state => state.clearAuth);
+
+  return (
+    <View>
+      <Text>Settings screen</Text>;
+      <Button title="Logout" onPress={clearAuth} />
+    </View>
+  );
 }

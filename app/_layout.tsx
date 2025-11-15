@@ -1,16 +1,12 @@
 // Libs
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { useFonts } from 'expo-font';
-import { Slot, useRouter } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import { useEffect } from 'react';
 import Toast from 'react-native-toast-message';
 
-// Constants
-import { ROUTES } from '@/constants';
-
 // Stores
-import { useAuthStore } from '@/stores';
+import { Stack } from 'expo-router';
 
 const isStorybook = process.env.EXPO_PUBLIC_ENVIRONMENT === 'storybook';
 
@@ -24,9 +20,6 @@ const queryClient = new QueryClient({
 });
 
 export default function RootLayout() {
-  const isAuthenticated = useAuthStore(state => state.isAuthenticated);
-  const router = useRouter();
-
   const [loaded, error] = useFonts({
     'Inter-Regular': require('../assets/fonts/Inter-Regular.ttf'),
     'Poppins-Regular': require('../assets/fonts/Poppins-Regular.ttf'),
@@ -37,16 +30,8 @@ export default function RootLayout() {
   useEffect(() => {
     if (loaded || error) {
       SplashScreen.hideAsync();
-
-      if (!isStorybook) {
-        if (!isAuthenticated) {
-          router.replace(ROUTES.LOGIN);
-        } else {
-          router.replace(ROUTES.HOME);
-        }
-      }
     }
-  }, [loaded, error, isAuthenticated, router]);
+  }, [loaded, error]);
 
   if (!loaded && !error) {
     return null;
@@ -59,7 +44,11 @@ export default function RootLayout() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <Slot />
+      <Stack screenOptions={{ headerShown: false }}>
+        <Stack.Screen name="(auths)" />
+        <Stack.Screen name="(tabs)" />
+        <Stack.Screen name="transaction-history" />
+      </Stack>
       <Toast />
     </QueryClientProvider>
   );

@@ -1,4 +1,4 @@
-import { Tabs } from 'expo-router';
+import { Redirect, Tabs } from 'expo-router';
 import { useColorScheme } from 'react-native';
 
 // Components
@@ -12,6 +12,12 @@ import {
 // Themes
 import { BASE_COLORS } from '@/themes';
 
+// Constants
+import { ROUTES } from '@/constants';
+
+// Stores
+import { useAuthStore } from '@/stores';
+
 const TAB_ITEMS = [
   { name: 'index', title: 'Home', Icon: HomeIcon },
   { name: 'cards', title: 'Cards', Icon: WalletIcon },
@@ -23,6 +29,12 @@ export default function TabLayout() {
   const theme = useColorScheme();
   const inactiveColor = BASE_COLORS.sleet;
   const activeColor = BASE_COLORS.blueRibbon;
+
+  const isAuthenticated = useAuthStore(state => state.isAuthenticated);
+
+  if (!isAuthenticated) {
+    return <Redirect href={ROUTES.LOGIN} />;
+  }
 
   return (
     <Tabs
