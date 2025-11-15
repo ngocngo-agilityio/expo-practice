@@ -3,4 +3,5 @@ export const ROUTES = {
   SIGNUP: '/(auths)/signup',
   HOME: '/(tabs)',
   PROFILE: '/(tabs)/profile',
+  TRANSACTION_HISTORY: '/transaction-history',
 } as const;

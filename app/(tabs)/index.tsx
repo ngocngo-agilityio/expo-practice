@@ -1,5 +1,12 @@
 import { Image } from 'expo-image';
-import { StyleSheet, useColorScheme, View } from 'react-native';
+import { useRouter } from 'expo-router';
+import { useCallback } from 'react';
+import {
+  StyleSheet,
+  TouchableOpacity,
+  useColorScheme,
+  View,
+} from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 // Components
@@ -12,7 +19,7 @@ import {
 import { SearchIcon } from '@/components/icons';
 
 // Constants
-import { ThemeScheme } from '@/constants';
+import { ROUTES, ThemeScheme } from '@/constants';
 
 // Mock data
 import { TRANSACTIONS_MOCK } from '@/mocks';
@@ -26,9 +33,14 @@ import { TThemeScheme } from '@/types';
 export default function HomeScreen() {
   const theme = useColorScheme() ?? ThemeScheme.Light;
   const styles = createStyles(theme);
+  const router = useRouter();
 
   const avatar = 'https://i.pravatar.cc/150';
   const username = 'Tanya Myroniuk';
+
+  const handleNavigateToTransaction = useCallback(() => {
+    router.push(ROUTES.TRANSACTION_HISTORY);
+  }, [router]);
 
   return (
     <View style={styles.container}>
@@ -75,9 +87,11 @@ export default function HomeScreen() {
           <Text size="md" style={styles.transactionTitle}>
             Transaction
           </Text>
-          <Text size="sm" style={styles.seeAll}>
-            See All
-          </Text>
+          <TouchableOpacity onPress={handleNavigateToTransaction}>
+            <Text size="sm" style={styles.seeAll}>
+              See All
+            </Text>
+          </TouchableOpacity>
         </View>
 
         <View style={styles.listWrapper}>
