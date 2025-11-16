@@ -1,5 +1,5 @@
 // Lib
-import { useNavigation } from '@react-navigation/native';
+import { useRouter } from 'expo-router';
 import { memo, ReactNode } from 'react';
 import { TouchableOpacity, useColorScheme, View } from 'react-native';
 
@@ -31,14 +31,14 @@ const AppHeader = ({
 }: TAppHeaderProps) => {
   const scheme = useColorScheme() ?? ThemeScheme.Light;
   const styles = createAppHeaderStyles(scheme);
-  const navigation = useNavigation();
+  const router = useRouter();
 
   return (
     <View style={styles.container}>
       {hasBackButton && (
         <TouchableOpacity
           style={styles.iconWrapper}
-          onPress={navigation.goBack}
+          onPress={router.back}
           accessibilityLabel="Go back">
           <ArrowLeftIcon
             color={
@@ -51,7 +51,7 @@ const AppHeader = ({
       )}
 
       {title && (
-        <Text size="md" style={styles.title}>
+        <Text size="md" pointerEvents="none" style={styles.title}>
           {title}
         </Text>
       )}

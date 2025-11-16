@@ -31,6 +31,8 @@ export const colors = {
   virtualCardLabel: BASE_COLORS.outlawedOrange,
   homeSeeAll: BASE_COLORS.blueRibbon,
   homeWelcome: BASE_COLORS.seriousCloud,
+  modalOverlay: 'rgba(0, 0, 0, 0.3)',
+  pickerModalDoneText: BASE_COLORS.blueRibbon,
   light: {
     solidBtnTitle: BASE_COLORS.white,
     solidBtnBg: BASE_COLORS.blueRibbon,
@@ -50,6 +52,7 @@ export const colors = {
     homeUsername: BASE_COLORS.darkGunmetal,
     homeTransactionHeader: BASE_COLORS.darkGunmetal,
     homeSearchBg: BASE_COLORS.lighthouse,
+    pickerModalIOSContainer: BASE_COLORS.white,
   },
   dark: {
     solidBtnTitle: BASE_COLORS.white,
@@ -70,5 +73,6 @@ export const colors = {
     homeUsername: BASE_COLORS.white,
     homeTransactionHeader: BASE_COLORS.white,
     homeSearchBg: BASE_COLORS.darkGunmetal,
+    pickerModalIOSContainer: BASE_COLORS.darkGunmetal,
   },
 };

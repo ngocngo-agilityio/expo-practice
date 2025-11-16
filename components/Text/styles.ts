@@ -31,7 +31,7 @@ export const textSizes = StyleSheet.create({
   },
   xl: {
     fontSize: fontSizes.xl,
-    lineHeight: lineHeights['2xl'],
+    lineHeight: lineHeights['xl'] * 1.5,
   },
   '2xl': {
     fontSize: fontSizes['2xl'],
