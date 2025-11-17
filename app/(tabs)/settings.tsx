@@ -1,35 +1,29 @@
-import { Button, Input } from '@/components';
-import AvatarPicker from '@/components/AvatarPicker';
-import BirthDateSelector from '@/components/DatePicker';
-import { ThemeScheme } from '@/constants';
+import { Button, KeyboardAwareScrollView } from '@/components';
+import { ROUTES, ThemeScheme } from '@/constants';
 import { useAuthStore } from '@/stores';
 import { colors } from '@/themes';
+import { useRouter } from 'expo-router';
 import { useColorScheme, View } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function Settings() {
   const clearAuth = useAuthStore(state => state.clearAuth);
   const scheme = useColorScheme() ?? ThemeScheme.Light;
   const theme = colors[scheme];
+  const router = useRouter();
 
   return (
-    <View style={{ padding: 10, backgroundColor: theme.appBg, flex: 1 }}>
-      <Button title="Logout" onPress={clearAuth} />
-      <BirthDateSelector
-        defaultValue={new Date(2000, 8, 28)}
-        onChange={(date: Date) => {
-          console.log('Date', date);
-        }}
-        error="Birth Date is required."
-      />
+    <View style={{ padding: 20, backgroundColor: theme.appBg, flex: 1 }}>
+      <SafeAreaView>
+        <KeyboardAwareScrollView>
+          <Button title="Logout" onPress={clearAuth} />
 
-      <Input label="Full Name" error="Full Name is valid" />
-
-      <Input label="Full Name" error="Full Name is valid" />
-
-      <AvatarPicker
-        initialUri="https://sm.ign.com/ign_pk/cover/a/avatar-gen/avatar-generations_rpge.jpg"
-        onChange={(uri: string) => console.log(uri)}
-      />
+          <Button
+            title="Navigate to Edit Profile"
+            onPress={() => router.push(ROUTES.EDIT_PROFILE)}
+          />
+        </KeyboardAwareScrollView>
+      </SafeAreaView>
     </View>
   );
 }

@@ -1,5 +1,5 @@
 // Libs
-import { CountryCode, parsePhoneNumber } from 'libphonenumber-js';
+import { CountryCode, parsePhoneNumberFromString } from 'libphonenumber-js';
 
 // Constants
 import { ERROR_MESSAGES } from '@/constants';
@@ -18,10 +18,12 @@ export const validatePhoneNumber = (
     return ERROR_MESSAGES.FIELD_REQUIRED('Phone Number');
   }
 
-  try {
-    const parsed = parsePhoneNumber(phoneNumber, defaultCountry);
+  console.log('phoneNumber', phoneNumber);
 
-    if (!parsed.isValid()) {
+  try {
+    const parsed = parsePhoneNumberFromString(phoneNumber, defaultCountry);
+
+    if (!parsed || !parsed.isValid()) {
       return ERROR_MESSAGES.FIELD_INVALID('Phone Number');
     }
   } catch {
