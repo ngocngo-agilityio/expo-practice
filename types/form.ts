@@ -10,3 +10,11 @@ export type TSignInFormData = {
   email: string;
   password: string;
 };
+
+export type TEditProfileData = {
+  avatar?: string;
+  fullName: string;
+  email: string;
+  phoneNumber: string;
+  birthDate?: Date;
+};
