@@ -18,8 +18,6 @@ export const validatePhoneNumber = (
     return ERROR_MESSAGES.FIELD_REQUIRED('Phone Number');
   }
 
-  console.log('phoneNumber', phoneNumber);
-
   try {
     const parsed = parsePhoneNumberFromString(phoneNumber, defaultCountry);
 
