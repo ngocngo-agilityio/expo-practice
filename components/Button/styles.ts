@@ -45,7 +45,7 @@ export const createButtonStyles = (scheme: TThemeScheme) => {
 
 export const buttonSizes = {
   md: StyleSheet.create({
-    button: { padding: 16, maxWidth: 335, borderRadius: borderRadius.md },
+    button: { padding: 16, borderRadius: borderRadius.md },
     title: { fontSize: fontSizes.base, lineHeight: lineHeights.lg },
   }),
 };

@@ -53,6 +53,7 @@ export const colors = {
     homeTransactionHeader: BASE_COLORS.darkGunmetal,
     homeSearchBg: BASE_COLORS.lighthouse,
     pickerModalIOSContainer: BASE_COLORS.white,
+    editProfileName: BASE_COLORS.darkGunmetal,
   },
   dark: {
     solidBtnTitle: BASE_COLORS.white,
@@ -74,5 +75,6 @@ export const colors = {
     homeTransactionHeader: BASE_COLORS.white,
     homeSearchBg: BASE_COLORS.darkGunmetal,
     pickerModalIOSContainer: BASE_COLORS.darkGunmetal,
+    editProfileName: BASE_COLORS.white,
   },
 };

@@ -4,7 +4,8 @@ import { UseFormWatch } from 'react-hook-form';
 import { TSignInFormData, TSignUpFormData } from '@/types';
 
 // Constants
-import { ERROR_MESSAGES, REGEX } from '@/constants';
+import { ERROR_MESSAGES } from './message';
+import { REGEX } from './regex';
 
 // Utils
 import { validatePhoneNumber } from '@/utils/phone-number';
@@ -57,3 +58,21 @@ export const LOGIN_VALIDATION_RULES = (
     minLength: { value: 8, message: ERROR_MESSAGES.PASSWORD_NOT_LONG },
   },
 });
+
+export const EDIT_PROFILE_VALIDATION_RULES = {
+  name: {
+    required: ERROR_MESSAGES.FIELD_REQUIRED('Full Name'),
+  },
+  phoneNumber: {
+    required: ERROR_MESSAGES.FIELD_REQUIRED('Phone Number'),
+    validate: (value: string) => validatePhoneNumber(value),
+  },
+  email: {
+    required: ERROR_MESSAGES.FIELD_REQUIRED('Email'),
+    pattern: {
+      value: REGEX.EMAIL,
+      message: ERROR_MESSAGES.FIELD_INVALID('Email'),
+    },
+  },
+  birthDate: { required: ERROR_MESSAGES.FIELD_REQUIRED('Birth Date') },
+};

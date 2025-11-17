@@ -16,9 +16,9 @@ import { LOGIN_VALIDATION_RULES } from '@/constants';
 import { TSignInFormData } from '@/types';
 
 // Utils
+import { isEnableSubmitButton } from '@/utils';
 
 // Styles
-import { isEnableSubmitButton } from '@/utils';
 import { styles } from './styles';
 
 export type TLoginFormProps = {
