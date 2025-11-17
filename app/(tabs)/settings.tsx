@@ -1,4 +1,5 @@
 import { Button, Input } from '@/components';
+import AvatarPicker from '@/components/AvatarPicker';
 import BirthDateSelector from '@/components/DatePicker';
 import { ThemeScheme } from '@/constants';
 import { useAuthStore } from '@/stores';
@@ -24,6 +25,11 @@ export default function Settings() {
       <Input label="Full Name" error="Full Name is valid" />
 
       <Input label="Full Name" error="Full Name is valid" />
+
+      <AvatarPicker
+        initialUri="https://sm.ign.com/ign_pk/cover/a/avatar-gen/avatar-generations_rpge.jpg"
+        onChange={(uri: string) => console.log(uri)}
+      />
     </View>
   );
 }
