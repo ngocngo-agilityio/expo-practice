@@ -4,4 +4,5 @@ export const ROUTES = {
   HOME: '/(tabs)',
   PROFILE: '/(tabs)/profile',
   TRANSACTION_HISTORY: '/transaction-history',
+  EDIT_PROFILE: '/edit-profile',
 } as const;
