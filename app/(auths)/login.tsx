@@ -2,6 +2,7 @@ import { useRouter } from 'expo-router';
 import { Keyboard, StyleSheet, useColorScheme, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Toast from 'react-native-toast-message';
+import { useShallow } from 'zustand/shallow';
 
 // Components
 import {
@@ -12,7 +13,7 @@ import {
 } from '@/components';
 
 // Types
-import { TSignInFormData, TThemeScheme } from '@/types';
+import { TAuthResponse, TSignInFormData, TThemeScheme } from '@/types';
 
 // Constants
 import { ROUTES, ThemeScheme } from '@/constants';
@@ -24,10 +25,10 @@ import { colors, fontFamilies } from '@/themes';
 import { useErrorAPI } from '@/hooks';
 
 // APIs
-import { useAuthLogin } from '@/apis';
+import { useAuthLogin, useGetUserInfo } from '@/apis';
 
 // Stores
-import { useAuthStore } from '@/stores';
+import { useAccountStore, useAuthStore } from '@/stores';
 
 export default function LoginPage() {
   const scheme = useColorScheme() ?? ThemeScheme.Light;
@@ -35,10 +36,17 @@ export default function LoginPage() {
   const router = useRouter();
 
   // Stores
-  const setAuthenticated = useAuthStore(state => state.setAuthenticated);
+  const [user, setAuthenticated] = useAuthStore(
+    useShallow(state => [state.user, state.setAuthenticated]),
+  );
+  const setAccountId = useAccountStore(state => state.setAccountId);
+
+  const userId = user?.id || '';
 
   // Apis
   const { error: errorLogin, mutate: login, isPending } = useAuthLogin();
+  const { refetch: getUserInfo, isFetching: isFetchingUserInfo } =
+    useGetUserInfo(userId, !!userId);
 
   const { errorAPI, clearErrorAPI } = useErrorAPI(errorLogin || '');
 
@@ -50,7 +58,11 @@ export default function LoginPage() {
     Toast.show({ type: 'error', text1: error });
   };
 
-  const handleLoginSuccess = () => {
+  const handleLoginSuccess = async (data: TAuthResponse) => {
+    const res = await getUserInfo();
+    const { account } = res.data?.data || {};
+    const { id = '' } = account || {};
+    setAccountId(id);
     setAuthenticated(true);
   };
 
@@ -75,7 +87,7 @@ export default function LoginPage() {
             <LoginForm
               errorAPI={errorAPI}
               clearErrorAPI={clearErrorAPI}
-              isSubmitting={isPending}
+              isSubmitting={isPending || isFetchingUserInfo}
               onSubmit={handleSubmit}
               onNavigateSignUp={handleNavigateSignUp}
             />

@@ -1,6 +1,6 @@
 import { Image } from 'expo-image';
 import { useRouter } from 'expo-router';
-import { useCallback } from 'react';
+import { useCallback, useEffect } from 'react';
 import {
   StyleSheet,
   TouchableOpacity,
@@ -8,6 +8,7 @@ import {
   View,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import Toast from 'react-native-toast-message';
 
 // Components
 import {
@@ -47,17 +48,17 @@ export default function HomeScreen() {
   const { fullName = '', avatar = USER_DEFAULT_AVATAR, id = '' } = user || {};
 
   // Apis
-  const { data: cardsByUserId, isFetching: isFetchingCardsByUserId } =
-    useGetCardsByUserId(id);
+  const {
+    data: cardsByUserId,
+    isFetching: isFetchingCardsByUserId,
+    error: cardError,
+  } = useGetCardsByUserId(id);
 
   const {
     data: transactions,
     isFetching: isFetchingTransactions,
     error: transactionError,
   } = useGetTransactions(accountId ?? '');
-
-  console.log('transactionError', transactionError);
-  console.log('transactions___', transactions);
 
   const card = cardsByUserId?.[0]?.cards?.[0];
 
@@ -73,6 +74,15 @@ export default function HomeScreen() {
   const handleNavigateToTransaction = useCallback(() => {
     router.push(ROUTES.TRANSACTION_HISTORY);
   }, [router]);
+
+  useEffect(() => {
+    if (cardError || transactionError) {
+      Toast.show({
+        type: 'error',
+        text1: `${cardError} ${cardError}`,
+      });
+    }
+  }, [cardError, transactionError]);
 
   return (
     <View style={styles.container}>

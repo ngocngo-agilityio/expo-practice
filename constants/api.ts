@@ -8,6 +8,7 @@ export const API_PATH = {
   CREATE_CARD: `/init-account`,
   TRANSACTIONS_BY_ACCOUNT: (accountId: string) =>
     `/accounts/${accountId}/transactions`,
+  USER_BY_ID: (id: string) => `/me/${id}`,
 };
 
 export const QUERY_KEY = {
@@ -17,4 +18,5 @@ export const QUERY_KEY = {
     'transactions',
     accountId,
   ],
+  USER_BY_ID: (id: string) => ['me', id],
 };
