@@ -14,6 +14,7 @@ import {
   QuickActionGroup,
   Text,
   TransactionList,
+  TransactionListSkeleton,
   VirtualCard,
   VirtualCardSkeleton,
 } from '@/components';
@@ -23,7 +24,6 @@ import { SearchIcon } from '@/components/icons';
 import { ROUTES, ThemeScheme, USER_DEFAULT_AVATAR } from '@/constants';
 
 // Mock data
-import { TRANSACTIONS_MOCK } from '@/mocks';
 
 // Themes
 import { BASE_COLORS, colors, fontFamilies } from '@/themes';
@@ -35,7 +35,7 @@ import { TThemeScheme } from '@/types';
 import { useAuthStore } from '@/stores';
 
 // Apis
-import { useGetCardsByUserId } from '@/apis/card';
+import { useGetCardsByUserId, useGetTransactions } from '@/apis';
 
 export default function HomeScreen() {
   const theme = useColorScheme() ?? ThemeScheme.Light;
@@ -50,6 +50,11 @@ export default function HomeScreen() {
   // Apis
   const { data: cardsByUserId, isFetching: isFetchingCardsByUserId } =
     useGetCardsByUserId(id);
+
+  // TODO:
+  const accountId = '1';
+  const { data: transactions, isFetching: isFetchingTransactions } =
+    useGetTransactions(accountId);
 
   const card = cardsByUserId?.[0]?.cards?.[0];
 
@@ -126,7 +131,11 @@ export default function HomeScreen() {
         </View>
 
         <View style={styles.listWrapper}>
-          <TransactionList data={TRANSACTIONS_MOCK} />
+          {isFetchingTransactions ? (
+            <TransactionListSkeleton />
+          ) : (
+            <TransactionList data={transactions} />
+          )}
         </View>
       </SafeAreaView>
     </View>
