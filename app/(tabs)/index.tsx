@@ -1,6 +1,6 @@
 import { Image } from 'expo-image';
 import { useRouter } from 'expo-router';
-import { useCallback } from 'react';
+import { useCallback, useEffect } from 'react';
 import {
   StyleSheet,
   TouchableOpacity,
@@ -8,21 +8,21 @@ import {
   View,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import Toast from 'react-native-toast-message';
 
 // Components
 import {
   QuickActionGroup,
   Text,
   TransactionList,
+  TransactionListSkeleton,
   VirtualCard,
+  VirtualCardSkeleton,
 } from '@/components';
 import { SearchIcon } from '@/components/icons';
 
 // Constants
-import { ROUTES, ThemeScheme } from '@/constants';
-
-// Mock data
-import { TRANSACTIONS_MOCK } from '@/mocks';
+import { ROUTES, ThemeScheme, USER_DEFAULT_AVATAR } from '@/constants';
 
 // Themes
 import { BASE_COLORS, colors, fontFamilies } from '@/themes';
@@ -30,30 +30,77 @@ import { BASE_COLORS, colors, fontFamilies } from '@/themes';
 // Types
 import { TThemeScheme } from '@/types';
 
+// Stores
+import { useAccountStore, useAuthStore } from '@/stores';
+
+// Apis
+import { useGetCardsByUserId, useGetTransactions } from '@/apis';
+
 export default function HomeScreen() {
   const theme = useColorScheme() ?? ThemeScheme.Light;
   const styles = createStyles(theme);
   const router = useRouter();
 
-  const avatar = 'https://i.pravatar.cc/150';
-  const username = 'Tanya Myroniuk';
+  // Stores
+  const user = useAuthStore(state => state.user);
+  const accountId = useAccountStore(state => state.accountId);
+
+  const { fullName = '', avatar = USER_DEFAULT_AVATAR, id = '' } = user || {};
+
+  // Apis
+  const {
+    data: cardsByUserId,
+    isFetching: isFetchingCardsByUserId,
+    error: cardError,
+  } = useGetCardsByUserId(id);
+
+  const {
+    data: transactions,
+    isFetching: isFetchingTransactions,
+    error: transactionError,
+  } = useGetTransactions(accountId ?? '');
+
+  const card = cardsByUserId?.[0]?.cards?.[0];
+
+  const {
+    cardNumber = '',
+    cardHolderName = '',
+    expiredDate = '',
+    cardCvv = '',
+    cardType = '',
+    cardLogo = '',
+  } = card || {};
 
   const handleNavigateToTransaction = useCallback(() => {
     router.push(ROUTES.TRANSACTION_HISTORY);
   }, [router]);
 
+  useEffect(() => {
+    if (cardError || transactionError) {
+      Toast.show({
+        type: 'error',
+        text1: `${cardError} ${cardError}`,
+      });
+    }
+  }, [cardError, transactionError]);
+
   return (
     <View style={styles.container}>
       <SafeAreaView style={styles.safeArea} edges={['right', 'left', 'top']}>
         <View style={styles.header}>
-          <Image source={{ uri: avatar }} style={styles.avatar} />
+          <Image
+            source={{
+              uri: avatar || USER_DEFAULT_AVATAR,
+            }}
+            style={styles.avatar}
+          />
 
           <View style={styles.welcomeWrapper}>
             <Text size="xs" style={styles.welcomeText}>
               Welcome back,
             </Text>
             <Text size="md" style={styles.username}>
-              {username}
+              {fullName}
             </Text>
           </View>
 
@@ -69,16 +116,18 @@ export default function HomeScreen() {
         </View>
 
         <View style={styles.cardWrapper}>
-          <VirtualCard
-            cardNumber="4562112245957852"
-            holderName="AR Jonson"
-            expiry="24/2000"
-            cvv="6986"
-            brandLogo={
-              'https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/Mastercard-logo.png/320px-Mastercard-logo.png'
-            }
-            brandName="Mastercard"
-          />
+          {isFetchingCardsByUserId ? (
+            <VirtualCardSkeleton />
+          ) : (
+            <VirtualCard
+              cardNumber={cardNumber}
+              holderName={cardHolderName}
+              expiry={expiredDate}
+              cvv={cardCvv}
+              brandLogo={cardLogo}
+              brandName={cardType}
+            />
+          )}
         </View>
 
         <QuickActionGroup />
@@ -95,7 +144,11 @@ export default function HomeScreen() {
         </View>
 
         <View style={styles.listWrapper}>
-          <TransactionList data={TRANSACTIONS_MOCK} />
+          {isFetchingTransactions ? (
+            <TransactionListSkeleton />
+          ) : (
+            <TransactionList data={transactions} />
+          )}
         </View>
       </SafeAreaView>
     </View>

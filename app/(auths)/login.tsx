@@ -2,6 +2,7 @@ import { useRouter } from 'expo-router';
 import { Keyboard, StyleSheet, useColorScheme, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Toast from 'react-native-toast-message';
+import { useShallow } from 'zustand/shallow';
 
 // Components
 import {
@@ -12,7 +13,7 @@ import {
 } from '@/components';
 
 // Types
-import { TSignInFormData, TThemeScheme } from '@/types';
+import { TAuthResponse, TSignInFormData, TThemeScheme } from '@/types';
 
 // Constants
 import { ROUTES, ThemeScheme } from '@/constants';
@@ -24,15 +25,28 @@ import { colors, fontFamilies } from '@/themes';
 import { useErrorAPI } from '@/hooks';
 
 // APIs
-import { useAuthLogin } from '@/apis';
+import { useAuthLogin, useGetUserInfo } from '@/apis';
+
+// Stores
+import { useAccountStore, useAuthStore } from '@/stores';
 
 export default function LoginPage() {
   const scheme = useColorScheme() ?? ThemeScheme.Light;
   const styles = createStyles(scheme);
   const router = useRouter();
 
+  // Stores
+  const [user, setAuthenticated] = useAuthStore(
+    useShallow(state => [state.user, state.setAuthenticated]),
+  );
+  const setAccountId = useAccountStore(state => state.setAccountId);
+
+  const userId = user?.id || '';
+
   // Apis
   const { error: errorLogin, mutate: login, isPending } = useAuthLogin();
+  const { refetch: getUserInfo, isFetching: isFetchingUserInfo } =
+    useGetUserInfo(userId, !!userId);
 
   const { errorAPI, clearErrorAPI } = useErrorAPI(errorLogin || '');
 
@@ -44,14 +58,20 @@ export default function LoginPage() {
     Toast.show({ type: 'error', text1: error });
   };
 
+  const handleLoginSuccess = async (data: TAuthResponse) => {
+    const res = await getUserInfo();
+    const { account } = res.data?.data || {};
+    const { id = '' } = account || {};
+    setAccountId(id);
+    setAuthenticated(true);
+  };
+
   const handleSubmit = (data: TSignInFormData) => {
     Keyboard.dismiss();
 
     login(
       { ...data },
-      {
-        onError: handleLoginFailed,
-      },
+      { onSuccess: handleLoginSuccess, onError: handleLoginFailed },
     );
   };
 
@@ -67,7 +87,7 @@ export default function LoginPage() {
             <LoginForm
               errorAPI={errorAPI}
               clearErrorAPI={clearErrorAPI}
-              isSubmitting={isPending}
+              isSubmitting={isPending || isFetchingUserInfo}
               onSubmit={handleSubmit}
               onNavigateSignUp={handleNavigateSignUp}
             />

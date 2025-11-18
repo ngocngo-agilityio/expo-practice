@@ -8,6 +8,7 @@ import { LoadingIndicator, Text, TransactionItem } from '@/components';
 import { TTransactionItem } from '@/types';
 
 // Styles
+import { USER_DEFAULT_AVATAR } from '@/constants';
 import { styles } from './styles';
 
 type TTransactionListProps = {
@@ -28,13 +29,14 @@ const TransactionList = ({
   };
 
   const renderItem = ({ item }: ListRenderItemInfo<TTransactionItem>) => {
-    const { avatar = '', title = '', category = '', amount = 0 } = item || {};
+    const { transactionType = '', amount = 0, relatedUser } = item || {};
+    const { avatar = USER_DEFAULT_AVATAR, fullName } = relatedUser || {};
 
     return (
       <TransactionItem
-        avatar={avatar}
-        title={title}
-        category={category}
+        avatar={avatar || USER_DEFAULT_AVATAR}
+        title={fullName}
+        category={transactionType}
         amount={amount}
       />
     );

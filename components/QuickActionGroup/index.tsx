@@ -29,33 +29,25 @@ const QuickActionGroup = () => {
       id: '1',
       label: 'Sent',
       icon: <ArrowUp color={iconColor} />,
-      onPress: () => {
-        console.log('Sent');
-      },
+      onPress: () => {},
     },
     {
       id: '2',
       label: 'Receive',
       icon: <ArrowDown color={iconColor} />,
-      onPress: () => {
-        console.log('Receive');
-      },
+      onPress: () => {},
     },
     {
       id: '3',
       label: 'Loan',
       icon: <CircleDollarSign color={iconColor} />,
-      onPress: () => {
-        console.log('Receive');
-      },
+      onPress: () => {},
     },
     {
       id: '4',
       label: 'Topup',
       icon: <CloudUpload color={iconColor} />,
-      onPress: () => {
-        console.log('Topup');
-      },
+      onPress: () => {},
     },
   ];
 
