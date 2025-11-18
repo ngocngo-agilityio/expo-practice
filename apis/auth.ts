@@ -1,5 +1,4 @@
 import { useMutation } from '@tanstack/react-query';
-import { useShallow } from 'zustand/react/shallow';
 
 // Constants
 import { API_PATH, SECURE_KEYS } from '@/constants';
@@ -17,9 +16,7 @@ import { useAuthStore } from '@/stores';
 import { setSecureItem } from '@/utils';
 
 export const useAuth = <TAuthPayload>(apiPath: string) => {
-  const [setAuthenticated, setUser] = useAuthStore(
-    useShallow(state => [state.setAuthenticated, state.setUser]),
-  );
+  const setUser = useAuthStore(state => state.setUser);
 
   const { error, ...rest } = useMutation<TAuthResponse, string, TAuthPayload>({
     mutationFn: payload => post(apiPath, payload),
@@ -27,14 +24,12 @@ export const useAuth = <TAuthPayload>(apiPath: string) => {
       const { user, accessToken } = res;
 
       setUser(user);
-      setAuthenticated(true);
       await setSecureItem(SECURE_KEYS.ACCESS_TOKEN, accessToken);
     },
   });
 
   return { ...rest, error: error };
 };
-
 export const useAuthSignUp = () => useAuth<TSignUpPayload>(API_PATH.SIGNUP);
 
 export const useAuthLogin = () => useAuth<TLoginPayload>(API_PATH.LOGIN);

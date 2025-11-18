@@ -9,7 +9,7 @@ import { API_PATH, QUERY_KEY } from '@/constants';
 import { get, post } from '@/services';
 
 // Types
-import { TCardByUserRes, TCreateCardPayload } from '@/types';
+import { TCardByUserRes, TCreateCardPayload, TCreateCardRes } from '@/types';
 
 export const useGetCardsByUserId = (userId: string) => {
   const {
@@ -28,14 +28,19 @@ export const useGetCardsByUserId = (userId: string) => {
   };
 };
 
-export const useCreateNewCard = (payload: TCreateCardPayload) => {
+export const useCreateNewCard = () => {
   const queryClient = useQueryClient();
 
-  const { error, ...rest } = useMutation({
-    mutationFn: payload => post(API_PATH.CREATE_CARD, payload),
-    onSuccess: _ => {
+  const { error, ...rest } = useMutation<
+    TCreateCardRes,
+    string,
+    TCreateCardPayload
+  >({
+    mutationFn: (payload: TCreateCardPayload) =>
+      post(API_PATH.CREATE_CARD, payload),
+    onSuccess: (_, variables) => {
       queryClient.invalidateQueries({
-        queryKey: QUERY_KEY.CARD_BY_USER_ID(payload.userId),
+        queryKey: QUERY_KEY.CARD_BY_USER_ID(variables.userId),
       });
     },
   });

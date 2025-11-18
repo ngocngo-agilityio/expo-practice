@@ -23,8 +23,6 @@ import { SearchIcon } from '@/components/icons';
 // Constants
 import { ROUTES, ThemeScheme, USER_DEFAULT_AVATAR } from '@/constants';
 
-// Mock data
-
 // Themes
 import { BASE_COLORS, colors, fontFamilies } from '@/themes';
 
@@ -32,7 +30,7 @@ import { BASE_COLORS, colors, fontFamilies } from '@/themes';
 import { TThemeScheme } from '@/types';
 
 // Stores
-import { useAuthStore } from '@/stores';
+import { useAccountStore, useAuthStore } from '@/stores';
 
 // Apis
 import { useGetCardsByUserId, useGetTransactions } from '@/apis';
@@ -44,6 +42,7 @@ export default function HomeScreen() {
 
   // Stores
   const user = useAuthStore(state => state.user);
+  const accountId = useAccountStore(state => state.accountId);
 
   const { fullName = '', avatar = USER_DEFAULT_AVATAR, id = '' } = user || {};
 
@@ -51,10 +50,14 @@ export default function HomeScreen() {
   const { data: cardsByUserId, isFetching: isFetchingCardsByUserId } =
     useGetCardsByUserId(id);
 
-  // TODO:
-  const accountId = '1';
-  const { data: transactions, isFetching: isFetchingTransactions } =
-    useGetTransactions(accountId);
+  const {
+    data: transactions,
+    isFetching: isFetchingTransactions,
+    error: transactionError,
+  } = useGetTransactions(accountId ?? '');
+
+  console.log('transactionError', transactionError);
+  console.log('transactions___', transactions);
 
   const card = cardsByUserId?.[0]?.cards?.[0];
 

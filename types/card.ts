@@ -12,3 +12,5 @@ export type TCard = {
 export type TCardByUserRes = { cards: TCard[] }[];
 
 export type TCreateCardPayload = { fullName: string; userId: string };
+
+export type TCreateCardRes = { card: TCard };

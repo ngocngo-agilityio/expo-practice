@@ -26,10 +26,16 @@ import { useErrorAPI } from '@/hooks';
 // APIs
 import { useAuthLogin } from '@/apis';
 
+// Stores
+import { useAuthStore } from '@/stores';
+
 export default function LoginPage() {
   const scheme = useColorScheme() ?? ThemeScheme.Light;
   const styles = createStyles(scheme);
   const router = useRouter();
+
+  // Stores
+  const setAuthenticated = useAuthStore(state => state.setAuthenticated);
 
   // Apis
   const { error: errorLogin, mutate: login, isPending } = useAuthLogin();
@@ -44,14 +50,16 @@ export default function LoginPage() {
     Toast.show({ type: 'error', text1: error });
   };
 
+  const handleLoginSuccess = () => {
+    setAuthenticated(true);
+  };
+
   const handleSubmit = (data: TSignInFormData) => {
     Keyboard.dismiss();
 
     login(
       { ...data },
-      {
-        onError: handleLoginFailed,
-      },
+      { onSuccess: handleLoginSuccess, onError: handleLoginFailed },
     );
   };
 

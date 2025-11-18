@@ -12,7 +12,12 @@ import {
 } from '@/components';
 
 // Types
-import { TAuthResponse, TSignUpFormData, TThemeScheme } from '@/types';
+import {
+  TAuthResponse,
+  TCreateCardRes,
+  TSignUpFormData,
+  TThemeScheme,
+} from '@/types';
 
 // Constants
 import { ROUTES, SUCCESS_MESSAGES, ThemeScheme } from '@/constants';
@@ -21,18 +26,27 @@ import { ROUTES, SUCCESS_MESSAGES, ThemeScheme } from '@/constants';
 import { colors, fontFamilies } from '@/themes';
 
 // Apis
-import { useAuthSignUp } from '@/apis';
+import { useAuthSignUp, useCreateNewCard } from '@/apis';
 
 // Hooks
 import { useErrorAPI } from '@/hooks';
+
+// Stores
+import { useAccountStore, useAuthStore } from '@/stores';
 
 export default function SignUpPage() {
   const scheme = useColorScheme() ?? ThemeScheme.Light;
   const styles = createStyles(scheme);
   const router = useRouter();
 
+  // Stores
+  const setAuthenticated = useAuthStore(state => state.setAuthenticated);
+  const setAccountId = useAccountStore(state => state.setAccountId);
+
   // Apis
   const { error: errorSignUp, mutate: signup, isPending } = useAuthSignUp();
+  const { mutate: createCard, isPending: isPendingCreateCard } =
+    useCreateNewCard();
 
   const { errorAPI, clearErrorAPI } = useErrorAPI(errorSignUp || '');
 
@@ -40,24 +54,43 @@ export default function SignUpPage() {
     router.push(ROUTES.LOGIN);
   };
 
-  const handleSignUpFailed = (error: string): void => {
+  const handleFailed = (error: string): void => {
     Toast.show({ type: 'error', text1: error });
   };
 
-  // TODO: Update later - Call api create card
-  const handleSignUpSuccess = (data: TAuthResponse) => {
+  const handleCreateCardSuccess = (data: TCreateCardRes) => {
+    const { card } = data;
+    const { accountId } = card || {};
+
+    setAccountId(accountId);
+    setAuthenticated(true);
+
     Toast.show({
       type: 'success',
       text1: SUCCESS_MESSAGES.SIGN_UP,
     });
   };
 
+  const handleSignUpSuccess = (data: TAuthResponse) => {
+    // Call API to create card
+    const { user } = data;
+    const { id: userId, fullName } = user || {};
+
+    createCard(
+      { userId, fullName },
+      {
+        onSuccess: handleCreateCardSuccess,
+        onError: handleFailed,
+      },
+    );
+  };
+
   const handleSubmit = (data: TSignUpFormData) => {
     signup(
       { ...data },
       {
-        onSuccess: data => handleSignUpSuccess,
-        onError: handleSignUpFailed,
+        onSuccess: handleSignUpSuccess,
+        onError: handleFailed,
       },
     );
   };
@@ -74,7 +107,7 @@ export default function SignUpPage() {
             <SignUpForm
               errorAPI={errorAPI}
               clearErrorAPI={clearErrorAPI}
-              isSubmitting={isPending}
+              isSubmitting={isPending || isPendingCreateCard}
               onSubmit={handleSubmit}
               onNavigateSignIn={handleNavigateLogin}
             />
