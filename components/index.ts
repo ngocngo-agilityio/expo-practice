@@ -16,3 +16,4 @@ export { default as Text } from './Text';
 export { default as TransactionItem } from './TransactionItem';
 export { default as TransactionList } from './TransactionList';
 export { default as VirtualCard } from './VirtualCard';
+export { default as VirtualCardSkeleton } from './VirtualCard/VirtualCardSkeleton';
