@@ -8,8 +8,10 @@ export const ERROR_MESSAGES = {
     'Request failed with error. Please help contact team to identify issue.',
   JWT_EXPIRED: 'jwt expired',
   PHONE_NUMBER_PARSE_ERROR: 'Unable to parse phone number.',
+  BIRTHDATE: 'Birth Date must be in the past.',
 };
 
 export const SUCCESS_MESSAGES = {
   SIGN_UP: 'Your account has been successfully registered.',
+  UPDATE_PROFILE: 'Update your profile successfully.',
 };

@@ -13,7 +13,7 @@ import {
 } from '@/components';
 
 // Types
-import { TAuthResponse, TSignInFormData, TThemeScheme } from '@/types';
+import { TSignInFormData, TThemeScheme } from '@/types';
 
 // Constants
 import { ROUTES, ThemeScheme } from '@/constants';
@@ -58,11 +58,11 @@ export default function LoginPage() {
     Toast.show({ type: 'error', text1: error });
   };
 
-  const handleLoginSuccess = async (data: TAuthResponse) => {
-    const res = await getUserInfo();
-    const { account } = res.data?.data || {};
-    const { id = '' } = account || {};
-    setAccountId(id);
+  const handleLoginSuccess = async () => {
+    const result = await getUserInfo();
+    const data = result.data;
+    const accountId = data?.account?.id || '';
+    setAccountId(accountId);
     setAuthenticated(true);
   };
 

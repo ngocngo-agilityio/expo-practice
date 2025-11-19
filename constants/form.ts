@@ -74,5 +74,19 @@ export const EDIT_PROFILE_VALIDATION_RULES = {
       message: ERROR_MESSAGES.FIELD_INVALID('Email'),
     },
   },
-  birthDate: { required: ERROR_MESSAGES.FIELD_REQUIRED('Birth Date') },
+  birthDate: {
+    required: ERROR_MESSAGES.FIELD_REQUIRED('Birth Date'),
+    validate: (value: Date | undefined) => {
+      if (!value) return ERROR_MESSAGES.FIELD_REQUIRED('Birth Date');
+
+      const today = new Date();
+      const selected = new Date(value);
+
+      if (selected >= today) {
+        return ERROR_MESSAGES.BIRTHDATE;
+      }
+
+      return true;
+    },
+  },
 };
