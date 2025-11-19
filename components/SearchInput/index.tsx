@@ -72,7 +72,6 @@ const SearchInput = ({
         placeholderTextColor={colors.placeholderText}
         onChangeText={setSearchQuery}
         value={searchQuery}
-        autoFocus
         accessibilityRole="search"
         accessibilityLabel={accessibilityLabel}
         accessibilityHint={accessibilityHint}

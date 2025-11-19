@@ -7,20 +7,26 @@ import { LoadingIndicator, Text, TransactionItem } from '@/components';
 // Types
 import { TTransactionItem } from '@/types';
 
-// Styles
+// Constants
 import { USER_DEFAULT_AVATAR } from '@/constants';
+
+// Styles
 import { styles } from './styles';
 
 type TTransactionListProps = {
   data: TTransactionItem[];
-  isLoading?: boolean;
+  isFetchingNextPage?: boolean;
   onLoadMore?: () => void;
+  isRefetching?: boolean;
+  onRefresh?: () => void;
 };
 
 const TransactionList = ({
   data,
-  isLoading = false,
+  isFetchingNextPage = false,
   onLoadMore,
+  isRefetching = false,
+  onRefresh,
 }: TTransactionListProps) => {
   const getKeyExtractor = (item: TTransactionItem) => {
     const { id } = item || {};
@@ -51,8 +57,10 @@ const TransactionList = ({
       keyExtractor={getKeyExtractor}
       showsVerticalScrollIndicator={false}
       onEndReached={onLoadMore}
-      onEndReachedThreshold={0.5}
-      ListFooterComponent={isLoading ? <LoadingIndicator /> : null}
+      onEndReachedThreshold={0.3}
+      refreshing={isRefetching}
+      onRefresh={onRefresh}
+      ListFooterComponent={isFetchingNextPage ? <LoadingIndicator /> : null}
       keyboardShouldPersistTaps="handled"
       ListEmptyComponent={
         <Text style={styles.noItems}>No transactions in list</Text>

@@ -13,6 +13,8 @@ import { ThemeScheme } from '@/constants';
 
 // Styles
 import { createTransactionItemStyle } from './styles';
+// Themes
+import { BASE_COLORS } from '@/themes';
 
 export type TTransactionItemProps = {
   avatar: string;
@@ -48,7 +50,12 @@ const TransactionItem = ({
         </View>
       </View>
 
-      <Text size="base" style={styles.amount}>
+      <Text
+        size="base"
+        style={[
+          styles.amount,
+          amount > 0 && { color: BASE_COLORS.blueRibbon },
+        ]}>
         {formattedAmount}
       </Text>
     </View>

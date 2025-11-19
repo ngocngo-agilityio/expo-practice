@@ -13,10 +13,13 @@ export const API_PATH = {
 
 export const QUERY_KEY = {
   CARD_BY_USER_ID: (userId: string) => ['card', 'byUserId', userId],
-  TRANSACTIONS_BY_ACCOUNT: (accountId: string) => [
-    'accounts',
+  TRANSACTIONS_BY_ACCOUNT: (accountId: string, limit: number) => [
     'transactions',
-    accountId,
+    { accountId, limit },
+  ],
+  TRANSACTIONS_BY_ACCOUNT_INFINITY: (accountId: string, limit: number) => [
+    'transactions-infinity',
+    { accountId, limit },
   ],
   USER_BY_ID: (id: string) => ['me', id],
 };
