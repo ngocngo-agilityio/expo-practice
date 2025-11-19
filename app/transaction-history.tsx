@@ -39,7 +39,6 @@ import { useAccountStore } from '@/stores';
 import { useGetTransactionsInfinite } from '@/apis';
 
 export default function TransactionHistoryScreen() {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [searchValue, setSearchValue] = useState('');
 
   const theme = useColorScheme() ?? ThemeScheme.Light;
@@ -57,7 +56,7 @@ export default function TransactionHistoryScreen() {
     fetchNextPage,
     refetch,
     isRefetching,
-  } = useGetTransactionsInfinite(accountId || '');
+  } = useGetTransactionsInfinite(accountId || '', searchValue);
 
   const queryClient = useQueryClient();
 
@@ -65,6 +64,7 @@ export default function TransactionHistoryScreen() {
     await queryClient.removeQueries({
       queryKey: QUERY_KEY.TRANSACTIONS_BY_ACCOUNT_INFINITY(
         accountId ?? '',
+        searchValue,
         INFINITY_TRANSACTION_LIMIT,
       ),
     });

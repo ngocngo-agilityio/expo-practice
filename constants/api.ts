@@ -17,9 +17,10 @@ export const QUERY_KEY = {
     'transactions',
     { accountId, limit },
   ],
-  TRANSACTIONS_BY_ACCOUNT_INFINITY: (accountId: string, limit: number) => [
-    'transactions-infinity',
-    { accountId, limit },
-  ],
+  TRANSACTIONS_BY_ACCOUNT_INFINITY: (
+    accountId: string,
+    searchValue: string,
+    limit: number,
+  ) => ['transactions-infinity', { accountId, limit, searchValue }],
   USER_BY_ID: (id: string) => ['me', id],
 };

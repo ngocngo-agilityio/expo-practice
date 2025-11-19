@@ -45,6 +45,7 @@ export const useGetTransactions = (
 
 export const useGetTransactionsInfinite = (
   accountId: string,
+  searchValue = '',
   limit = INFINITY_TRANSACTION_LIMIT,
 ) => {
   const {
@@ -56,10 +57,15 @@ export const useGetTransactionsInfinite = (
     ...rest
   } = useInfiniteQuery<AxiosResponse<TTransactionRes>, string>({
     initialPageParam: DEFAULT_PAGE,
-    queryKey: QUERY_KEY.TRANSACTIONS_BY_ACCOUNT_INFINITY(accountId, limit),
+    queryKey: QUERY_KEY.TRANSACTIONS_BY_ACCOUNT_INFINITY(
+      accountId,
+      searchValue,
+      limit,
+    ),
     queryFn: async ({ pageParam }) => {
       const configs = {
         params: {
+          fullName: searchValue,
           page: pageParam,
           limit,
         },
