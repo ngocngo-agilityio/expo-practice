@@ -4,10 +4,13 @@ export type TUser = {
   password: string;
   fullName: string;
   phoneNumber: string;
-  avatar: string;
+  avatar?: string;
+  birthDate?: Date;
 };
 
 export type UserInfoRes = {
   user: Omit<TUser, 'password'>;
   account: { id: string };
 };
+
+export type TUpdateProfilePayload = Partial<TUser>;

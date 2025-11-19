@@ -9,6 +9,7 @@ export const API_PATH = {
   TRANSACTIONS_BY_ACCOUNT: (accountId: string) =>
     `/accounts/${accountId}/transactions`,
   USER_BY_ID: (id: string) => `/me/${id}`,
+  UPDATE_PROFILE: (id: string) => `/users/${id}`,
 };
 
 export const QUERY_KEY = {

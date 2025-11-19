@@ -1,8 +1,14 @@
+import { useEffect } from 'react';
 import { StyleSheet, useColorScheme, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import Toast from 'react-native-toast-message';
 
 // Constants
-import { ThemeScheme } from '@/constants';
+import {
+  SUCCESS_MESSAGES,
+  ThemeScheme,
+  USER_DEFAULT_AVATAR,
+} from '@/constants';
 
 // Types
 import { TEditProfileData, TThemeScheme } from '@/types';
@@ -12,39 +18,103 @@ import {
   AppHeader,
   EditProfileForm,
   KeyboardAwareScrollView,
+  LoadingIndicator,
 } from '@/components';
 
 // Themes
 import { colors } from '@/themes';
 
+// Apis
+import { useGetUserInfo, useUpdateProfile } from '@/apis';
+
+// Stores
+import { useAuthStore } from '@/stores';
+
+// Hooks
+import { useErrorAPI } from '@/hooks';
+
 export default function EditProfileScreen() {
   const theme = useColorScheme() ?? ThemeScheme.Light;
   const styles = createStyles(theme);
 
+  // Stores
+  const user = useAuthStore(state => state.user);
+
+  const userId = user?.id ?? '';
+
+  // Apis
+  const { data: profile, isFetching, error } = useGetUserInfo(userId);
+  const {
+    mutate: updateProfile,
+    error: updateProfileError,
+    isPending,
+  } = useUpdateProfile(userId);
+
+  const { errorAPI, clearErrorAPI } = useErrorAPI(updateProfileError ?? '');
+
+  const { user: userProfile } = profile || {};
+  const {
+    avatar = USER_DEFAULT_AVATAR,
+    email = '',
+    phoneNumber = '',
+    birthDate = new Date(),
+    fullName = '',
+  } = userProfile || {};
+
+  useEffect(() => {
+    if (error) {
+      Toast.show({
+        type: 'error',
+        text1: error,
+      });
+    }
+  }, [error]);
+
+  const handleUpdateFailed = (error: string): void => {
+    Toast.show({ type: 'error', text1: error });
+  };
+
+  const handleUpdateSuccess = (): void => {
+    Toast.show({ type: 'success', text1: SUCCESS_MESSAGES.UPDATE_PROFILE });
+  };
+
+  const handleUpdateProfile = (data: TEditProfileData) => {
+    updateProfile(
+      { ...data },
+      {
+        onSuccess: handleUpdateSuccess,
+        onError: handleUpdateFailed,
+      },
+    );
+  };
+
   return (
     <View style={styles.container}>
       <SafeAreaView>
-        <KeyboardAwareScrollView contentContainerStyle={styles.scrollContainer}>
-          <AppHeader title="Edit Profile" />
+        {isFetching ? (
+          <LoadingIndicator />
+        ) : (
+          <KeyboardAwareScrollView
+            contentContainerStyle={styles.scrollContainer}>
+            {isPending && <LoadingIndicator />}
+            <AppHeader title="Edit Profile" />
 
-          <View style={styles.content}>
-            <EditProfileForm
-              avatar="https://sm.ign.com/t/ign_pk/cover/a/avatar-gen/avatar-generations_rpge.600.jpg"
-              fullName="Nguyen Van A"
-              email="a@gmail.com"
-              phoneNumber="+840364675651"
-              birthDate={new Date('12-10-1999')}
-              position="Senior Designer"
-              startAt={new Date('23-4-2024')}
-              onSubmit={(data: TEditProfileData) => console.log('data', data)}
-              isSubmitting={false}
-              clearErrorAPI={() => {
-                console.log('clearErrorAPI');
-              }}
-              errorAPI=""
-            />
-          </View>
-        </KeyboardAwareScrollView>
+            <View style={styles.content}>
+              <EditProfileForm
+                avatar={avatar}
+                fullName={fullName}
+                email={email}
+                phoneNumber={phoneNumber}
+                birthDate={new Date(birthDate)}
+                position="Senior Designer"
+                startAt={new Date('2024-04-13')}
+                onSubmit={handleUpdateProfile}
+                clearErrorAPI={clearErrorAPI}
+                errorAPI={errorAPI}
+              />
+            </View>
+          </KeyboardAwareScrollView>
+        )}
       </SafeAreaView>
     </View>
   );

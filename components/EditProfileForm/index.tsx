@@ -7,11 +7,7 @@ import { TextInput, useColorScheme, View } from 'react-native';
 import { createEditProfileStyles } from './styles';
 
 // Constants
-import {
-  COUNTRY_CODE,
-  EDIT_PROFILE_VALIDATION_RULES,
-  ThemeScheme,
-} from '@/constants';
+import { EDIT_PROFILE_VALIDATION_RULES, ThemeScheme } from '@/constants';
 
 // Types
 import { TEditProfileData } from '@/types';
@@ -46,7 +42,7 @@ const EditProfileForm = ({
   avatar = '',
   fullName = '',
   email = '',
-  phoneNumber = COUNTRY_CODE,
+  phoneNumber = '',
   birthDate,
   position,
   startAt,
@@ -127,7 +123,7 @@ const EditProfileForm = ({
             }}
             error={error?.message}
             returnKeyType="next"
-            onSubmitEditing={() => emailInputRef.current?.focus()}
+            onSubmitEditing={() => phoneNumberInputRef.current?.focus()}
           />
         )}
       />
@@ -140,6 +136,7 @@ const EditProfileForm = ({
           <Input
             {...rest}
             ref={emailInputRef}
+            editable={false}
             label="Email Address"
             leftIcon={<MailIcon />}
             onChangeText={(value: string) => {
@@ -181,6 +178,8 @@ const EditProfileForm = ({
           <DatePicker
             {...rest}
             ref={birthDateInputRef}
+            defaultValue={birthDate}
+            label="Birth Date"
             onChange={(value: Date) => {
               handleOnChange('birthDate');
               onChange(value);
