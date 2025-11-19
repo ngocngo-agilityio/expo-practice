@@ -55,12 +55,13 @@ export default function HomeScreen() {
   } = useGetCardsByUserId(id);
 
   const {
-    data: transactions,
+    data: transactionsData,
     isFetching: isFetchingTransactions,
     error: transactionError,
   } = useGetTransactions(accountId ?? '');
 
   const card = cardsByUserId?.[0]?.cards?.[0];
+  const { transactions = [] } = transactionsData || {};
 
   const {
     cardNumber = '',
@@ -79,7 +80,7 @@ export default function HomeScreen() {
     if (cardError || transactionError) {
       Toast.show({
         type: 'error',
-        text1: `${cardError} ${cardError}`,
+        text1: `${cardError} ${transactionError}`,
       });
     }
   }, [cardError, transactionError]);

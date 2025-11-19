@@ -11,11 +11,8 @@ export type TTransactionItem = {
 };
 
 export type TTransactionRes = {
-  id: string;
-  fromAccountId: string;
-  toAccountId: string;
-  amount: number;
-  transactionDate: string;
-  transactionType: string;
-  relatedUser: Omit<TUser, 'password'>;
-}[];
+  transactions: TTransactionItem[];
+  totalPages: number;
+  page: number;
+  limit: number;
+};
