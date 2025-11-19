@@ -9,6 +9,7 @@ export const ERROR_MESSAGES = {
   JWT_EXPIRED: 'jwt expired',
   PHONE_NUMBER_PARSE_ERROR: 'Unable to parse phone number.',
   BIRTHDATE: 'Birth Date must be in the past.',
+  UPLOAD_IMAGE: 'Failed to upload image.',
 };
 
 export const SUCCESS_MESSAGES = {

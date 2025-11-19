@@ -5,6 +5,7 @@ import Toast from 'react-native-toast-message';
 
 // Constants
 import {
+  ERROR_MESSAGES,
   SUCCESS_MESSAGES,
   ThemeScheme,
   USER_DEFAULT_AVATAR,
@@ -25,7 +26,7 @@ import {
 import { colors } from '@/themes';
 
 // Apis
-import { useGetUserInfo, useUpdateProfile } from '@/apis';
+import { uploadToCloudinary, useGetUserInfo, useUpdateProfile } from '@/apis';
 
 // Stores
 import { useAuthStore } from '@/stores';
@@ -44,11 +45,8 @@ export default function EditProfileScreen() {
 
   // Apis
   const { data: profile, isFetching, error } = useGetUserInfo(userId);
-  const {
-    mutate: updateProfile,
-    error: updateProfileError,
-    isPending,
-  } = useUpdateProfile(userId);
+  const { mutate: updateProfile, error: updateProfileError } =
+    useUpdateProfile(userId);
 
   const { errorAPI, clearErrorAPI } = useErrorAPI(updateProfileError ?? '');
 
@@ -78,25 +76,46 @@ export default function EditProfileScreen() {
     Toast.show({ type: 'success', text1: SUCCESS_MESSAGES.UPDATE_PROFILE });
   };
 
-  const handleUpdateProfile = (data: TEditProfileData) => {
-    updateProfile(
-      { ...data },
-      {
-        onSuccess: handleUpdateSuccess,
-        onError: handleUpdateFailed,
-      },
-    );
+  const handleUpdateProfile = async (data: TEditProfileData) => {
+    try {
+      let avatarUrl = data.avatar;
+
+      // Check if avatar is from device (local URI)
+      const isLocalImage =
+        data.avatar &&
+        !data.avatar.startsWith('http://') &&
+        !data.avatar.startsWith('https://');
+
+      if (isLocalImage) {
+        // Upload image to Cloudinary first
+        avatarUrl = await uploadToCloudinary(data.avatar || '');
+      }
+
+      // Update profile with the avatar URL
+      updateProfile(
+        { ...data, avatar: avatarUrl },
+        {
+          onSuccess: handleUpdateSuccess,
+          onError: handleUpdateFailed,
+        },
+      );
+    } catch (error) {
+      // Handle upload error
+      const errorMessage =
+        typeof error === 'string' ? error : ERROR_MESSAGES.UPLOAD_IMAGE;
+      handleUpdateFailed(errorMessage);
+    }
   };
 
   return (
     <View style={styles.container}>
-      <SafeAreaView>
+      <SafeAreaView style={{ flex: 1 }}>
         {isFetching ? (
           <LoadingIndicator />
         ) : (
           <KeyboardAwareScrollView
             contentContainerStyle={styles.scrollContainer}>
-            {isPending && <LoadingIndicator />}
+            {/* {isPending && <LoadingIndicator />} */}
             <AppHeader title="Edit Profile" />
 
             <View style={styles.content}>

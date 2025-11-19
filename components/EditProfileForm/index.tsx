@@ -33,7 +33,6 @@ export type TEditProfileFormProps = {
   position: string;
   startAt: Date;
   onSubmit: (data: TEditProfileData) => void;
-  isSubmitting?: boolean;
   clearErrorAPI?: () => void;
   errorAPI?: string;
 };
@@ -47,7 +46,6 @@ const EditProfileForm = ({
   position,
   startAt,
   onSubmit,
-  isSubmitting = false,
   clearErrorAPI,
   errorAPI = '',
 }: TEditProfileFormProps) => {
@@ -63,7 +61,7 @@ const EditProfileForm = ({
     control,
     handleSubmit,
     clearErrors,
-    formState: { isDirty },
+    formState: { isDirty, isSubmitting },
   } = useForm<TEditProfileData>({
     mode: 'onBlur',
     reValidateMode: 'onBlur',
