@@ -1,9 +1,11 @@
 import React, { forwardRef, memo, useCallback, useState } from 'react';
 import {
+  StyleProp,
   TextInput,
   TouchableOpacity,
   useColorScheme,
   View,
+  ViewStyle,
 } from 'react-native';
 
 // Components
@@ -18,13 +20,20 @@ import { createAmountInputStyles } from './styles';
 type TAmountInputProps = {
   defaultValue?: string;
   currency?: string;
+  containerStyles?: StyleProp<ViewStyle>;
   onChange: (value: string) => void;
   onChangeCurrency: () => void;
 };
 
 const AmountInput = forwardRef<TextInput, TAmountInputProps>(
   (
-    { defaultValue = '', currency = 'USD', onChange, onChangeCurrency },
+    {
+      defaultValue = '',
+      currency = 'USD',
+      containerStyles,
+      onChange,
+      onChangeCurrency,
+    },
     ref,
   ) => {
     const [internalValue, setInternalValue] = useState(defaultValue);
@@ -41,7 +50,7 @@ const AmountInput = forwardRef<TextInput, TAmountInputProps>(
     );
 
     return (
-      <View style={styles.container}>
+      <View style={[styles.container, containerStyles]}>
         {/* Header */}
         <View style={styles.headerRow}>
           <Text style={styles.label}>Enter Your Amount</Text>

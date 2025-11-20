@@ -5,4 +5,5 @@ export const ROUTES = {
   PROFILE: '/(tabs)/profile',
   TRANSACTION_HISTORY: '/transaction-history',
   EDIT_PROFILE: '/edit-profile',
+  SEND_MONEY: '/send-money',
 } as const;

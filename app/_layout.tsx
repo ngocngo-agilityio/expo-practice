@@ -49,6 +49,7 @@ export default function RootLayout() {
         <Stack.Screen name="(tabs)" />
         <Stack.Screen name="transaction-history" />
         <Stack.Screen name="edit-profile" />
+        <Stack.Screen name="send-money" />
       </Stack>
       <Toast />
     </QueryClientProvider>

@@ -12,6 +12,7 @@ export { default as LockIcon } from './Lock';
 export { default as MailIcon } from './Mail';
 export { default as PhoneIcon } from './Phone';
 export { default as PieChartIcon } from './PieChart';
+export { default as PlusIcon } from './Plus';
 export { default as SearchIcon } from './Search';
 export { default as SettingsIcon } from './Settings';
 export { default as ShowIcon } from './Show';

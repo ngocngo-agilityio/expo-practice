@@ -12,6 +12,7 @@ export { default as PhoneNumberInput } from './PhoneNumberInput';
 export { default as QuickActionGroup } from './QuickActionGroup';
 export { default as QuickActionItem } from './QuickActionItem';
 export { default as SearchInput } from './SearchInput';
+export { default as SendTo } from './SendTo';
 export { default as SignUpForm } from './SignUpForm';
 export { default as SkeletonItem } from './SkeletonItem';
 export { default as Text } from './Text';

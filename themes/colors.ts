@@ -64,6 +64,10 @@ export const colors = {
     amountInputLabel: BASE_COLORS.seriousCloud,
     amountInputCurrency: BASE_COLORS.blueSatin200,
     amountInputText: BASE_COLORS.darkGunmetal,
+    sendToBg: BASE_COLORS.white,
+    sendToBorder: BASE_COLORS.icewindDale,
+    sendToTitle: BASE_COLORS.darkGunmetal,
+    sendToName: BASE_COLORS.darkGunmetal,
   },
   dark: {
     solidBtnTitle: BASE_COLORS.white,
@@ -91,5 +95,9 @@ export const colors = {
     amountInputLabel: BASE_COLORS.blueSatin100,
     amountInputCurrency: BASE_COLORS.blueSatin100,
     amountInputText: BASE_COLORS.white,
+    sendToBg: BASE_COLORS.darkGunmetal,
+    sendToBorder: BASE_COLORS.darkGunmetal,
+    sendToTitle: BASE_COLORS.white,
+    sendToName: BASE_COLORS.white,
   },
 };

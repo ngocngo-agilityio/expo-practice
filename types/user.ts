@@ -14,3 +14,10 @@ export type UserInfoRes = {
 };
 
 export type TUpdateProfilePayload = Partial<TUser>;
+
+export type TRecipient = {
+  id: string;
+  accountId: string;
+  nickName: string;
+  recipientUser: TUser;
+};
