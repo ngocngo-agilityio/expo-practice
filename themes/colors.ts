@@ -16,6 +16,10 @@ export const BASE_COLORS = {
   spinelStoneBlack: '#27273A',
   sleet: '#8B8B94',
   seriousCloud: '#7E848D',
+  neonFuchsia: '#FF3F60',
+  blueSatin100: '#9CB1D1',
+  icewindDale: '#E7EAEE',
+  blueSatin200: '#9BB2D4',
 };
 
 export const colors = {
@@ -33,6 +37,7 @@ export const colors = {
   homeWelcome: BASE_COLORS.seriousCloud,
   modalOverlay: 'rgba(0, 0, 0, 0.3)',
   pickerModalDoneText: BASE_COLORS.blueRibbon,
+  amountInputChangeCurrency: BASE_COLORS.neonFuchsia,
   light: {
     solidBtnTitle: BASE_COLORS.white,
     solidBtnBg: BASE_COLORS.blueRibbon,
@@ -54,6 +59,11 @@ export const colors = {
     homeSearchBg: BASE_COLORS.lighthouse,
     pickerModalIOSContainer: BASE_COLORS.white,
     editProfileName: BASE_COLORS.darkGunmetal,
+    amountInputBg: BASE_COLORS.white,
+    amountInputBorder: BASE_COLORS.icewindDale,
+    amountInputLabel: BASE_COLORS.seriousCloud,
+    amountInputCurrency: BASE_COLORS.blueSatin200,
+    amountInputText: BASE_COLORS.darkGunmetal,
   },
   dark: {
     solidBtnTitle: BASE_COLORS.white,
@@ -76,5 +86,10 @@ export const colors = {
     homeSearchBg: BASE_COLORS.darkGunmetal,
     pickerModalIOSContainer: BASE_COLORS.darkGunmetal,
     editProfileName: BASE_COLORS.white,
+    amountInputBg: BASE_COLORS.darkGunmetal,
+    amountInputBorder: BASE_COLORS.darkGunmetal,
+    amountInputLabel: BASE_COLORS.blueSatin100,
+    amountInputCurrency: BASE_COLORS.blueSatin100,
+    amountInputText: BASE_COLORS.white,
   },
 };
