@@ -1,6 +1,7 @@
 import React, { memo, useCallback, useEffect, useRef } from 'react';
-import { Controller, useForm } from 'react-hook-form';
+import { Controller, useForm, useWatch } from 'react-hook-form';
 import {
+  ActivityIndicator,
   GestureResponderEvent,
   Modal,
   TextInput,
@@ -16,6 +17,12 @@ import { ADD_RECIPIENT_RULES, ThemeScheme } from '@/constants';
 import { Button, Input, KeyboardAwareScrollView, Text } from '@/components';
 import { CloseIcon } from '@/components/icons';
 
+// Themes
+import { colors } from '@/themes';
+
+// Utils
+import { isEnableSubmitButton } from '@/utils';
+
 // Styles
 import { createAddRecipientModalStyles } from './styles';
 
@@ -28,14 +35,23 @@ export type TAddRecipientFormData = {
 type TAddRecipientModalProps = {
   visible: boolean;
   validatedUserFullName?: string;
+  isVerifyLoading?: boolean;
+  cardNumberError?: string;
+  clearErrorAPI: () => void;
   onClose: () => void;
   onValidateCardNumber: (cardNumber: string) => void;
   onSubmit: (data: TAddRecipientFormData) => void;
 };
 
+const REQUIRE_FIELDS = ['cardNumber', 'fullName'];
+const DEFAULT_VALUES = { cardNumber: '', fullName: '', nickName: '' };
+
 const AddRecipientModal = ({
   visible,
   validatedUserFullName,
+  isVerifyLoading = false,
+  cardNumberError = '',
+  clearErrorAPI,
   onClose,
   onValidateCardNumber,
   onSubmit,
@@ -50,18 +66,24 @@ const AddRecipientModal = ({
     reset,
     watch,
     setValue,
+    clearErrors,
   } = useForm<TAddRecipientFormData>({
     mode: 'onBlur',
     reValidateMode: 'onBlur',
-    defaultValues: {
-      cardNumber: '',
-      fullName: '',
-      nickName: '',
-    },
+    defaultValues: DEFAULT_VALUES,
   });
 
   const watchedCardNumber = watch('cardNumber');
+  const values = useWatch({ control });
+  const dirtyItems = (
+    Object.keys(values) as (keyof TAddRecipientFormData)[]
+  ).filter(key => values[key] !== DEFAULT_VALUES[key]);
 
+  const shouldEnable = isEnableSubmitButton(REQUIRE_FIELDS, dirtyItems, errors);
+  const isDisableSubmit =
+    isSubmitting || isVerifyLoading || !!cardNumberError || !shouldEnable;
+
+  const cardNumberInputRef = useRef<TextInput>(null);
   const nickNameInputRef = useRef<TextInput>(null);
 
   const handleCardNumberBlur = useCallback(() => {
@@ -69,7 +91,6 @@ const AddRecipientModal = ({
 
     // Only validate if card number is 16 digits
     if (currentCardNumber && currentCardNumber.length === 16) {
-      console.log('currentCardNumber------', currentCardNumber);
       onValidateCardNumber(currentCardNumber);
     }
   }, [onValidateCardNumber, watchedCardNumber]);
@@ -82,14 +103,18 @@ const AddRecipientModal = ({
   const handleFormSubmit = useCallback(
     (data: TAddRecipientFormData) => {
       onSubmit(data);
-      handleClose();
     },
-    [onSubmit, handleClose],
+    [onSubmit],
   );
 
   const preventClose = useCallback((e: GestureResponderEvent) => {
     e.stopPropagation();
   }, []);
+
+  const handleOnChange = (fieldName: keyof TAddRecipientFormData) => {
+    clearErrors(fieldName);
+    clearErrorAPI && clearErrorAPI();
+  };
 
   useEffect(() => {
     if (validatedUserFullName) {
@@ -134,18 +159,29 @@ const AddRecipientModal = ({
                 }) => (
                   <Input
                     {...rest}
+                    ref={cardNumberInputRef}
                     label="Card Number"
-                    onChangeText={onChange}
+                    onChangeText={(value: string) => {
+                      handleOnChange('cardNumber');
+                      onChange(value);
+                    }}
                     onBlur={() => {
                       onBlur();
                       handleCardNumberBlur();
                     }}
-                    error={error?.message}
+                    error={error?.message || cardNumberError}
                     keyboardType="numeric"
                     maxLength={16}
-                    returnKeyType="next"
-                    editable={!isSubmitting}
-                    // onSubmitEditing={() => nickNameInputRef.current?.focus()}
+                    returnKeyType="done"
+                    editable={!isSubmitting || !isVerifyLoading}
+                    rightIcon={
+                      isVerifyLoading ? (
+                        <ActivityIndicator
+                          size="small"
+                          color={colors.activityIndicator}
+                        />
+                      ) : null
+                    }
                   />
                 )}
               />
@@ -176,7 +212,7 @@ const AddRecipientModal = ({
                     onChangeText={onChange}
                     error={errors.nickName?.message}
                     returnKeyType="done"
-                    editable={!isSubmitting}
+                    editable={!isSubmitting || !isVerifyLoading}
                   />
                 )}
               />
@@ -193,13 +229,7 @@ const AddRecipientModal = ({
               <Button
                 title="Add Recipient"
                 onPress={handleSubmit(handleFormSubmit)}
-                // disabled={
-                //   !dirtyFields.cardNumber ||
-                //   !dirtyFields.fullName ||
-                //   !dirtyFields.nickName ||
-                //   Object.keys(errors).length > 0
-                // }
-                disabled={isSubmitting}
+                disabled={isDisableSubmit}
                 isLoading={isSubmitting}
                 style={styles.submitButton}
               />

@@ -81,7 +81,11 @@ const SendTo = ({
             data={recipients}
             keyExtractor={getKeyExtractor}
             renderItem={({ item }) => {
-              const { id = '', recipientUser, recipientId = '' } = item || {};
+              const {
+                id = '',
+                recipientUser,
+                recipientAccountId = '',
+              } = item || {};
               const { avatar = USER_DEFAULT_AVATAR, fullName = '' } =
                 recipientUser || {};
 
@@ -89,13 +93,14 @@ const SendTo = ({
                 <TouchableOpacity
                   key={id}
                   style={styles.itemWrapper}
-                  onPress={() => onSelect(recipientId)}>
+                  onPress={() => onSelect(recipientAccountId)}>
                   <Image
                     source={{ uri: avatar }}
                     contentFit="cover"
                     style={[
                       styles.avatar,
-                      selectedId === item.recipientId && styles.itemSelected,
+                      selectedId === item.recipientAccountId &&
+                        styles.itemSelected,
                     ]}
                   />
 

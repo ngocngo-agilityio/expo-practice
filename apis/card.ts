@@ -66,8 +66,7 @@ export const useGetUserFromCard = (cardNumber: string) => {
     ...rest
   } = useQuery<AxiosResponse<TFindAccountRes>, string>({
     queryKey: QUERY_KEY.FIND_USER_FROM_CARD(cardNumber),
-    queryFn: () =>
-      get<TFindAccountRes>(API_PATH.FIND_USER_FROM_CARD(), configs),
+    queryFn: () => get<TFindAccountRes>(API_PATH.FIND_USER_FROM_CARD, configs),
     enabled: !!cardNumber,
   });
 

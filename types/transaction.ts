@@ -16,3 +16,11 @@ export type TTransactionRes = {
   page: number;
   limit: number;
 };
+
+export type TSendMoneyPayload = {
+  fromAccountId: string;
+  toAccountId: string;
+  amount: number;
+  // transactionDate: Date;
+  transactionType: string;
+};

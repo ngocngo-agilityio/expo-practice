@@ -1,15 +1,23 @@
 // Libs
-import { useInfiniteQuery } from '@tanstack/react-query';
+import {
+  useInfiniteQuery,
+  useMutation,
+  useQueryClient,
+} from '@tanstack/react-query';
 import { AxiosResponse } from 'axios';
 
 // Constants
 import { API_PATH, DEFAULT_LIMIT, DEFAULT_PAGE, QUERY_KEY } from '@/constants';
 
 // Services
-import { get } from '@/services';
+import { get, post } from '@/services';
 
 // Types
-import { TRecipientsRes } from '@/types';
+import {
+  TCreateRecipientPayload,
+  TCreateRecipientRes,
+  TRecipientsRes,
+} from '@/types';
 
 export const useGetRecipients = (accountId: string, limit = DEFAULT_LIMIT) => {
   const {
@@ -53,4 +61,24 @@ export const useGetRecipients = (accountId: string, limit = DEFAULT_LIMIT) => {
     isFetchingNextPage,
     fetchNextPage,
   };
+};
+
+export const useCreateRecipient = () => {
+  const queryClient = useQueryClient();
+
+  const { error, ...rest } = useMutation<
+    TCreateRecipientRes,
+    string,
+    TCreateRecipientPayload
+  >({
+    mutationFn: (payload: TCreateRecipientPayload) =>
+      post(API_PATH.CREATE_RECIPIENT, payload),
+    onSuccess: (_, variables) => {
+      queryClient.invalidateQueries({
+        queryKey: QUERY_KEY.RECIPIENTS(variables.accountId, DEFAULT_LIMIT),
+      });
+    },
+  });
+
+  return { ...rest, error: error };
 };
