@@ -8,7 +8,7 @@ import { Text, TransactionItem } from '@/components';
 import { TTransactionItem } from '@/types';
 
 // Constants
-import { USER_DEFAULT_AVATAR } from '@/constants';
+import { TRANSACTION_TYPES, USER_DEFAULT_AVATAR } from '@/constants';
 
 // Styles
 import { colors } from '@/themes';
@@ -36,7 +36,11 @@ const TransactionList = ({
   };
 
   const renderItem = ({ item }: ListRenderItemInfo<TTransactionItem>) => {
-    const { transactionType = '', amount = 0, relatedUser } = item || {};
+    const {
+      transactionType = TRANSACTION_TYPES.TRANSFER,
+      amount = 0,
+      relatedUser,
+    } = item || {};
     const { avatar = USER_DEFAULT_AVATAR, fullName } = relatedUser || {};
 
     return (
