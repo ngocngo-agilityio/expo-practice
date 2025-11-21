@@ -15,7 +15,7 @@ export const API_PATH = {
   RECIPIENTS: (accountId: string) => `/accounts/${accountId}/recipients`,
   FIND_USER_FROM_CARD: '/find-account',
   CREATE_RECIPIENT: '/recipients',
-  SEND_MONEY: '/transactions',
+  SEND_MONEY: '/make-transaction',
 };
 
 export const QUERY_KEY = {

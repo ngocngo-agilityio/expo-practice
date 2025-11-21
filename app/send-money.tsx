@@ -20,6 +20,7 @@ import {
   AppHeader,
   Button,
   KeyboardAwareScrollView,
+  LoadingIndicator,
   SendTo,
   VirtualCard,
   VirtualCardSkeleton,
@@ -210,6 +211,7 @@ export default function SendMoneyScreen() {
   return (
     <View style={styles.container}>
       <SafeAreaView style={styles.safeArea}>
+        {isPendingSendMoney ? <LoadingIndicator /> : null}
         <KeyboardAwareScrollView>
           <AppHeader title="Send Money" />
           <View style={styles.content}>
