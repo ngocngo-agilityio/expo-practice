@@ -66,5 +66,9 @@ export const createSendToStyles = (scheme: TThemeScheme) => {
       lineHeight: 15,
       marginTop: 4,
     },
+    noItems: {
+      textAlign: 'center',
+      paddingVertical: 20,
+    },
   });
 };

@@ -90,3 +90,16 @@ export const EDIT_PROFILE_VALIDATION_RULES = {
     },
   },
 };
+
+export const ADD_RECIPIENT_RULES = {
+  cardNumber: {
+    required: ERROR_MESSAGES.FIELD_REQUIRED('CardNumber'),
+    minLength: {
+      value: 16,
+      message: 'Card number must be 16 digits.',
+    },
+  },
+  fullName: {
+    required: ERROR_MESSAGES.FIELD_REQUIRED('FullName'),
+  },
+};

@@ -51,7 +51,7 @@ const Button = ({
         buttonVariants[variant].button,
         buttonSizes[size].button,
         style,
-        { ...(disabled && { opacity: 0.75 }) },
+        { ...(disabled && { opacity: 0.4 }) },
       ]}
       accessibilityRole="button"
       accessibilityLabel={accessibilityLabel || title}

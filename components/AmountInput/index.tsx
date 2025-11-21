@@ -43,8 +43,9 @@ const AmountInput = forwardRef<TextInput, TAmountInputProps>(
 
     const handleOnChange = useCallback(
       (amount: string) => {
-        setInternalValue(amount);
-        onChange?.(amount);
+        const formattedAmount = amount.replace(',', '.');
+        setInternalValue(formattedAmount);
+        onChange?.(formattedAmount);
       },
       [onChange],
     );
@@ -73,6 +74,7 @@ const AmountInput = forwardRef<TextInput, TAmountInputProps>(
             onChangeText={handleOnChange}
             keyboardType="numeric"
             placeholder="0.00"
+            returnKeyType="done"
           />
         </View>
       </View>

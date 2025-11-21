@@ -1,3 +1,4 @@
+export { default as AddRecipientModal } from './AddRecipientModal';
 export { default as AmountInput } from './AmountInput';
 export { default as AppHeader } from './AppHeader';
 export { default as AvatarPicker } from './AvatarPicker';

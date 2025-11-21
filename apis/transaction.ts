@@ -96,3 +96,23 @@ export const useGetTransactionsInfinite = (
     fetchNextPage,
   };
 };
+
+// export const useSendMoney = () => {
+//   const queryClient = useQueryClient();
+
+//   const { error, ...rest } = useMutation<
+//     TCreateCardRes,
+//     string,
+//     TCreateCardPayload
+//   >({
+//     mutationFn: (payload: TCreateCardPayload) =>
+//       post(API_PATH.CREATE_CARD, payload),
+//     onSuccess: (_, variables) => {
+//       queryClient.invalidateQueries({
+//         queryKey: QUERY_KEY.CARD_BY_USER_ID(variables.userId),
+//       });
+//     },
+//   });
+
+//   return { ...rest, error: error };
+// };

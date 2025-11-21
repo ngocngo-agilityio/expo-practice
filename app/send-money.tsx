@@ -1,132 +1,192 @@
+import { useCallback, useEffect, useState } from 'react';
+import { StyleSheet, useColorScheme, View } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import Toast from 'react-native-toast-message';
+
+// Constants
+import { ThemeScheme } from '@/constants';
+
+// Types
+import { TThemeScheme } from '@/types';
+
+// Components
 import {
   AmountInput,
   AppHeader,
   Button,
+  KeyboardAwareScrollView,
+  LoadingIndicator,
   SendTo,
   VirtualCard,
+  VirtualCardSkeleton,
 } from '@/components';
-import { ThemeScheme } from '@/constants';
+import AddRecipientModal, {
+  TAddRecipientFormData,
+} from '@/components/AddRecipientModal';
+
+// Apis
+import {
+  useGetCardsByUserId,
+  useGetRecipients,
+  useGetUserFromCard,
+} from '@/apis';
+
+// Stores
+import { useAccountStore, useAuthStore } from '@/stores';
+
+// Themes
 import { colors } from '@/themes';
-import { TRecipient, TThemeScheme } from '@/types';
-import { useCallback, useState } from 'react';
-import { StyleSheet, useColorScheme, View } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function SendMoneyScreen() {
   const [amount, setAmount] = useState('');
+  const [isModalVisible, setIsModalVisible] = useState(false);
+  const [selectedId, setSelectedId] = useState<string | null>(null);
+  const [recipientCardNumber, setRecipientCardNumber] = useState('');
+
+  console.log('recipientCardNumber__________', recipientCardNumber);
 
   const theme = useColorScheme() ?? ThemeScheme.Light;
   const styles = createStyles(theme);
 
+  // Stores
+  const user = useAuthStore(state => state.user);
+  const accountId = useAccountStore(state => state.accountId) ?? '';
+
+  // Apis
+  const {
+    data: cardsByUserId,
+    error: cardError,
+    isFetching: isFetchingCard,
+  } = useGetCardsByUserId(user?.id ?? '');
+  const {
+    data: userFromCard,
+    isLoading: isLoadingUser,
+    error: userError,
+  } = useGetUserFromCard(recipientCardNumber);
+
+  const { account, user: recipientInfo } = userFromCard || {};
+
+  console.log('account', account);
+  console.log('recipientInfo', recipientInfo);
+
+  const card = cardsByUserId?.[0]?.cards?.[0];
+  const {
+    data: recipients,
+    isLoading: isLoadingRecipients,
+    error: recipientsError,
+    isFetchingNextPage,
+    fetchNextPage,
+  } = useGetRecipients(accountId);
+
+  const {
+    cardNumber = '',
+    cardHolderName = '',
+    expiredDate = '',
+    cardCvv = '',
+    cardType = '',
+    cardLogo = '',
+  } = card || {};
+
+  const isEnabledSubmitBtn = +amount > 0 && !!selectedId;
+
+  const handleValidateCardNumber = useCallback((cardNumber: string) => {
+    setRecipientCardNumber(cardNumber);
+  }, []);
+
+  const handlePressPlusIcon = useCallback(() => {
+    setIsModalVisible(true);
+  }, []);
+
+  const handleCloseModal = useCallback(() => {
+    setIsModalVisible(false);
+  }, []);
+
+  const handleSelectRecipient = useCallback((id: string) => {
+    setSelectedId(id);
+  }, []);
+
+  const handleAddRecipient = useCallback((data: TAddRecipientFormData) => {
+    setIsModalVisible(false);
+
+    // TODO:
+    // Add recipient list tam thoi cho khong cal api
+  }, []);
+
   // TODO:
   const handleSendMoney = useCallback(() => {
     console.log('handleSendMoney');
+    // Call api send money
   }, []);
 
-  console.log('amount------', amount);
+  console.log('amount------', +amount);
 
   // TODO: Update later
   const handleChangeCurrency = useCallback(() => {}, []);
 
-  // mock
-  const MOCK_RECIPIENTS: TRecipient[] = [
-    {
-      id: 'r1',
-      accountId: 'acc_101',
-      nickName: 'Yamilet',
-      recipientUser: {
-        id: 'u101',
-        email: 'yamilet@example.com',
-        password: 'hashed_password',
-        fullName: 'Soriano',
-        phoneNumber: '0901000001',
-        avatar: 'https://i.pravatar.cc/150?img=1',
-        birthDate: new Date('1997-04-10'),
-      },
-    },
-    {
-      id: 'r2',
-      accountId: 'acc_102',
-      nickName: 'Alexa',
-      recipientUser: {
-        id: 'u102',
-        email: 'alexa@example.com',
-        password: 'hashed_password',
-        fullName: 'Alexa Williams',
-        phoneNumber: '0901000002',
-        avatar: 'https://i.pravatar.cc/150?img=2',
-        birthDate: new Date('1995-08-12'),
-      },
-    },
-    {
-      id: 'r3',
-      accountId: 'acc_103',
-      nickName: 'Yakub',
-      recipientUser: {
-        id: 'u103',
-        email: 'yakub@example.com',
-        password: 'hashed_password',
-        fullName: 'Yakub Harris',
-        phoneNumber: '0901000003',
-        avatar: 'https://i.pravatar.cc/150?img=3',
-        birthDate: new Date('1993-12-02'),
-      },
-    },
-    {
-      id: 'r4',
-      accountId: 'acc_104',
-      nickName: 'Krishna',
-      recipientUser: {
-        id: 'u104',
-        email: 'krishna@example.com',
-        password: 'hashed_password',
-        fullName: 'Krishna Patel',
-        phoneNumber: '0901000004',
-        avatar: 'https://i.pravatar.cc/150?img=4',
-        birthDate: new Date('1990-03-15'),
-      },
-    },
-  ];
+  useEffect(() => {
+    if (cardError || recipientsError || userError) {
+      Toast.show({
+        type: 'error',
+        text1: `${cardError} ${recipientsError} ${userError}`,
+      });
+    }
+  }, [cardError, recipientsError, userError]);
+
+  console.log('isLoadingUser==================', isLoadingUser);
 
   return (
     <View style={styles.container}>
+      {isLoadingUser ? <LoadingIndicator /> : null}
       <SafeAreaView style={styles.safeArea}>
-        <AppHeader title="Send Money" />
-        <View style={styles.content}>
-          <View>
-            <VirtualCard
-              cardNumber={'4562112245957852'}
-              holderName={'Ngoc Ngo Thi'}
-              expiry={'24/2000'}
-              cvv={'6986'}
-              brandLogo={
-                'https://firebasestorage.googleapis.com/v0/b/ecommerce-fashion-16e2e.appspot.com/o/bankpick%2Fmastercard-logo.svg?alt=media&token=77966e12-2b8f-43d0-98cf-4b787efe7d64'
-              }
-              brandName={'Mastercard'}
+        <KeyboardAwareScrollView>
+          <AppHeader title="Send Money" />
+          <View style={styles.content}>
+            <View>
+              {isFetchingCard ? (
+                <VirtualCardSkeleton />
+              ) : (
+                <VirtualCard
+                  cardNumber={cardNumber}
+                  holderName={cardHolderName}
+                  expiry={expiredDate}
+                  cvv={cardCvv}
+                  brandLogo={cardLogo}
+                  brandName={cardType}
+                />
+              )}
+
+              <SendTo
+                containerStyles={{ marginTop: 31 }}
+                isLoading={isLoadingRecipients}
+                recipients={recipients}
+                isFetchingNextPage={isFetchingNextPage}
+                onLoadMore={fetchNextPage}
+                selectedId={selectedId}
+                onSelect={handleSelectRecipient}
+                onPlusIconPress={handlePressPlusIcon}
+              />
+              <AmountInput
+                containerStyles={{ marginTop: 31 }}
+                onChange={setAmount}
+                onChangeCurrency={handleChangeCurrency}
+              />
+            </View>
+
+            <Button
+              style={styles.submitBtn}
+              title="Send Money"
+              disabled={!isEnabledSubmitBtn}
+              onPress={handleSendMoney}
             />
-            <SendTo
-              recipients={MOCK_RECIPIENTS}
-              selectedId={'r1'}
-              containerStyles={{ marginTop: 31 }}
-              onSelect={function (id: string): void {
-                console.log('onSelect', id);
-              }}
-              onAdd={function (): void {
-                console.log('onAdd');
-              }}
-            />
-            <AmountInput
-              containerStyles={{ marginTop: 31 }}
-              onChange={setAmount}
-              onChangeCurrency={handleChangeCurrency}
+
+            <AddRecipientModal
+              visible={isModalVisible}
+              onClose={handleCloseModal}
+              onSubmit={handleAddRecipient}
+              onValidateCardNumber={handleValidateCardNumber}
             />
           </View>
-          <Button
-            title="Send Money"
-            disabled={false}
-            onPress={handleSendMoney}
-          />
-        </View>
+        </KeyboardAwareScrollView>
       </SafeAreaView>
     </View>
   );
@@ -144,6 +204,7 @@ const createStyles = (scheme: TThemeScheme) => {
       flex: 1,
       paddingTop: 16,
     },
+    wrapper: { flex: 1 },
     content: {
       flex: 1,
       paddingHorizontal: 20,
@@ -151,5 +212,6 @@ const createStyles = (scheme: TThemeScheme) => {
       flexDirection: 'column',
       justifyContent: 'space-between',
     },
+    submitBtn: { marginTop: 48 },
   });
 };

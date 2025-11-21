@@ -19,5 +19,13 @@ export type TRecipient = {
   id: string;
   accountId: string;
   nickName: string;
+  recipientId: string;
   recipientUser: TUser;
+};
+
+export type TRecipientsRes = {
+  recipients: TRecipient[];
+  totalPages: number;
+  page: number;
+  limit: number;
 };
