@@ -1,5 +1,10 @@
 // Libs
-import { useInfiniteQuery, useQuery } from '@tanstack/react-query';
+import {
+  useInfiniteQuery,
+  useMutation,
+  useQuery,
+  useQueryClient,
+} from '@tanstack/react-query';
 import { AxiosResponse } from 'axios';
 
 // Constants
@@ -12,10 +17,10 @@ import {
 } from '@/constants';
 
 // Services
-import { get } from '@/services';
+import { get, post } from '@/services';
 
 // Types
-import { TTransactionRes } from '@/types';
+import { TSendMoneyPayload, TTransactionRes } from '@/types';
 
 export const useGetTransactions = (
   accountId: string,
@@ -95,4 +100,18 @@ export const useGetTransactionsInfinite = (
     isFetchingNextPage,
     fetchNextPage,
   };
+};
+
+export const useSendMoney = () => {
+  const queryClient = useQueryClient();
+
+  const { error, ...rest } = useMutation<unknown, string, TSendMoneyPayload>({
+    mutationFn: (payload: TSendMoneyPayload) =>
+      post(API_PATH.SEND_MONEY, payload),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['transactions'] });
+    },
+  });
+
+  return { ...rest, error: error };
 };

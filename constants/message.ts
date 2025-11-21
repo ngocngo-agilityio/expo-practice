@@ -10,9 +10,11 @@ export const ERROR_MESSAGES = {
   PHONE_NUMBER_PARSE_ERROR: 'Unable to parse phone number.',
   BIRTHDATE: 'Birth Date must be in the past.',
   UPLOAD_IMAGE: 'Failed to upload image.',
+  NOT_FOUND_CARD_NUMBER: 'Card number not found. Please check again.',
 };
 
 export const SUCCESS_MESSAGES = {
   SIGN_UP: 'Your account has been successfully registered.',
   UPDATE_PROFILE: 'Update your profile successfully.',
+  SEND_MONEY: 'Transfer completed successfully.',
 };

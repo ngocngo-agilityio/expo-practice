@@ -11,7 +11,7 @@ export const textSizes = StyleSheet.create({
   },
   xs: {
     fontSize: fontSizes.xs,
-    lineHeight: lineHeights.sm,
+    lineHeight: lineHeights['xs'] * 1.5,
   },
   sm: {
     fontSize: fontSizes.sm,

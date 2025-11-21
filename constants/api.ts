@@ -10,6 +10,12 @@ export const API_PATH = {
     `/accounts/${accountId}/transactions`,
   USER_BY_ID: (id: string) => `/me/${id}`,
   UPDATE_PROFILE: (id: string) => `/users/${id}`,
+  VALIDATE_ACCOUNT_BY_CARD: (cardNumber: string) =>
+    `/accounts?cardNumber=${cardNumber}&_expand=user`,
+  RECIPIENTS: (accountId: string) => `/accounts/${accountId}/recipients`,
+  FIND_USER_FROM_CARD: '/find-account',
+  CREATE_RECIPIENT: '/recipients',
+  SEND_MONEY: '/transactions',
 };
 
 export const QUERY_KEY = {
@@ -22,6 +28,16 @@ export const QUERY_KEY = {
     accountId: string,
     searchValue: string,
     limit: number,
-  ) => ['transactions-infinity', { accountId, limit, searchValue }],
+  ) => ['transactions', 'infinity', { accountId, limit, searchValue }],
   USER_BY_ID: (id: string) => ['me', id],
+  VALIDATE_ACCOUNT_BY_CARD: (cardNumber: string) => [
+    'validate-account',
+    'by-card',
+    cardNumber,
+  ],
+  RECIPIENTS: (accountId: string, limit: number) => [
+    'recipients',
+    { accountId, limit },
+  ],
+  FIND_USER_FROM_CARD: (cardNumber: string) => ['find-account', cardNumber],
 };

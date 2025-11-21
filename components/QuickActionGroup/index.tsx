@@ -1,3 +1,4 @@
+import { useRouter } from 'expo-router';
 import { useColorScheme, View } from 'react-native';
 
 // Components
@@ -10,7 +11,7 @@ import {
 } from '@/components/icons';
 
 // Constants
-import { ThemeScheme } from '@/constants';
+import { ROUTES, ThemeScheme } from '@/constants';
 
 // Themes
 import { BASE_COLORS } from '@/themes';
@@ -20,6 +21,7 @@ import { styles } from './styles';
 
 const QuickActionGroup = () => {
   const theme = useColorScheme() ?? ThemeScheme.Light;
+  const router = useRouter();
 
   const iconColor =
     theme === ThemeScheme.Light ? BASE_COLORS.darkGunmetal : BASE_COLORS.white;
@@ -29,7 +31,9 @@ const QuickActionGroup = () => {
       id: '1',
       label: 'Sent',
       icon: <ArrowUp color={iconColor} />,
-      onPress: () => {},
+      onPress: () => {
+        router.push(ROUTES.SEND_MONEY);
+      },
     },
     {
       id: '2',

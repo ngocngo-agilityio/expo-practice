@@ -9,7 +9,12 @@ import { API_PATH, QUERY_KEY } from '@/constants';
 import { get, post } from '@/services';
 
 // Types
-import { TCardByUserRes, TCreateCardPayload, TCreateCardRes } from '@/types';
+import {
+  TCardByUserRes,
+  TCreateCardPayload,
+  TCreateCardRes,
+  TFindAccountRes,
+} from '@/types';
 
 export const useGetCardsByUserId = (userId: string) => {
   const {
@@ -46,4 +51,28 @@ export const useCreateNewCard = () => {
   });
 
   return { ...rest, error: error };
+};
+
+export const useGetUserFromCard = (cardNumber: string) => {
+  const configs = {
+    params: {
+      cardNumber,
+    },
+  };
+
+  const {
+    data: res,
+    error,
+    ...rest
+  } = useQuery<AxiosResponse<TFindAccountRes>, string>({
+    queryKey: QUERY_KEY.FIND_USER_FROM_CARD(cardNumber),
+    queryFn: () => get<TFindAccountRes>(API_PATH.FIND_USER_FROM_CARD, configs),
+    enabled: !!cardNumber,
+  });
+
+  return {
+    ...rest,
+    data: res?.data,
+    error: error || '',
+  };
 };

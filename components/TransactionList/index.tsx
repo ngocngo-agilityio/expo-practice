@@ -1,8 +1,8 @@
 import { FlashList, ListRenderItemInfo } from '@shopify/flash-list';
-import { View } from 'react-native';
+import { ActivityIndicator, View } from 'react-native';
 
 // Components
-import { LoadingIndicator, Text, TransactionItem } from '@/components';
+import { Text, TransactionItem } from '@/components';
 
 // Types
 import { TTransactionItem } from '@/types';
@@ -11,6 +11,7 @@ import { TTransactionItem } from '@/types';
 import { USER_DEFAULT_AVATAR } from '@/constants';
 
 // Styles
+import { colors } from '@/themes';
 import { styles } from './styles';
 
 type TTransactionListProps = {
@@ -60,7 +61,11 @@ const TransactionList = ({
       onEndReachedThreshold={0.3}
       refreshing={isRefetching}
       onRefresh={onRefresh}
-      ListFooterComponent={isFetchingNextPage ? <LoadingIndicator /> : null}
+      ListFooterComponent={
+        isFetchingNextPage ? (
+          <ActivityIndicator size="large" color={colors.activityIndicator} />
+        ) : null
+      }
       keyboardShouldPersistTaps="handled"
       ListEmptyComponent={
         <Text style={styles.noItems}>No transactions in list</Text>

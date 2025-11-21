@@ -14,3 +14,29 @@ export type UserInfoRes = {
 };
 
 export type TUpdateProfilePayload = Partial<TUser>;
+
+export type TRecipient = {
+  id: string;
+  accountId: string;
+  recipientAccountId: string;
+  nickName: string;
+  recipientId: string;
+  recipientUser: TUser;
+};
+
+export type TRecipientsRes = {
+  recipients: TRecipient[];
+  totalPages: number;
+  page: number;
+  limit: number;
+};
+
+export type TCreateRecipientPayload = {
+  accountId: string;
+  recipientAccountId: string;
+  nickname: string;
+};
+
+export type TCreateRecipientRes = {
+  id: string;
+};
