@@ -1,9 +1,9 @@
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import {
   render,
   renderHook as rtlRenderHook,
-} from "@testing-library/react-native";
-import { PropsWithChildren, ReactElement } from "react";
+} from '@testing-library/react-native';
+import { PropsWithChildren, ReactElement } from 'react';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -27,6 +27,6 @@ const customRender = (ui: ReactElement, options?: any) =>
 const customRenderHook = (renderCallback: any, options?: any) =>
   rtlRenderHook(renderCallback, { wrapper: AllTheProviders, ...options });
 
-export * from "@testing-library/react-native";
+export * from '@testing-library/react-native';
 
 export { customRender as render, customRenderHook as renderHook };
