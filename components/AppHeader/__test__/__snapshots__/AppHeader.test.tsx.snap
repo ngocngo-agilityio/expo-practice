@@ -119,30 +119,6 @@ exports[`AppHeader Component to match snapshot 1`] = `
       </RNSVGGroup>
     </RNSVGSvgView>
   </View>
-  <Text
-    style={
-      [
-        {
-          "fontSize": 18,
-          "lineHeight": 24,
-        },
-        {
-          "color": "#A2A2A7",
-          "fontFamily": "Poppins-Regular",
-        },
-        {
-          "color": "#1E1E2D",
-          "fontFamily": "Poppins-Medium",
-          "left": 0,
-          "position": "absolute",
-          "right": 0,
-          "textAlign": "center",
-        },
-      ]
-    }
-  >
-    My Cards
-  </Text>
   <View
     accessibilityLabel="Right action"
     accessibilityState={

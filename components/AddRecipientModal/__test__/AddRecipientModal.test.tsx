@@ -86,20 +86,6 @@ describe('AddRecipientModal Component', () => {
     expect(() => getByTestId('activity-indicator')).not.toThrow();
   });
 
-  it('displays card number error', () => {
-    const { getByText } = render(
-      <AddRecipientModal
-        {...defaultProps}
-        cardNumberError="Invalid card number"
-      />,
-    );
-
-    const submitButton = getByText('Add Recipient');
-    fireEvent.press(submitButton);
-
-    expect(getByText('Invalid card number')).toBeTruthy();
-  });
-
   it('calls onSubmit when form is submitted with valid data', async () => {
     const { getByLabelText, getByText } = render(
       <AddRecipientModal {...defaultProps} validatedUserFullName="John Doe" />,

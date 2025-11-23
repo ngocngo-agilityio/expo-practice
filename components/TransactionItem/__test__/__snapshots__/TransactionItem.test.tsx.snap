@@ -1,0 +1,142 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TransactionItem Component should match snapshot 1`] = `
+<View
+  style={
+    {
+      "alignItems": "center",
+      "flexDirection": "row",
+      "justifyContent": "space-between",
+    }
+  }
+>
+  <View
+    style={
+      {
+        "alignItems": "center",
+        "flexDirection": "row",
+        "gap": 16,
+      }
+    }
+  >
+    <View
+      style={
+        {
+          "alignItems": "center",
+          "backgroundColor": "#F4F4F4",
+          "borderRadius": 21,
+          "height": 42,
+          "justifyContent": "center",
+          "width": 42,
+        }
+      }
+    >
+      <ViewManagerAdapter_ExpoImage
+        containerViewRef={"[React.ref]"}
+        contentFit="contain"
+        contentPosition={
+          {
+            "left": "50%",
+            "top": "50%",
+          }
+        }
+        height={16}
+        nativeViewRef={"[React.ref]"}
+        onError={[Function]}
+        onLoad={[Function]}
+        onLoadStart={[Function]}
+        onProgress={[Function]}
+        placeholder={[]}
+        source={
+          [
+            {
+              "uri": "https://example.com/avatar.jpg",
+            },
+          ]
+        }
+        style={
+          {
+            "height": 16,
+            "width": 16,
+          }
+        }
+        transition={null}
+        width={16}
+      />
+    </View>
+    <View
+      style={
+        {
+          "flexDirection": "column",
+          "gap": 6,
+        }
+      }
+    >
+      <Text
+        style={
+          [
+            {
+              "fontSize": 16,
+              "lineHeight": 18,
+            },
+            {
+              "color": "#A2A2A7",
+              "fontFamily": "Poppins-Regular",
+            },
+            {
+              "color": "#1E1E2D",
+              "fontFamily": "Poppins-Medium",
+            },
+          ]
+        }
+      >
+        John Doe
+      </Text>
+      <Text
+        style={
+          [
+            {
+              "fontSize": 12,
+              "lineHeight": 18,
+            },
+            {
+              "color": "#A2A2A7",
+              "fontFamily": "Poppins-Regular",
+            },
+            {
+              "color": "#A2A2A7",
+            },
+          ]
+        }
+      >
+        Transfer
+      </Text>
+    </View>
+  </View>
+  <Text
+    style={
+      [
+        {
+          "fontSize": 16,
+          "lineHeight": 18,
+        },
+        {
+          "color": "#A2A2A7",
+          "fontFamily": "Poppins-Regular",
+        },
+        [
+          {
+            "color": "#1E1E2D",
+            "fontFamily": "Poppins-Medium",
+          },
+          {
+            "color": "#0066FF",
+          },
+        ],
+      ]
+    }
+  >
+    $100.50
+  </Text>
+</View>
+`;

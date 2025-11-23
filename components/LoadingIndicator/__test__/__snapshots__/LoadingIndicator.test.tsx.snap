@@ -4,7 +4,7 @@ exports[`Input Component to match snapshot 1`] = `
 <View
   style={
     {
-      "backgroundColor": undefined,
+      "backgroundColor": "#34343433",
       "bottom": 0,
       "justifyContent": "center",
       "left": 0,

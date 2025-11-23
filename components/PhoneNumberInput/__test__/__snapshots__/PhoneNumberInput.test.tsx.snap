@@ -119,13 +119,7 @@ exports[`PhoneNumberInput Component to match snapshot 1`] = `
       accessibilityLabel="Enter your Phone Number"
       inputMode="tel"
       keyboardType="phone-pad"
-      onChangeText={[Function]}
-      selection={
-        {
-          "end": 3,
-          "start": 3,
-        }
-      }
+      onChangeText={[MockFunction]}
       style={
         [
           {
@@ -139,7 +133,7 @@ exports[`PhoneNumberInput Component to match snapshot 1`] = `
           undefined,
         ]
       }
-      value="+84"
+      value="0364895651"
     />
   </View>
 </View>

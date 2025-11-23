@@ -1,0 +1,221 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DatePicker Component should match snapshot 1`] = `
+<View
+  style={
+    {
+      "marginBottom": 20,
+      "minHeight": 95,
+      "position": "relative",
+    }
+  }
+>
+  <Text
+    style={
+      [
+        {
+          "color": "#A2A2A7",
+          "fontFamily": "Poppins-Regular",
+          "fontSize": 14,
+          "fontWeight": 400,
+          "marginBottom": 5,
+        },
+      ]
+    }
+  >
+    Date
+  </Text>
+  <View
+    style={
+      {
+        "flexDirection": "row",
+        "justifyContent": "space-between",
+      }
+    }
+  >
+    <View
+      accessibilityState={
+        {
+          "busy": undefined,
+          "checked": undefined,
+          "disabled": undefined,
+          "expanded": undefined,
+          "selected": undefined,
+        }
+      }
+      accessibilityValue={
+        {
+          "max": undefined,
+          "min": undefined,
+          "now": undefined,
+          "text": undefined,
+        }
+      }
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        {
+          "opacity": 1,
+          "width": "30%",
+        }
+      }
+    >
+      <Text
+        style={
+          {
+            "color": "#1C1C1E",
+            "fontFamily": "Poppins-Regular",
+            "fontSize": 14,
+            "fontWeight": 400,
+            "paddingVertical": 10,
+            "textAlign": "center",
+          }
+        }
+      >
+        23
+      </Text>
+      <View
+        style={
+          [
+            {
+              "backgroundColor": "#F4F4F4",
+              "height": 1.5,
+            },
+            null,
+          ]
+        }
+      />
+    </View>
+    <View
+      accessibilityState={
+        {
+          "busy": undefined,
+          "checked": undefined,
+          "disabled": undefined,
+          "expanded": undefined,
+          "selected": undefined,
+        }
+      }
+      accessibilityValue={
+        {
+          "max": undefined,
+          "min": undefined,
+          "now": undefined,
+          "text": undefined,
+        }
+      }
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        {
+          "opacity": 1,
+          "width": "30%",
+        }
+      }
+    >
+      <Text
+        style={
+          {
+            "color": "#1C1C1E",
+            "fontFamily": "Poppins-Regular",
+            "fontSize": 14,
+            "fontWeight": 400,
+            "paddingVertical": 10,
+            "textAlign": "center",
+          }
+        }
+      >
+        November
+      </Text>
+      <View
+        style={
+          [
+            {
+              "backgroundColor": "#F4F4F4",
+              "height": 1.5,
+            },
+            null,
+          ]
+        }
+      />
+    </View>
+    <View
+      accessibilityState={
+        {
+          "busy": undefined,
+          "checked": undefined,
+          "disabled": undefined,
+          "expanded": undefined,
+          "selected": undefined,
+        }
+      }
+      accessibilityValue={
+        {
+          "max": undefined,
+          "min": undefined,
+          "now": undefined,
+          "text": undefined,
+        }
+      }
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        {
+          "opacity": 1,
+          "width": "30%",
+        }
+      }
+    >
+      <Text
+        style={
+          {
+            "color": "#1C1C1E",
+            "fontFamily": "Poppins-Regular",
+            "fontSize": 14,
+            "fontWeight": 400,
+            "paddingVertical": 10,
+            "textAlign": "center",
+          }
+        }
+      >
+        2025
+      </Text>
+      <View
+        style={
+          [
+            {
+              "backgroundColor": "#F4F4F4",
+              "height": 1.5,
+            },
+            null,
+          ]
+        }
+      />
+    </View>
+  </View>
+</View>
+`;

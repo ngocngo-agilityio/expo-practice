@@ -1,0 +1,604 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`VirtualCardSkeleton Component should match snapshot 1`] = `
+<View
+  style={
+    {
+      "backgroundColor": "#2A2C3C",
+      "borderRadius": 25,
+      "height": 200,
+      "justifyContent": "space-between",
+      "overflow": "hidden",
+      "paddingHorizontal": 18,
+      "paddingVertical": 22,
+      "width": "100%",
+    }
+  }
+>
+  <ViewManagerAdapter_ExpoImage
+    bottom={0}
+    containerViewRef={"[React.ref]"}
+    contentFit="cover"
+    contentPosition={
+      {
+        "left": "50%",
+        "top": "50%",
+      }
+    }
+    left={0}
+    nativeViewRef={"[React.ref]"}
+    onError={[Function]}
+    onLoad={[Function]}
+    onLoadStart={[Function]}
+    onProgress={[Function]}
+    placeholder={[]}
+    position="absolute"
+    right={0}
+    source={
+      [
+        {
+          "testUri": "../../../assets/images/virtual-card-bg.png",
+        },
+      ]
+    }
+    style={
+      {
+        "bottom": 0,
+        "left": 0,
+        "position": "absolute",
+        "right": 0,
+        "top": 0,
+      }
+    }
+    top={0}
+    transition={null}
+  />
+  <View
+    style={
+      {
+        "alignItems": "center",
+        "flexDirection": "row",
+        "justifyContent": "space-between",
+      }
+    }
+  >
+    <View
+      collapsable={false}
+      style={
+        {
+          "borderRadius": 4,
+          "height": 30,
+          "opacity": 0.25,
+          "overflow": "hidden",
+          "width": 40,
+        }
+      }
+    >
+      <ViewManagerAdapter_ExpoLinearGradient
+        colors={
+          [
+            3439329279,
+            3439329279,
+          ]
+        }
+        endPoint={
+          [
+            1,
+            0,
+          ]
+        }
+        startPoint={
+          [
+            0,
+            0,
+          ]
+        }
+        style={
+          {
+            "flex": 1,
+          }
+        }
+      />
+    </View>
+    <View
+      collapsable={false}
+      style={
+        {
+          "borderRadius": 4,
+          "height": 30,
+          "opacity": 0.25,
+          "overflow": "hidden",
+          "width": 40,
+        }
+      }
+    >
+      <ViewManagerAdapter_ExpoLinearGradient
+        colors={
+          [
+            3439329279,
+            3439329279,
+          ]
+        }
+        endPoint={
+          [
+            1,
+            0,
+          ]
+        }
+        startPoint={
+          [
+            0,
+            0,
+          ]
+        }
+        style={
+          {
+            "flex": 1,
+          }
+        }
+      />
+    </View>
+  </View>
+  <View
+    style={
+      {
+        "flexDirection": "row",
+        "justifyContent": "space-between",
+        "marginBottom": 12,
+        "marginTop": 26,
+      }
+    }
+  >
+    <View
+      collapsable={false}
+      style={
+        {
+          "borderRadius": 4,
+          "height": 20,
+          "opacity": 0.25,
+          "overflow": "hidden",
+          "width": 60,
+        }
+      }
+    >
+      <ViewManagerAdapter_ExpoLinearGradient
+        colors={
+          [
+            3439329279,
+            3439329279,
+          ]
+        }
+        endPoint={
+          [
+            1,
+            0,
+          ]
+        }
+        startPoint={
+          [
+            0,
+            0,
+          ]
+        }
+        style={
+          {
+            "flex": 1,
+          }
+        }
+      />
+    </View>
+    <View
+      collapsable={false}
+      style={
+        {
+          "borderRadius": 4,
+          "height": 20,
+          "opacity": 0.25,
+          "overflow": "hidden",
+          "width": 60,
+        }
+      }
+    >
+      <ViewManagerAdapter_ExpoLinearGradient
+        colors={
+          [
+            3439329279,
+            3439329279,
+          ]
+        }
+        endPoint={
+          [
+            1,
+            0,
+          ]
+        }
+        startPoint={
+          [
+            0,
+            0,
+          ]
+        }
+        style={
+          {
+            "flex": 1,
+          }
+        }
+      />
+    </View>
+    <View
+      collapsable={false}
+      style={
+        {
+          "borderRadius": 4,
+          "height": 20,
+          "opacity": 0.25,
+          "overflow": "hidden",
+          "width": 60,
+        }
+      }
+    >
+      <ViewManagerAdapter_ExpoLinearGradient
+        colors={
+          [
+            3439329279,
+            3439329279,
+          ]
+        }
+        endPoint={
+          [
+            1,
+            0,
+          ]
+        }
+        startPoint={
+          [
+            0,
+            0,
+          ]
+        }
+        style={
+          {
+            "flex": 1,
+          }
+        }
+      />
+    </View>
+    <View
+      collapsable={false}
+      style={
+        {
+          "borderRadius": 4,
+          "height": 20,
+          "opacity": 0.25,
+          "overflow": "hidden",
+          "width": 60,
+        }
+      }
+    >
+      <ViewManagerAdapter_ExpoLinearGradient
+        colors={
+          [
+            3439329279,
+            3439329279,
+          ]
+        }
+        endPoint={
+          [
+            1,
+            0,
+          ]
+        }
+        startPoint={
+          [
+            0,
+            0,
+          ]
+        }
+        style={
+          {
+            "flex": 1,
+          }
+        }
+      />
+    </View>
+  </View>
+  <View
+    collapsable={false}
+    style={
+      {
+        "borderRadius": 4,
+        "height": 15,
+        "marginTop": 12,
+        "opacity": 0.25,
+        "overflow": "hidden",
+        "width": 120,
+      }
+    }
+  >
+    <ViewManagerAdapter_ExpoLinearGradient
+      colors={
+        [
+          3439329279,
+          3439329279,
+        ]
+      }
+      endPoint={
+        [
+          1,
+          0,
+        ]
+      }
+      startPoint={
+        [
+          0,
+          0,
+        ]
+      }
+      style={
+        {
+          "flex": 1,
+        }
+      }
+    />
+  </View>
+  <View
+    style={
+      {
+        "alignItems": "flex-end",
+        "flexDirection": "row",
+        "justifyContent": "space-between",
+      }
+    }
+  >
+    <View>
+      <View
+        collapsable={false}
+        style={
+          {
+            "borderRadius": 4,
+            "height": 10,
+            "opacity": 0.25,
+            "overflow": "hidden",
+            "width": 50,
+          }
+        }
+      >
+        <ViewManagerAdapter_ExpoLinearGradient
+          colors={
+            [
+              3439329279,
+              3439329279,
+            ]
+          }
+          endPoint={
+            [
+              1,
+              0,
+            ]
+          }
+          startPoint={
+            [
+              0,
+              0,
+            ]
+          }
+          style={
+            {
+              "flex": 1,
+            }
+          }
+        />
+      </View>
+      <View
+        collapsable={false}
+        style={
+          {
+            "borderRadius": 4,
+            "height": 13,
+            "marginTop": 4,
+            "opacity": 0.25,
+            "overflow": "hidden",
+            "width": 40,
+          }
+        }
+      >
+        <ViewManagerAdapter_ExpoLinearGradient
+          colors={
+            [
+              3439329279,
+              3439329279,
+            ]
+          }
+          endPoint={
+            [
+              1,
+              0,
+            ]
+          }
+          startPoint={
+            [
+              0,
+              0,
+            ]
+          }
+          style={
+            {
+              "flex": 1,
+            }
+          }
+        />
+      </View>
+    </View>
+    <View
+      style={
+        {
+          "marginLeft": 22,
+        }
+      }
+    >
+      <View
+        collapsable={false}
+        style={
+          {
+            "borderRadius": 4,
+            "height": 10,
+            "opacity": 0.25,
+            "overflow": "hidden",
+            "width": 50,
+          }
+        }
+      >
+        <ViewManagerAdapter_ExpoLinearGradient
+          colors={
+            [
+              3439329279,
+              3439329279,
+            ]
+          }
+          endPoint={
+            [
+              1,
+              0,
+            ]
+          }
+          startPoint={
+            [
+              0,
+              0,
+            ]
+          }
+          style={
+            {
+              "flex": 1,
+            }
+          }
+        />
+      </View>
+      <View
+        collapsable={false}
+        style={
+          {
+            "borderRadius": 4,
+            "height": 13,
+            "marginTop": 4,
+            "opacity": 0.25,
+            "overflow": "hidden",
+            "width": 40,
+          }
+        }
+      >
+        <ViewManagerAdapter_ExpoLinearGradient
+          colors={
+            [
+              3439329279,
+              3439329279,
+            ]
+          }
+          endPoint={
+            [
+              1,
+              0,
+            ]
+          }
+          startPoint={
+            [
+              0,
+              0,
+            ]
+          }
+          style={
+            {
+              "flex": 1,
+            }
+          }
+        />
+      </View>
+    </View>
+    <View
+      style={
+        {
+          "alignItems": "center",
+        }
+      }
+    >
+      <View
+        collapsable={false}
+        style={
+          {
+            "borderRadius": 4,
+            "height": 22,
+            "opacity": 0.25,
+            "overflow": "hidden",
+            "width": 36,
+          }
+        }
+      >
+        <ViewManagerAdapter_ExpoLinearGradient
+          colors={
+            [
+              3439329279,
+              3439329279,
+            ]
+          }
+          endPoint={
+            [
+              1,
+              0,
+            ]
+          }
+          startPoint={
+            [
+              0,
+              0,
+            ]
+          }
+          style={
+            {
+              "flex": 1,
+            }
+          }
+        />
+      </View>
+      <View
+        collapsable={false}
+        style={
+          {
+            "borderRadius": 4,
+            "height": 13,
+            "marginTop": 4,
+            "opacity": 0.25,
+            "overflow": "hidden",
+            "width": 50,
+          }
+        }
+      >
+        <ViewManagerAdapter_ExpoLinearGradient
+          colors={
+            [
+              3439329279,
+              3439329279,
+            ]
+          }
+          endPoint={
+            [
+              1,
+              0,
+            ]
+          }
+          startPoint={
+            [
+              0,
+              0,
+            ]
+          }
+          style={
+            {
+              "flex": 1,
+            }
+          }
+        />
+      </View>
+    </View>
+  </View>
+</View>
+`;

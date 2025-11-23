@@ -137,10 +137,10 @@ const EditProfileForm = ({
             editable={false}
             label="Email Address"
             leftIcon={<MailIcon />}
-            onChangeText={(value: string) => {
-              handleOnChange('email');
-              onChange(value);
-            }}
+            // onChangeText={(value: string) => {
+            //   handleOnChange('email');
+            //   onChange(value);
+            // }}
             error={error?.message}
             keyboardType="email-address"
             returnKeyType="next"

@@ -107,7 +107,6 @@ exports[`SearchInput Component to match snapshot 1`] = `
   </RNSVGSvgView>
   <TextInput
     accessibilityRole="search"
-    autoFocus={true}
     onChangeText={[Function]}
     placeholder="Search"
     placeholderTextColor="#A2A2A7"
