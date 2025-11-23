@@ -42,7 +42,7 @@ export default function Settings() {
       {
         key: 'profile',
         title: 'My Profile',
-        onPress: () => router.push(ROUTES.EDIT_PROFILE),
+        onPress: () => router.push(ROUTES.PROFILE),
       },
       { key: 'contact', title: 'Contact Us' },
     ],
