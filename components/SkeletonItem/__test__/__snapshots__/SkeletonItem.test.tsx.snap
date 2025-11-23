@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SkeletonItem Component should match snapshot 1`] = `
+<View
+  collapsable={false}
+  style={
+    {
+      "borderRadius": 4,
+      "height": 20,
+      "opacity": 0.25,
+      "overflow": "hidden",
+      "width": 100,
+    }
+  }
+>
+  <ViewManagerAdapter_ExpoLinearGradient
+    colors={
+      [
+        335544320,
+        335544320,
+      ]
+    }
+    endPoint={
+      [
+        1,
+        0,
+      ]
+    }
+    startPoint={
+      [
+        0,
+        0,
+      ]
+    }
+    style={
+      {
+        "flex": 1,
+      }
+    }
+  />
+</View>
+`;
