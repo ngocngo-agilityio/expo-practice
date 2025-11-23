@@ -1,0 +1,136 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`QuickActionItem Component should match snapshot 1`] = `
+<View
+  accessibilityState={
+    {
+      "busy": undefined,
+      "checked": undefined,
+      "disabled": undefined,
+      "expanded": undefined,
+      "selected": undefined,
+    }
+  }
+  accessibilityValue={
+    {
+      "max": undefined,
+      "min": undefined,
+      "now": undefined,
+      "text": undefined,
+    }
+  }
+  accessible={true}
+  collapsable={false}
+  focusable={true}
+  onClick={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    {
+      "alignItems": "center",
+      "opacity": 1,
+    }
+  }
+>
+  <View
+    style={
+      {
+        "alignItems": "center",
+        "backgroundColor": "#F4F4F4",
+        "borderRadius": 27,
+        "height": 54,
+        "justifyContent": "center",
+        "width": 54,
+      }
+    }
+  >
+    <RNSVGSvgView
+      align="xMidYMid"
+      bbHeight={16}
+      bbWidth={16}
+      fill="none"
+      focusable={false}
+      height={16}
+      meetOrSlice={0}
+      minX={0}
+      minY={0}
+      style={
+        [
+          {
+            "backgroundColor": "transparent",
+            "borderWidth": 0,
+          },
+          {
+            "flex": 0,
+            "height": 16,
+            "width": 16,
+          },
+        ]
+      }
+      vbHeight={16}
+      vbWidth={16}
+      width={16}
+    >
+      <RNSVGGroup
+        fill={null}
+        propList={
+          [
+            "fill",
+          ]
+        }
+      >
+        <RNSVGPath
+          d="M8 2v12M2 8h12"
+          fill={
+            {
+              "payload": 4278190080,
+              "type": 0,
+            }
+          }
+          propList={
+            [
+              "stroke",
+              "strokeWidth",
+              "strokeLinecap",
+            ]
+          }
+          stroke={
+            {
+              "payload": 4278216447,
+              "type": 0,
+            }
+          }
+          strokeLinecap={1}
+          strokeWidth={1.6}
+        />
+      </RNSVGGroup>
+    </RNSVGSvgView>
+  </View>
+  <Text
+    style={
+      [
+        {
+          "fontSize": 14,
+          "lineHeight": 16,
+        },
+        {
+          "color": "#A2A2A7",
+          "fontFamily": "Poppins-Regular",
+        },
+        {
+          "color": "#1E1E2D",
+          "fontSize": 13,
+          "lineHeight": 15,
+          "marginTop": 7,
+        },
+      ]
+    }
+  >
+    Test Action
+  </Text>
+</View>
+`;
