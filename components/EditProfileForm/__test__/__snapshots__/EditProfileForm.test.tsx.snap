@@ -1,0 +1,920 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EditProfileForm Component should match snapshot 1`] = `
+<View
+  style={
+    {
+      "backgroundColor": "transparent",
+      "justifyContent": "center",
+      "width": "100%",
+    }
+  }
+>
+  <View
+    accessibilityState={
+      {
+        "busy": undefined,
+        "checked": undefined,
+        "disabled": undefined,
+        "expanded": undefined,
+        "selected": undefined,
+      }
+    }
+    accessibilityValue={
+      {
+        "max": undefined,
+        "min": undefined,
+        "now": undefined,
+        "text": undefined,
+      }
+    }
+    accessible={true}
+    collapsable={false}
+    focusable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      {
+        "alignSelf": "center",
+        "backgroundColor": "#F4F4F4",
+        "borderRadius": 45,
+        "height": 90,
+        "opacity": 1,
+        "overflow": "hidden",
+        "width": 90,
+      }
+    }
+  >
+    <ViewManagerAdapter_ExpoImage
+      borderRadius={45}
+      containerViewRef={"[React.ref]"}
+      contentFit="cover"
+      contentPosition={
+        {
+          "left": "50%",
+          "top": "50%",
+        }
+      }
+      height={90}
+      nativeViewRef={"[React.ref]"}
+      onError={[Function]}
+      onLoad={[Function]}
+      onLoadStart={[Function]}
+      onProgress={[Function]}
+      placeholder={[]}
+      source={
+        [
+          {
+            "uri": "",
+          },
+        ]
+      }
+      style={
+        {
+          "borderRadius": 45,
+          "height": 90,
+          "width": 90,
+        }
+      }
+      transition={null}
+      width={90}
+    />
+  </View>
+  <Text
+    style={
+      [
+        {
+          "fontSize": 14,
+          "lineHeight": 16,
+        },
+        {
+          "color": "#A2A2A7",
+          "fontFamily": "Poppins-Regular",
+        },
+        {
+          "color": "#1E1E2D",
+          "fontFamily": "Poppins-Medium",
+          "fontSize": 17,
+          "lineHeight": 20,
+          "marginTop": 22,
+          "textAlign": "center",
+        },
+      ]
+    }
+  >
+    John Doe
+  </Text>
+  <Text
+    style={
+      [
+        {
+          "fontSize": 12,
+          "lineHeight": 18,
+        },
+        {
+          "color": "#A2A2A7",
+          "fontFamily": "Poppins-Regular",
+        },
+        {
+          "marginBottom": 30,
+          "marginTop": 10,
+          "textAlign": "center",
+        },
+      ]
+    }
+  >
+    Software Engineer
+  </Text>
+  <View
+    style={
+      [
+        {
+          "marginBottom": 20,
+          "minHeight": 95,
+        },
+        undefined,
+      ]
+    }
+  >
+    <Text
+      id="form-label"
+      style={
+        [
+          {
+            "color": "#A2A2A7",
+            "fontFamily": "Poppins-Regular",
+            "fontSize": 14,
+            "fontWeight": 400,
+            "marginBottom": 5,
+          },
+          undefined,
+        ]
+      }
+    >
+      Full Name
+    </Text>
+    <View
+      style={
+        [
+          {
+            "alignItems": "center",
+            "borderBottomWidth": 1.5,
+            "borderColor": "#F4F4F4",
+            "flexDirection": "row",
+          },
+          undefined,
+          null,
+        ]
+      }
+    >
+      <View
+        style={
+          [
+            {
+              "backgroundColor": "transparent",
+              "elevation": 0,
+              "paddingLeft": 4,
+              "paddingRight": 16,
+            },
+            undefined,
+          ]
+        }
+        testID="input-left-icon"
+      >
+        <RNSVGSvgView
+          align="xMidYMid"
+          bbHeight={22}
+          bbWidth={22}
+          fill="none"
+          focusable={false}
+          height={22}
+          meetOrSlice={0}
+          minX={0}
+          minY={0}
+          style={
+            [
+              {
+                "backgroundColor": "transparent",
+                "borderWidth": 0,
+              },
+              {
+                "flex": 0,
+                "height": 22,
+                "width": 22,
+              },
+            ]
+          }
+          vbHeight={22}
+          vbWidth={22}
+          width={22}
+        >
+          <RNSVGGroup
+            fill={null}
+            propList={
+              [
+                "fill",
+              ]
+            }
+          >
+            <RNSVGPath
+              d="M6.87354 8.93652L9.55633 10.5905C10.4416 11.1363 11.5589 11.1363 12.4442 10.5905L15.127 8.93652"
+              fill={
+                {
+                  "payload": 4278190080,
+                  "type": 0,
+                }
+              }
+              propList={
+                [
+                  "stroke",
+                  "strokeWidth",
+                  "strokeLinecap",
+                  "strokeLinejoin",
+                ]
+              }
+              stroke={
+                {
+                  "payload": 4288848551,
+                  "type": 0,
+                }
+              }
+              strokeLinecap={1}
+              strokeLinejoin={1}
+              strokeWidth="1.3"
+            />
+            <RNSVGPath
+              d="M2.74658 7.58057C2.74658 5.92371 4.08973 4.58057 5.74658 4.58057H16.2535C17.9103 4.58057 19.2535 5.92371 19.2535 7.58057V14.4192C19.2535 16.0761 17.9103 17.4192 16.2535 17.4192H5.74658C4.08973 17.4192 2.74658 16.0761 2.74658 14.4192V7.58057Z"
+              fill={
+                {
+                  "payload": 4278190080,
+                  "type": 0,
+                }
+              }
+              propList={
+                [
+                  "stroke",
+                  "strokeWidth",
+                  "strokeLinecap",
+                  "strokeLinejoin",
+                ]
+              }
+              stroke={
+                {
+                  "payload": 4288848551,
+                  "type": 0,
+                }
+              }
+              strokeLinecap={1}
+              strokeLinejoin={1}
+              strokeWidth="1.3"
+            />
+          </RNSVGGroup>
+        </RNSVGSvgView>
+      </View>
+      <TextInput
+        accessibilityLabel="Enter your Full Name"
+        name="fullName"
+        onBlur={[Function]}
+        onChangeText={[Function]}
+        onSubmitEditing={[Function]}
+        returnKeyType="next"
+        style={
+          [
+            {
+              "color": "#1C1C1E",
+              "flex": 1,
+              "fontFamily": "Poppins-Regular",
+              "fontSize": 14,
+              "fontWeight": 400,
+              "paddingVertical": 10,
+            },
+            undefined,
+          ]
+        }
+        value="John Doe"
+      />
+    </View>
+  </View>
+  <View
+    style={
+      [
+        {
+          "marginBottom": 20,
+          "minHeight": 95,
+        },
+        undefined,
+      ]
+    }
+  >
+    <Text
+      id="form-label"
+      style={
+        [
+          {
+            "color": "#A2A2A7",
+            "fontFamily": "Poppins-Regular",
+            "fontSize": 14,
+            "fontWeight": 400,
+            "marginBottom": 5,
+          },
+          undefined,
+        ]
+      }
+    >
+      Email Address
+    </Text>
+    <View
+      style={
+        [
+          {
+            "alignItems": "center",
+            "borderBottomWidth": 1.5,
+            "borderColor": "#F4F4F4",
+            "flexDirection": "row",
+          },
+          undefined,
+          null,
+        ]
+      }
+    >
+      <View
+        style={
+          [
+            {
+              "backgroundColor": "transparent",
+              "elevation": 0,
+              "paddingLeft": 4,
+              "paddingRight": 16,
+            },
+            undefined,
+          ]
+        }
+        testID="input-left-icon"
+      >
+        <RNSVGSvgView
+          align="xMidYMid"
+          bbHeight={22}
+          bbWidth={22}
+          fill="none"
+          focusable={false}
+          height={22}
+          meetOrSlice={0}
+          minX={0}
+          minY={0}
+          style={
+            [
+              {
+                "backgroundColor": "transparent",
+                "borderWidth": 0,
+              },
+              {
+                "flex": 0,
+                "height": 22,
+                "width": 22,
+              },
+            ]
+          }
+          vbHeight={22}
+          vbWidth={22}
+          width={22}
+        >
+          <RNSVGGroup
+            fill={null}
+            propList={
+              [
+                "fill",
+              ]
+            }
+          >
+            <RNSVGPath
+              d="M6.87354 8.93652L9.55633 10.5905C10.4416 11.1363 11.5589 11.1363 12.4442 10.5905L15.127 8.93652"
+              fill={
+                {
+                  "payload": 4278190080,
+                  "type": 0,
+                }
+              }
+              propList={
+                [
+                  "stroke",
+                  "strokeWidth",
+                  "strokeLinecap",
+                  "strokeLinejoin",
+                ]
+              }
+              stroke={
+                {
+                  "payload": 4288848551,
+                  "type": 0,
+                }
+              }
+              strokeLinecap={1}
+              strokeLinejoin={1}
+              strokeWidth="1.3"
+            />
+            <RNSVGPath
+              d="M2.74658 7.58057C2.74658 5.92371 4.08973 4.58057 5.74658 4.58057H16.2535C17.9103 4.58057 19.2535 5.92371 19.2535 7.58057V14.4192C19.2535 16.0761 17.9103 17.4192 16.2535 17.4192H5.74658C4.08973 17.4192 2.74658 16.0761 2.74658 14.4192V7.58057Z"
+              fill={
+                {
+                  "payload": 4278190080,
+                  "type": 0,
+                }
+              }
+              propList={
+                [
+                  "stroke",
+                  "strokeWidth",
+                  "strokeLinecap",
+                  "strokeLinejoin",
+                ]
+              }
+              stroke={
+                {
+                  "payload": 4288848551,
+                  "type": 0,
+                }
+              }
+              strokeLinecap={1}
+              strokeLinejoin={1}
+              strokeWidth="1.3"
+            />
+          </RNSVGGroup>
+        </RNSVGSvgView>
+      </View>
+      <TextInput
+        accessibilityLabel="Enter your Email Address"
+        editable={false}
+        keyboardType="email-address"
+        name="email"
+        onBlur={[Function]}
+        onSubmitEditing={[Function]}
+        returnKeyType="next"
+        style={
+          [
+            {
+              "color": "#1C1C1E",
+              "flex": 1,
+              "fontFamily": "Poppins-Regular",
+              "fontSize": 14,
+              "fontWeight": 400,
+              "paddingVertical": 10,
+            },
+            undefined,
+          ]
+        }
+        value="john@example.com"
+      />
+    </View>
+  </View>
+  <View
+    style={
+      [
+        {
+          "marginBottom": 20,
+          "minHeight": 95,
+        },
+        undefined,
+      ]
+    }
+  >
+    <Text
+      id="form-label"
+      style={
+        [
+          {
+            "color": "#A2A2A7",
+            "fontFamily": "Poppins-Regular",
+            "fontSize": 14,
+            "fontWeight": 400,
+            "marginBottom": 5,
+          },
+          undefined,
+        ]
+      }
+    >
+      Phone Number
+    </Text>
+    <View
+      style={
+        [
+          {
+            "alignItems": "center",
+            "borderBottomWidth": 1.5,
+            "borderColor": "#F4F4F4",
+            "flexDirection": "row",
+          },
+          undefined,
+          null,
+        ]
+      }
+    >
+      <View
+        style={
+          [
+            {
+              "backgroundColor": "transparent",
+              "elevation": 0,
+              "paddingLeft": 4,
+              "paddingRight": 16,
+            },
+            undefined,
+          ]
+        }
+        testID="input-left-icon"
+      >
+        <RNSVGSvgView
+          align="xMidYMid"
+          bbHeight={22}
+          bbWidth={22}
+          fill="none"
+          focusable={false}
+          height={22}
+          meetOrSlice={0}
+          minX={0}
+          minY={0}
+          style={
+            [
+              {
+                "backgroundColor": "transparent",
+                "borderWidth": 0,
+              },
+              {
+                "flex": 0,
+                "height": 22,
+                "width": 22,
+              },
+            ]
+          }
+          vbHeight={22}
+          vbWidth={22}
+          width={22}
+        >
+          <RNSVGGroup
+            fill={null}
+            propList={
+              [
+                "fill",
+              ]
+            }
+          >
+            <RNSVGPath
+              d="M9.9513 12.0486C8.8788 10.9761 8.0703 9.77526 7.53314 8.55701C7.41947 8.29942 7.48639 7.99784 7.6853 7.79892L8.43605 7.04909C9.05114 6.43401 9.05114 5.56409 8.51397 5.02692L7.4378 3.95076C6.72189 3.23484 5.56139 3.23484 4.84547 3.95076L4.2478 4.54842C3.56855 5.22767 3.2853 6.20759 3.46864 7.17926C3.92147 9.57451 5.31297 12.1971 7.55789 14.442C9.8028 16.6869 12.4254 18.0784 14.8206 18.5313C15.7923 18.7146 16.7722 18.4313 17.4515 17.7521L18.0482 17.1553C18.7641 16.4394 18.7641 15.2789 18.0482 14.563L16.973 13.4878C16.4358 12.9506 15.565 12.9506 15.0287 13.4878L14.201 14.3164C14.0021 14.5153 13.7005 14.5823 13.4429 14.4686C12.2246 13.9305 11.0238 13.1211 9.9513 12.0486Z"
+              fill={
+                {
+                  "payload": 4278190080,
+                  "type": 0,
+                }
+              }
+              propList={
+                [
+                  "stroke",
+                ]
+              }
+              stroke={
+                {
+                  "payload": 4288848551,
+                  "type": 0,
+                }
+              }
+            />
+          </RNSVGGroup>
+        </RNSVGSvgView>
+      </View>
+      <TextInput
+        accessibilityLabel="Enter your Phone Number"
+        inputMode="tel"
+        keyboardType="phone-pad"
+        name="phoneNumber"
+        onBlur={[Function]}
+        onChangeText={[Function]}
+        onSubmitEditing={[Function]}
+        returnKeyType="next"
+        style={
+          [
+            {
+              "color": "#1C1C1E",
+              "flex": 1,
+              "fontFamily": "Poppins-Regular",
+              "fontSize": 14,
+              "fontWeight": 400,
+              "paddingVertical": 10,
+            },
+            undefined,
+          ]
+        }
+        value="+1234567890"
+      />
+    </View>
+  </View>
+  <View
+    style={
+      {
+        "marginBottom": 20,
+        "minHeight": 95,
+        "position": "relative",
+      }
+    }
+  >
+    <Text
+      style={
+        [
+          {
+            "color": "#A2A2A7",
+            "fontFamily": "Poppins-Regular",
+            "fontSize": 14,
+            "fontWeight": 400,
+            "marginBottom": 5,
+          },
+        ]
+      }
+    >
+      Birth Date
+    </Text>
+    <View
+      style={
+        {
+          "flexDirection": "row",
+          "justifyContent": "space-between",
+        }
+      }
+    >
+      <View
+        accessibilityState={
+          {
+            "busy": undefined,
+            "checked": undefined,
+            "disabled": undefined,
+            "expanded": undefined,
+            "selected": undefined,
+          }
+        }
+        accessibilityValue={
+          {
+            "max": undefined,
+            "min": undefined,
+            "now": undefined,
+            "text": undefined,
+          }
+        }
+        accessible={true}
+        collapsable={false}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          {
+            "opacity": 1,
+            "width": "30%",
+          }
+        }
+      >
+        <Text
+          style={
+            {
+              "color": "#1C1C1E",
+              "fontFamily": "Poppins-Regular",
+              "fontSize": 14,
+              "fontWeight": 400,
+              "paddingVertical": 10,
+              "textAlign": "center",
+            }
+          }
+        >
+          1
+        </Text>
+        <View
+          style={
+            [
+              {
+                "backgroundColor": "#F4F4F4",
+                "height": 1.5,
+              },
+              null,
+            ]
+          }
+        />
+      </View>
+      <View
+        accessibilityState={
+          {
+            "busy": undefined,
+            "checked": undefined,
+            "disabled": undefined,
+            "expanded": undefined,
+            "selected": undefined,
+          }
+        }
+        accessibilityValue={
+          {
+            "max": undefined,
+            "min": undefined,
+            "now": undefined,
+            "text": undefined,
+          }
+        }
+        accessible={true}
+        collapsable={false}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          {
+            "opacity": 1,
+            "width": "30%",
+          }
+        }
+      >
+        <Text
+          style={
+            {
+              "color": "#1C1C1E",
+              "fontFamily": "Poppins-Regular",
+              "fontSize": 14,
+              "fontWeight": 400,
+              "paddingVertical": 10,
+              "textAlign": "center",
+            }
+          }
+        >
+          January
+        </Text>
+        <View
+          style={
+            [
+              {
+                "backgroundColor": "#F4F4F4",
+                "height": 1.5,
+              },
+              null,
+            ]
+          }
+        />
+      </View>
+      <View
+        accessibilityState={
+          {
+            "busy": undefined,
+            "checked": undefined,
+            "disabled": undefined,
+            "expanded": undefined,
+            "selected": undefined,
+          }
+        }
+        accessibilityValue={
+          {
+            "max": undefined,
+            "min": undefined,
+            "now": undefined,
+            "text": undefined,
+          }
+        }
+        accessible={true}
+        collapsable={false}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          {
+            "opacity": 1,
+            "width": "30%",
+          }
+        }
+      >
+        <Text
+          style={
+            {
+              "color": "#1C1C1E",
+              "fontFamily": "Poppins-Regular",
+              "fontSize": 14,
+              "fontWeight": 400,
+              "paddingVertical": 10,
+              "textAlign": "center",
+            }
+          }
+        >
+          1990
+        </Text>
+        <View
+          style={
+            [
+              {
+                "backgroundColor": "#F4F4F4",
+                "height": 1.5,
+              },
+              null,
+            ]
+          }
+        />
+      </View>
+    </View>
+  </View>
+  <View
+    accessibilityHint=""
+    accessibilityLabel="Update Profile"
+    accessibilityRole="button"
+    accessibilityState={
+      {
+        "busy": false,
+        "checked": undefined,
+        "disabled": true,
+        "expanded": undefined,
+        "selected": undefined,
+      }
+    }
+    accessibilityValue={
+      {
+        "max": undefined,
+        "min": undefined,
+        "now": undefined,
+        "text": undefined,
+      }
+    }
+    accessible={true}
+    collapsable={false}
+    focusable={false}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      {
+        "alignItems": "center",
+        "backgroundColor": "#0066FF",
+        "borderRadius": 16,
+        "display": "flex",
+        "flexDirection": "row",
+        "gap": 8,
+        "justifyContent": "center",
+        "marginBottom": 30,
+        "marginTop": 10,
+        "opacity": 0.4,
+        "padding": 16,
+      }
+    }
+  >
+    <Text
+      style={
+        [
+          {
+            "fontFamily": "Poppins-SemiBold",
+            "fontWeight": 600,
+          },
+          {
+            "color": "#FFFFFF",
+          },
+          {
+            "fontSize": 16,
+            "lineHeight": 24,
+          },
+          undefined,
+        ]
+      }
+    >
+      Update Profile
+    </Text>
+  </View>
+  <Text
+    style={
+      [
+        {
+          "fontSize": 14,
+          "lineHeight": 16,
+        },
+        {
+          "color": "#A2A2A7",
+          "fontFamily": "Poppins-Regular",
+        },
+        {
+          "color": "#707070",
+          "textAlign": "center",
+        },
+      ]
+    }
+  >
+    Joined 01 Jan 2023
+  </Text>
+</View>
+`;
