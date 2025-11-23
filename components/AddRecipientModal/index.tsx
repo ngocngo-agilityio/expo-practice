@@ -177,6 +177,7 @@ const AddRecipientModal = ({
                     rightIcon={
                       isVerifyLoading ? (
                         <ActivityIndicator
+                          testID="activity-indicator"
                           size="small"
                           color={colors.activityIndicator}
                         />
