@@ -1,0 +1,37 @@
+// Libs
+import Svg, { Path } from 'react-native-svg';
+
+// Types
+import { TIconProps } from '@/types';
+
+const Profile = ({
+  width = 22,
+  height = 22,
+  color = '#A2A2A7',
+}: TIconProps) => (
+  <Svg width={width} height={height} viewBox="0 0 22 22" fill="none">
+    <Path
+      d="M16.8336 5.16637C20.0554 8.3882 20.0554 13.6118 16.8336 16.8336C13.6118 20.0554 8.38818 20.0554 5.16637 16.8336C1.94454 13.6118 1.94454 8.38818 5.16637 5.16637C8.3882 1.94454 13.6118 1.94454 16.8336 5.16637Z"
+      stroke={color}
+      strokeWidth="1.3"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <Path
+      d="M12.8233 7.63025C13.8303 8.63724 13.8303 10.2699 12.8233 11.2769C11.8163 12.2839 10.1836 12.2839 9.17663 11.2769C8.16964 10.2699 8.16964 8.63724 9.17663 7.63025C10.1836 6.62325 11.8163 6.62325 12.8233 7.63025Z"
+      stroke={color}
+      strokeWidth="1.3"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <Path
+      d="M16.2314 17.3782C14.916 15.9931 13.0606 15.125 11 15.125C8.93931 15.125 7.08397 15.9931 5.76855 17.3791"
+      stroke={color}
+      strokeWidth="1.3"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </Svg>
+);
+
+export default Profile;

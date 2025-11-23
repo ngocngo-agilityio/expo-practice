@@ -1,0 +1,51 @@
+// Libs
+import Svg, { ClipPath, Defs, G, Path, Rect } from 'react-native-svg';
+
+// Types
+import { TIconProps } from '@/types';
+
+const Message = ({
+  width = 22,
+  height = 22,
+  color = '#A2A2A7',
+}: TIconProps) => (
+  <Svg width={width} height={height} viewBox="0 0 22 22" fill="none">
+    <G clip-path="url(#clip0_1_5655)">
+      <Path
+        d="M8.42233 15.5833L10.175 17.9208C10.5875 18.4708 11.4125 18.4708 11.825 17.9208L13.5777 15.5833H16.5C18.0189 15.5833 19.25 14.3522 19.25 12.8333V7.33325C19.25 5.81434 18.0189 4.58325 16.5 4.58325H5.5C3.98108 4.58325 2.75 5.81434 2.75 7.33325V12.8333C2.75 14.3522 3.98108 15.5833 5.5 15.5833H8.42233Z"
+        stroke={color}
+        strokeWidth="1.3"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <Path
+        d="M11.1621 10.3793C11.252 10.4691 11.252 10.614 11.1621 10.7038C11.0723 10.7936 10.9275 10.7936 10.8376 10.7038C10.7478 10.614 10.7478 10.4691 10.8376 10.3793C10.9275 10.2895 11.0723 10.2904 11.1621 10.3793Z"
+        stroke={color}
+        strokeWidth="1.3"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <Path
+        d="M14.8289 10.3793C14.9187 10.4691 14.9187 10.614 14.8289 10.7038C14.7391 10.7936 14.5942 10.7936 14.5044 10.7038C14.4146 10.614 14.4146 10.4691 14.5044 10.3793C14.5942 10.2895 14.7391 10.2904 14.8289 10.3793Z"
+        stroke={color}
+        strokeWidth="1.3"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <Path
+        d="M7.49563 10.3793C7.58547 10.4691 7.58547 10.614 7.49563 10.7038C7.4058 10.7936 7.26097 10.7936 7.17113 10.7038C7.0813 10.614 7.0813 10.4691 7.17113 10.3793C7.26097 10.2895 7.4058 10.2904 7.49563 10.3793Z"
+        stroke={color}
+        strokeWidth="1.3"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </G>
+    <Defs>
+      <ClipPath id="clip0_1_5655">
+        <Rect width="22" height="22" fill="white" />
+      </ClipPath>
+    </Defs>
+  </Svg>
+);
+
+export default Message;
