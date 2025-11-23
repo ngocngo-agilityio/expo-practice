@@ -38,6 +38,7 @@ export const colors = {
   modalOverlay: 'rgba(0, 0, 0, 0.3)',
   pickerModalDoneText: BASE_COLORS.blueRibbon,
   amountInputChangeCurrency: BASE_COLORS.neonFuchsia,
+  settingsLabel: BASE_COLORS.outlawedOrange,
   light: {
     solidBtnTitle: BASE_COLORS.white,
     solidBtnBg: BASE_COLORS.blueRibbon,
@@ -68,6 +69,7 @@ export const colors = {
     sendToBorder: BASE_COLORS.icewindDale,
     sendToTitle: BASE_COLORS.darkGunmetal,
     sendToName: BASE_COLORS.darkGunmetal,
+    settingsRightText: BASE_COLORS.outlawedOrange,
   },
   dark: {
     solidBtnTitle: BASE_COLORS.white,
@@ -99,5 +101,6 @@ export const colors = {
     sendToBorder: BASE_COLORS.darkGunmetal,
     sendToTitle: BASE_COLORS.white,
     sendToName: BASE_COLORS.white,
+    settingsRightText: BASE_COLORS.seriousCloud,
   },
 };

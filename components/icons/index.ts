@@ -1,11 +1,13 @@
 export { default as ArrowDown } from './ArrowDown';
 export { default as ArrowLeftIcon } from './ArrowLeft';
 export { default as ArrowUp } from './ArrowUp';
+export { default as ChevronRightIcon } from './ChevronRight';
 export { default as ChipIcon } from './Chip';
 export { default as CircleDollarSign } from './CircleDollarSign';
 export { default as ClockIcon } from './Clock';
 export { default as CloseIcon } from './Close';
 export { default as CloudUpload } from './CloudUpload';
+export { default as ExitDoorIcon } from './ExitDoor';
 export { default as HiddenIcon } from './Hidden';
 export { default as HomeIcon } from './Home';
 export { default as LockIcon } from './Lock';
