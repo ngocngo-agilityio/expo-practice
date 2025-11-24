@@ -27,6 +27,7 @@ export const createAppHeaderStyles = (scheme: TThemeScheme) => {
       backgroundColor: theme.appHeaderIconBg,
       alignItems: 'center',
       justifyContent: 'center',
+      zIndex: 2,
     },
     title: {
       position: 'absolute',
@@ -35,6 +36,7 @@ export const createAppHeaderStyles = (scheme: TThemeScheme) => {
       textAlign: 'center',
       fontFamily: fontFamilies.primary.medium,
       color: theme.appHeaderTitle,
+      zIndex: 1,
     },
   });
 };

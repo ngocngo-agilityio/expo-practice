@@ -152,6 +152,7 @@ const createStyles = (scheme: TThemeScheme) => {
     },
     safeArea: {
       flex: 1,
+      paddingTop: 16,
     },
     content: {
       paddingHorizontal: 20,
