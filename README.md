@@ -54,9 +54,6 @@ Build a Mobile application of banking app with features below:
   - Settings Screen: View and configure app preferences.
   - Profile Screen: View user profile details.
   - Edit Profile: Update profile information such as name, email, and avatar.
-- Notifications
-  - Show a success notification after each successful fund transfer.
-  - When the user taps a notification, they are navigated to the Transaction History screen.
 
 ## Getting Started
 
