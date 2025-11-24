@@ -38,7 +38,7 @@ const AppHeader = ({
       {hasBackButton && (
         <TouchableOpacity
           style={styles.iconWrapper}
-          onPress={router.back}
+          onPress={() => router.back()}
           accessibilityLabel="Go back">
           <ArrowLeftIcon
             color={
