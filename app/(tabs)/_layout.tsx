@@ -1,5 +1,6 @@
 import { Redirect, Tabs } from 'expo-router';
-import { useColorScheme } from 'react-native';
+import { Platform, useColorScheme } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 // Components
 import {
@@ -26,7 +27,9 @@ const TAB_ITEMS = [
 ];
 
 export default function TabLayout() {
+  const insets = useSafeAreaInsets();
   const theme = useColorScheme();
+
   const inactiveColor = BASE_COLORS.sleet;
   const activeColor = BASE_COLORS.blueRibbon;
 
@@ -41,8 +44,10 @@ export default function TabLayout() {
       screenOptions={{
         headerShown: false,
         tabBarStyle: {
-          paddingTop: 14,
-          paddingBottom: 24,
+          paddingTop: 8,
+          paddingBottom: Platform.OS === 'ios' ? 16 : 32,
+          height:
+            Platform.OS === 'ios' ? 56 + insets.bottom : 64 + insets.bottom,
           backgroundColor:
             theme === 'dark'
               ? BASE_COLORS.spinelStoneBlack

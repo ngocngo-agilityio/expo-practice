@@ -28,7 +28,7 @@ type TAmountInputProps = {
 const AmountInput = forwardRef<TextInput, TAmountInputProps>(
   (
     {
-      defaultValue = '0.00',
+      defaultValue = '',
       currency = 'USD',
       containerStyles,
       onChange,
