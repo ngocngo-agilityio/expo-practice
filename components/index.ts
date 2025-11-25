@@ -3,6 +3,7 @@ export { default as AmountInput } from './AmountInput';
 export { default as AppHeader } from './AppHeader';
 export { default as AvatarPicker } from './AvatarPicker';
 export { default as Button } from './Button';
+export { default as ConfirmModal } from './ConfirmModal';
 export { default as DatePicker } from './DatePicker';
 export { default as EditProfileForm } from './EditProfileForm';
 export { default as Input } from './Input';

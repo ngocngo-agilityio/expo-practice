@@ -1,5 +1,5 @@
 import { useRouter } from 'expo-router';
-import { useMemo, useState } from 'react';
+import { useCallback, useMemo, useState } from 'react';
 import {
   ScrollView,
   StyleSheet,
@@ -11,7 +11,7 @@ import {
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 // Components
-import { AppHeader, Text } from '@/components';
+import { AppHeader, ConfirmModal, Text } from '@/components';
 import { ChevronRightIcon, ExitDoorIcon } from '@/components/icons';
 
 // Constants
@@ -22,6 +22,9 @@ import { BASE_COLORS, colors, fontFamilies } from '@/themes';
 
 // Types
 import { TThemeScheme } from '@/types';
+
+// Auth
+import { useAuthStore } from '@/stores/useAuthStore';
 
 type TSettingItem = {
   key: string;
@@ -35,6 +38,13 @@ export default function Settings() {
   const styles = createStyles(scheme);
   const router = useRouter();
   const [biometricEnabled, setBiometricEnabled] = useState(false);
+  const [logoutModalVisible, setLogoutModalVisible] = useState(false);
+
+  // Stores
+  const clearAuth = useAuthStore(state => state.clearAuth);
+
+  const showLogoutModal = useCallback(() => setLogoutModalVisible(true), []);
+  const hideLogoutModal = useCallback(() => setLogoutModalVisible(false), []);
 
   const generalItems = useMemo<TSettingItem[]>(
     () => [
@@ -56,6 +66,12 @@ export default function Settings() {
     ],
     [],
   );
+
+  const handleConfirmLogout = useCallback(() => {
+    hideLogoutModal();
+    clearAuth();
+    router.replace(ROUTES.LOGIN);
+  }, [clearAuth, hideLogoutModal, router]);
 
   const renderSettingItem = (item: TSettingItem) => {
     const content = (
@@ -135,8 +151,24 @@ export default function Settings() {
                 thumbColor={BASE_COLORS.white}
               />
             </View>
+
+            <TouchableOpacity
+              style={[styles.item]}
+              activeOpacity={0.7}
+              onPress={showLogoutModal}>
+              <Text style={[styles.itemTitle]}>Logout</Text>
+              <ExitDoorIcon color={BASE_COLORS.seriousCloud} />
+            </TouchableOpacity>
           </View>
         </ScrollView>
+        <ConfirmModal
+          visible={logoutModalVisible}
+          message="Log out of your account?"
+          cancelText="Cancel"
+          confirmText="Logout"
+          onCancel={hideLogoutModal}
+          onConfirm={handleConfirmLogout}
+        />
       </SafeAreaView>
     </View>
   );

@@ -70,6 +70,9 @@ export const colors = {
     sendToTitle: BASE_COLORS.darkGunmetal,
     sendToName: BASE_COLORS.darkGunmetal,
     settingsRightText: BASE_COLORS.outlawedOrange,
+    modalBg: BASE_COLORS.white,
+    confirmModalText: BASE_COLORS.darkGunmetal,
+    confirmModalLine: BASE_COLORS.icewindDale,
   },
   dark: {
     solidBtnTitle: BASE_COLORS.white,
@@ -102,5 +105,8 @@ export const colors = {
     sendToTitle: BASE_COLORS.white,
     sendToName: BASE_COLORS.white,
     settingsRightText: BASE_COLORS.seriousCloud,
+    modalBg: BASE_COLORS.darkGunmetal,
+    confirmModalText: BASE_COLORS.white,
+    confirmModalLine: BASE_COLORS.blackRock,
   },
 };
