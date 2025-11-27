@@ -1,4 +1,4 @@
-name: Create Production Builds
+name: Create preview Builds
 
 on:
   push:
@@ -6,10 +6,12 @@ on:
 
 jobs:
   build_android:
-    type: build # This job type creates a production build for Android
+    type: build # This job type creates a preview build for Android
     params:
       platform: android
+      profile: preview
   build_ios:
-    type: build # This job type creates a production build for iOS
+    type: build # This job type creates a preview build for iOS
     params:
       platform: ios
+      profile: preview
