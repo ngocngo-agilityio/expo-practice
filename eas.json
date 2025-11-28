@@ -1,13 +1,22 @@
 {
+  "cli": {
+    "appVersionSource": "local"
+  },
   "build": {
     "development": {
       "developmentClient": true,
-      "distribution": "internal"
+      "distribution": "internal",
+      "env": {
+        "APP_VARIANT": "development"
+      }
     },
     "preview": {
       "distribution": "internal",
       "android": {
         "buildType": "apk"
+      },
+      "env": {
+        "APP_VARIANT": "preview"
       }
     },
     "production": {
@@ -16,6 +25,9 @@
       },
       "ios": {
         "simulator": false
+      },
+      "env": {
+        "APP_VARIANT": "production"
       }
     }
   },
